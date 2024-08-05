@@ -7,13 +7,13 @@ import { Button } from "@hope-ui/solid"
 import { Select, createOptions } from "@thisbeyond/solid-select";
 import "@thisbeyond/solid-select/style.css";
 import AgGridSolid, { AgGridSolidRef } from "ag-grid-solid";
-import { ColDef } from "ag-grid-community"; 
+import { ColDef } from "ag-grid-community";
 import "ag-grid-enterprise";
 import { BiRegularSearchAlt } from "solid-icons/bi";
 import { AiOutlinePlus } from 'solid-icons/ai'
 import { BsFilterSquare } from "solid-icons/bs";
 import LogSimulasiMapEditorSimulator from "./LogSimulasiMapEditorSimulator";
-import { 
+import {
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -27,7 +27,7 @@ import LogSimulasiPopUpDataGisAdd from "./LogSimulasiPopUpDataGisAdd";
 import { fetchDataRuteKapal } from "../../service/service";
 
 
-type LogSimulasiContentProps = { 
+type LogSimulasiContentProps = {
 };
 
 const LogSimulasiContent: Component<LogSimulasiContentProps> = (props) => {
@@ -40,37 +40,37 @@ const LogSimulasiContent: Component<LogSimulasiContentProps> = (props) => {
   const defaultColdefAsset = {
     filter: true,
     resizable: true,
-    sortable: true, 
+    sortable: true,
   };
   const gridOptionsAsset = {
-    rowHeight: 70, 
-    headerHeight: 50,   
+    rowHeight: 70,
+    headerHeight: 50,
     rowStyle: { textAlign: "center" },
-  }; 
+  };
 
   const defaultColdefGis = {
     filter: true,
     resizable: true,
-    sortable: true, 
+    sortable: true,
   };
   const gridOptionsGis = {
-    rowHeight: 40, 
-    headerHeight: 50,   
+    rowHeight: 40,
+    headerHeight: 50,
     rowStyle: { textAlign: "center" },
-  }; 
+  };
 
   const defaultColdefEditorSimulator = {
     filter: true,
     resizable: true,
-    sortable: true, 
+    sortable: true,
   };
   const gridOptionsEditorSimulator = {
-    rowHeight: 40, 
-    headerHeight: 50,   
+    rowHeight: 40,
+    headerHeight: 50,
     rowStyle: { textAlign: "center" },
-  }; 
+  };
 
-  const ImageRenderer = ({ data }: { data: any }) => { 
+  const ImageRenderer = ({ data }: { data: any }) => {
     onMount(() => {
     })
     return (
@@ -80,7 +80,7 @@ const LogSimulasiContent: Component<LogSimulasiContentProps> = (props) => {
     );
   };
 
-  const ButtonRenderer = ({ data }: { data: any }) => { 
+  const ButtonRenderer = ({ data }: { data: any }) => {
     return (
      <>
      <span style="cursor:pointer">
@@ -93,7 +93,7 @@ const LogSimulasiContent: Component<LogSimulasiContentProps> = (props) => {
   };
   const [columnDefsDataAsset, setColumnDefsDataAsset]: any = createSignal([
     {
-      headerName: "Nama Asset", 
+      headerName: "Nama Asset",
       field: "nama",
       width: 95,
       cellStyle: {
@@ -101,7 +101,7 @@ const LogSimulasiContent: Component<LogSimulasiContentProps> = (props) => {
         justifyContent: "center",
         alignItems: "center",
       }, cellClass: "center-cell",
-    }, 
+    },
     {
       field: "image",
       headerName: "Gambar Asset",
@@ -114,7 +114,7 @@ const LogSimulasiContent: Component<LogSimulasiContentProps> = (props) => {
       cellRenderer: ImageRenderer,
     },
     {
-      headerName: "Dimensi", 
+      headerName: "Dimensi",
       field: "dimensi",
       width: 80,
       cellStyle: {
@@ -122,9 +122,9 @@ const LogSimulasiContent: Component<LogSimulasiContentProps> = (props) => {
         justifyContent: "center",
         alignItems: "center",
       }, cellClass: "center-cell",
-    }, 
+    },
     {
-      headerName: "Kecepatan", 
+      headerName: "Kecepatan",
       field: "kecepatan",
       width: 90,
       cellStyle: {
@@ -132,20 +132,20 @@ const LogSimulasiContent: Component<LogSimulasiContentProps> = (props) => {
         justifyContent: "center",
         alignItems: "center",
       }, cellClass: "center-cell",
-    }, 
+    },
     {
-      headerName: "Jarak", 
+      headerName: "Jarak",
       field: "jarak",
-      width: 80, 
+      width: 80,
       headerClass: 'ag-header-cell',
       cellStyle: {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
       }, cellClass: "center-cell",
-    }, 
+    },
     {
-      headerName: "Unit", 
+      headerName: "Unit",
       field: "unit",
       width: 90,
       flex: 1,
@@ -154,19 +154,19 @@ const LogSimulasiContent: Component<LogSimulasiContentProps> = (props) => {
         justifyContent: "center",
         alignItems: "center",
       }, cellClass: "center-cell",
-    }, 
+    },
   ]);
 
   const [columnDefsDataGis, setColumnDefsDataGis]: any = createSignal([
     {
-      headerName: "Lokasi", 
+      headerName: "Lokasi",
       field: "lokasi",
       width: 110,
       cellStyle: {
         justifyContent: "center",
         alignItems: "center",
       }, cellClass: "center-cell",
-    }, 
+    },
     {
       field: "luas",
       headerName: "Luas",
@@ -178,7 +178,7 @@ const LogSimulasiContent: Component<LogSimulasiContentProps> = (props) => {
       }
     },
     {
-      headerName: "Latitude", 
+      headerName: "Latitude",
       field: "latitude",
       width: 195,
       flex: 1,
@@ -187,9 +187,9 @@ const LogSimulasiContent: Component<LogSimulasiContentProps> = (props) => {
         justifyContent: "center",
         alignItems: "center",
       }, cellClass: "center-cell",
-    }, 
+    },
     {
-      headerName: "Longitude", 
+      headerName: "Longitude",
       field: "longitude",
       width: 195,
       flex: 1,
@@ -214,7 +214,7 @@ const LogSimulasiContent: Component<LogSimulasiContentProps> = (props) => {
       cellRenderer: ButtonRenderer,
     },
     {
-      headerName: "Pos Mulai", 
+      headerName: "Pos Mulai",
       field: "start_pos",
       width: 90,
       cellStyle: {
@@ -223,7 +223,7 @@ const LogSimulasiContent: Component<LogSimulasiContentProps> = (props) => {
         alignItems: "center",
       }, cellClass: "center-cell",
     }, {
-      headerName: "Pos Stop", 
+      headerName: "Pos Stop",
       field: "end_pos",
       width: 90,
       cellStyle: {
@@ -232,7 +232,7 @@ const LogSimulasiContent: Component<LogSimulasiContentProps> = (props) => {
         alignItems: "center",
       }, cellClass: "center-cell",
     },{
-      headerName: "Mulai", 
+      headerName: "Mulai",
       field: "start_date",
       width: 80,
       cellStyle: {
@@ -242,7 +242,7 @@ const LogSimulasiContent: Component<LogSimulasiContentProps> = (props) => {
       }, cellClass: "center-cell",
     },
     {
-      headerName: "Stop", 
+      headerName: "Stop",
       field: "end_date",
       width: 80,
       cellStyle: {
@@ -252,7 +252,7 @@ const LogSimulasiContent: Component<LogSimulasiContentProps> = (props) => {
       }, cellClass: "center-cell",
     },
     {
-      headerName: "Kapal", 
+      headerName: "Kapal",
       field: "start_kapal.nama",
       width: 100,
       cellStyle: {
@@ -260,9 +260,9 @@ const LogSimulasiContent: Component<LogSimulasiContentProps> = (props) => {
         justifyContent: "center",
         alignItems: "center",
       }, cellClass: "center-cell",
-    }, 
+    },
     {
-      headerName: "Jarak Titik", 
+      headerName: "Jarak Titik",
       field: "jarak_marker",
       width: 100,
       cellStyle: {
@@ -275,7 +275,7 @@ const LogSimulasiContent: Component<LogSimulasiContentProps> = (props) => {
     },
     },
      {
-      headerName: "Jarak Garis", 
+      headerName: "Jarak Garis",
       field: "jarak_polyline",
       width: 100,
       cellStyle: {
@@ -286,15 +286,15 @@ const LogSimulasiContent: Component<LogSimulasiContentProps> = (props) => {
       valueFormatter: (params: any) => {
         return `${(params.value / 1000).toFixed(2)} km`;
     },
-    } 
-       
+    }
+
   ]);
 
   const [dataAsset, setDataAsset] = createSignal([]);
   const [dataGis, setDataGis] = createSignal([]);
   const [dataEditorSimulator, setDataEditorSimulator] = createSignal([]);
   const [editorSimulatorSend, setEditorSimulatorSend] : any = createSignal([]);
-  
+
   const [dataAssetSelect, setDataAssetSelect] = createSignal([]);
 
   const addData = () => {
@@ -310,7 +310,7 @@ const LogSimulasiContent: Component<LogSimulasiContentProps> = (props) => {
   console.log("before add -> ", dataAssetLocal);
     dataAssetLocal.push(data)
     console.log("after add",dataAssetLocal)
-  localStorage.setItem('dataAsset', JSON.stringify(dataAssetLocal)); 
+  localStorage.setItem('dataAsset', JSON.stringify(dataAssetLocal));
   }
   const fetchDataAsset = async () => {
       try {
@@ -318,24 +318,24 @@ const LogSimulasiContent: Component<LogSimulasiContentProps> = (props) => {
         if (!response.ok) {
           throw new Error("Gagal");
         }
-        const data = await response.json(); 
+        const data = await response.json();
         if (data) {
           const dataAssetLocal : any = JSON.parse(localStorage.getItem('dataAsset'));
           console.log("dataAssetLocal -> ", dataAssetLocal)
           if(dataAssetLocal == null){
-            setDataAsset(data); 
+            setDataAsset(data);
             setRowDataAsset(dataAsset())
-            localStorage.setItem('dataAsset', JSON.stringify(dataAsset())); 
+            localStorage.setItem('dataAsset', JSON.stringify(dataAsset()));
           }else{
             setTimeout(() =>{
-              setDataAsset(dataAssetLocal); 
-              setRowDataAsset(dataAssetLocal) 
+              setDataAsset(dataAssetLocal);
+              setRowDataAsset(dataAssetLocal)
             },200)
           }
-           
-        } else { 
+
+        } else {
         }
-      } catch (error) { 
+      } catch (error) {
       }
     };
 
@@ -345,24 +345,24 @@ const LogSimulasiContent: Component<LogSimulasiContentProps> = (props) => {
         if (!response.ok) {
           throw new Error("Gagal");
         }
-        const data = await response.json(); 
+        const data = await response.json();
         if (data) {
           const dataGisLocal : any = JSON.parse(localStorage.getItem('dataGis'));
           console.log("dataGisLocal -> ", dataGisLocal)
           if(dataGisLocal == null){
-            setDataGis(data); 
+            setDataGis(data);
             setRowDataGis(dataGis())
-            localStorage.setItem('dataGis', JSON.stringify(dataGis())); 
+            localStorage.setItem('dataGis', JSON.stringify(dataGis()));
           }else{
             setTimeout(() =>{
-              setDataGis(dataGisLocal); 
-              setRowDataGis(dataGisLocal) 
+              setDataGis(dataGisLocal);
+              setRowDataGis(dataGisLocal)
             },200)
           }
-           
-        } else { 
+
+        } else {
         }
-      } catch (error) { 
+      } catch (error) {
       }
     };
 
@@ -372,36 +372,34 @@ const LogSimulasiContent: Component<LogSimulasiContentProps> = (props) => {
         if (!response.ok) {
           throw new Error("Gagal");
         }
-        const data = await response.json(); 
+        const data = await response.json();
         if (data) {
-          // setDataEditorSimulator(data); 
-          // setRowDataEditorSimulator(dataEditorSimulator())
           const dataEditorSimulatorLocal : any = JSON.parse(localStorage.getItem('dataEditorSimulator'));
           console.log("dataEditorSimulatorLocal -> ", dataEditorSimulatorLocal)
           if(dataEditorSimulatorLocal == null){
-            setDataEditorSimulator(data); 
+            setDataEditorSimulator(data);
             setRowDataEditorSimulator(dataEditorSimulator())
-            localStorage.setItem('dataEditorSimulator', JSON.stringify(dataEditorSimulator())); 
+            localStorage.setItem('dataEditorSimulator', JSON.stringify(dataEditorSimulator()));
           }else{
             setTimeout(() =>{
-              setDataEditorSimulator(dataEditorSimulatorLocal); 
-              setRowDataEditorSimulator(dataEditorSimulatorLocal) 
+              setDataEditorSimulator(dataEditorSimulatorLocal);
+              setRowDataEditorSimulator(dataEditorSimulatorLocal)
             },200)
           }
-        } else { 
+        } else {
         }
-      } catch (error) { 
+      } catch (error) {
       }
     };
 
-  
+
 
   onMount(() => {
     fetchDataAsset()
     fetchDataGis()
     fetchDataRuteKapal().then((data: any) => {
       console.log("data add -> ", data);
-      setDataEditorSimulator(data.filter); 
+      setDataEditorSimulator(data.filter);
       setRowDataEditorSimulator(data.data);
     })
   })
@@ -423,52 +421,52 @@ const dataSelectEditorSimulator = createOptions(
 
 
 
-const onFilterAsset = (event: any) => { 
+const onFilterAsset = (event: any) => {
   if(event == null){
     gridRefAsset.api.setQuickFilter('')
   }else{
     gridRefAsset.api.setQuickFilter(event.nama)
   }
- 
+
 }
 
-const onFilterGis = (event: any) => { 
+const onFilterGis = (event: any) => {
   if(event == null){
     gridRefGis.api.setQuickFilter('')
   }else{
     gridRefGis.api.setQuickFilter(event.lokasi)
   }
-  
+
 }
 
-const onFilterEditor = (event: any) => { 
+const onFilterEditor = (event: any) => {
   if(event == null){
     gridRefEditorSimulator.api.setQuickFilter('')
   }else{
-    
+
   gridRefEditorSimulator.api.setQuickFilter(event.aset)
   }
 }
 
 const [scrollBehavior, setScrollBehavior] = createSignal("inside");
-const [isOpenAsset, setIsOpenAsset] = createSignal(false); 
-const [isOpenDataGis, setIsOpenDataGis] = createSignal(false); 
+const [isOpenAsset, setIsOpenAsset] = createSignal(false);
+const [isOpenDataGis, setIsOpenDataGis] = createSignal(false);
 
 
 const onOpenAsset = () => setIsOpenAsset(true);
 const onCloseAsset = () => {
-  const dataAssetLocal : any = JSON.parse(localStorage.getItem('dataAsset')); 
-  setDataAsset(dataAssetLocal); 
-  setRowDataAsset(dataAsset()) 
+  const dataAssetLocal : any = JSON.parse(localStorage.getItem('dataAsset'));
+  setDataAsset(dataAssetLocal);
+  setRowDataAsset(dataAsset())
   setIsOpenAsset(false)
 
 };
 
 const onOpenDataGis = () => setIsOpenDataGis(true);
 const onCloseDataGis = () => {
-  const dataGisLocal : any = JSON.parse(localStorage.getItem('dataGis')); 
-  setDataGis(dataGisLocal); 
-  setRowDataGis(dataGis()) 
+  const dataGisLocal : any = JSON.parse(localStorage.getItem('dataGis'));
+  setDataGis(dataGisLocal);
+  setRowDataGis(dataGis())
   setIsOpenDataGis(false)
 };
 
@@ -476,9 +474,9 @@ const onCloseDataEditorSimulator = () => {
 
   fetchDataRuteKapal().then((data: any) => {
     console.log("data add -> ", data);
-    setDataEditorSimulator(data.filter); 
+    setDataEditorSimulator(data.filter);
     setRowDataEditorSimulator(data.data);
-    
+
   })
 };
 
@@ -524,7 +522,7 @@ const selectionChangedCallback = (params: any) => {
     display: flex;">
           <Flex>
         <BiRegularSearchAlt class="icsearchls" />
-        <Select placeholder='Search' class="custom-ls" {...dataSelectEditorSimulator} onChange={(e : any) => onFilterEditor(e)}/> 
+        <Select placeholder='Search' class="custom-ls" {...dataSelectEditorSimulator} onChange={(e : any) => onFilterEditor(e)}/>
         <BsFilterSquare class="icfills" />
                             </Flex>
           </div>
@@ -540,12 +538,12 @@ const selectionChangedCallback = (params: any) => {
           columnDefs={columnDefsDataEditorSimulator()}
           rowData={rowDataEditorSimulator()}
           rowSelection="single"
-          defaultColDef={defaultColdefEditorSimulator} 
+          defaultColDef={defaultColdefEditorSimulator}
           gridOptions={gridOptionsEditorSimulator}
           onSelectionChanged={selectionChangedCallback}
-          
+
           ref={gridRefEditorSimulator!}
-        /> 
+        />
         </div>
         </div>
         </Flex>
@@ -556,35 +554,35 @@ const selectionChangedCallback = (params: any) => {
 
       <Modal  centered size={'xl'}
         scrollBehavior={scrollBehavior()}
-        opened={isOpenAsset()} 
+        opened={isOpenAsset()}
         onCloseAsset={onCloseAsset}
       >
         <ModalOverlay  />
-        <ModalContent> 
+        <ModalContent>
           <ModalBody>
          <LogSimulasiPopUpAssetAdd  closeSend={onCloseAsset()}/>
-          </ModalBody> 
+          </ModalBody>
         </ModalContent>
       </Modal>
 
 
-      
+
 {/* ----------------------- */}
 
 <Modal  centered size={'4xl'}
         scrollBehavior={scrollBehavior()}
-        opened={isOpenDataGis()} 
+        opened={isOpenDataGis()}
         onCloseAsset={onCloseDataGis}
       >
         <ModalOverlay  />
-        <ModalContent> 
+        <ModalContent>
           <ModalBody>
          <LogSimulasiPopUpDataGisAdd  closeSend={onCloseDataGis()}/>
-          </ModalBody> 
+          </ModalBody>
         </ModalContent>
       </Modal>
- 
- 
+
+
     </>
   );
 };

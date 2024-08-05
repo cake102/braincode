@@ -6,7 +6,7 @@ import { Portal } from 'solid-js/web';
 import { Flex, Spacer } from "@hope-ui/solid"
 import { AiOutlinePlus } from 'solid-icons/ai'
 import { Button } from "@hope-ui/solid"
-import { 
+import {
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -14,7 +14,7 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
-} from "@hope-ui/solid" 
+} from "@hope-ui/solid"
 import LogSimulasiPopUpRuteAdd from './LogSimulasiPopUpRuteAdd';
 
 
@@ -47,33 +47,28 @@ const LogSimulasiMapEditorSimulator : Component<LogSimulasiMapEditorSimulatorPro
   const [infoWindow, setInfoWindow] = createSignal(null);
   const [popupContent, setPopupContent] = createSignal(null);
 
-  
+
   const [longlat, setLongLat] : any = createSignal({});
   const [longlatKoor, setLongLatKoor] : any = createSignal({});
 
   createEffect(() => {
-    // console.log("props data -> ", props.sendData)
     showDataTable(props.sendData[0])
   })
 
-  
-  const showDataTable = (data : any) => {
 
-   
+  const showDataTable = (data : any) => {
     if (data) {
       console.log("data -> ", data)
       setTimeout(() => {
   markers().forEach(marker => marker.setMap(null));
     setMarkers([]);
- 
+
     if (polyline()) {
-      polyline().setPath([]);  
+      polyline().setPath([]);
     }
       },100)
-     
-
       setTimeout(() => {
-      const gmaps = map(); 
+      const gmaps = map();
       const newMarkers = data.markers.map((position : any) => {
           const marker = new google.maps.Marker({
               position,
@@ -92,11 +87,6 @@ const LogSimulasiMapEditorSimulator : Component<LogSimulasiMapEditorSimulatorPro
           });
 
           marker.addListener("click", () => {
-              // Remove marker and update polyline
-              // marker.setMap(null);
-              // const markerIndex = markers().indexOf(marker);
-              // polyline().getPath().removeAt(markerIndex);
-              // setMarkers(markers().filter(m => m !== marker));
           });
 
           return marker;
@@ -105,6 +95,7 @@ const LogSimulasiMapEditorSimulator : Component<LogSimulasiMapEditorSimulatorPro
       setMarkers(newMarkers);
 
       console.log("data.polyline -> ", data.polyline)
+
       // Load polyline
       const newPolyline = new google.maps.Polyline({
           path: data.polylines,
@@ -112,7 +103,6 @@ const LogSimulasiMapEditorSimulator : Component<LogSimulasiMapEditorSimulatorPro
           strokeColor: "#ffc746",
           strokeOpacity: 1.0,
           strokeWeight: 0.4,
-          // editable: true,
           icons: [{
               icon: {
                   path: 'M 0,-1 0,1',
@@ -133,38 +123,35 @@ const LogSimulasiMapEditorSimulator : Component<LogSimulasiMapEditorSimulatorPro
 
   const saveData = () => {
     let data = [
-      { 
+      {
               "lat": -3.1826727634663876,
               "lng": 106.74753669772981,
                "latkoor": "3° 10' 57.62\" S",
               "lngkoor": "106° 44' 51.13\" E"
-          
+
       },  {
               "lat": -3.393216503044212,
               "lng": 111.39729685419874,
                "latkoor": "3° 23' 35.58\" S",
               "lngkoor": "111° 23' 50.27\" E"
-           
+
       },  {
               "lat": -6.60507220477149,
               "lng": 109.93039137953596,
                "latkoor": "6° 36' 18.26\" S",
               "lngkoor": "109° 55' 49.41\" E"
-          } 
-      
+          }
+
   ]
-  
+
     localStorage.setItem('mapDataSimulator', JSON.stringify(data));
   }
 
   const loadData = () => {
     const data : any = JSON.parse(localStorage.getItem('mapDataSimulator'));
-   
-    
-   
-    if (data) { 
+    if (data) {
       const gmaps = map();
- 
+
       // Load markers
       const newMarkers = data.map(position => {
         const marker = new google.maps.Marker({
@@ -176,23 +163,19 @@ const LogSimulasiMapEditorSimulator : Component<LogSimulasiMapEditorSimulatorPro
           map: gmaps,
           draggable: true,
         });
-       
 
         marker.addListener("drag", () => {
-          // Update the path of the polyline when marker is dragged
-          const markerIndex = markers().indexOf(marker); 
+          const markerIndex = markers().indexOf(marker);
         });
 
         const infoWindow = new google.maps.InfoWindow();
         setInfoWindow(infoWindow);
 
         marker.addListener("click", () => {
-          // Remove marker and update polyline
-          // marker.setMap(null);
-          const markerIndex = markers().indexOf(marker); 
+          const markerIndex = markers().indexOf(marker);
           setMarkers(markers().filter(m => m !== marker));
- 
-        setLongLat({"latitude": position.lat, "longitude": position.lng}) 
+
+        setLongLat({"latitude": position.lat, "longitude": position.lng})
         setLongLatKoor({"latitude": position.latkoor, "longitude": position.lngkoor})
         infoWindow.setContent(document.getElementById('popup-container-gis-simulator').innerHTML);
          infoWindow.open(gmaps, marker);
@@ -201,16 +184,14 @@ const LogSimulasiMapEditorSimulator : Component<LogSimulasiMapEditorSimulatorPro
         return marker;
       });
 
-      setMarkers(newMarkers); 
+      setMarkers(newMarkers);
   }
 };
 
-
-
   onMount(() => {
-    
 
-    
+
+
     setTimeout(() => {
       saveData()
     },100)
@@ -301,148 +282,19 @@ const LogSimulasiMapEditorSimulator : Component<LogSimulasiMapEditorSimulatorPro
             featureType: "water",
             elementType: "labels.text.stroke",
             stylers: [{ color: "#24282b" }],
-          }, 
+          },
         ]
       });
       setMap(gmaps);
-
-      // gmaps.data.addGeoJson({
-      //   "type": "FeatureCollection",
-      //   "features": [
-      //     {
-      //       "type": "Feature",
-      //       "properties": {
-      //         "id": "1",
-      //         "region": "Tg. Berakit",
-      //         "place": "Tg. Berakit",
-      //         "titik_dasar": "Titik Dasar No. TD.001",
-      //         "no": "No. 431",
-      //         "pilar_pendekat": "Pilar Pendekat No. TR.001",
-      //         "scale": "1 : 200.000",
-      //         "distance": "Jarak TD.001-TD.001A = 19.19 nm",
-      //         "garis_pangkal": "Garis Pangkal Lurus Kepulauan"
-      //       },
-      //       "geometry": {
-      //         "type": "Point",
-      //         "coordinates": [
-      //           104.57555555555555,
-      //           1.2408333333333335
-      //         ]
-      //       }
-      //     },
-      //     {
-      //       "type": "Feature",
-      //       "properties": {
-      //         "id": "2",
-      //         "region": "P. Sentut",
-      //         "place": "P. Sentut",
-      //         "titik_dasar": "Titik Dasar No. TD.001A",
-      //         "no": "No. 430, 431",
-      //         "pilar_pendekat": "Pilar Pendekat No. TR.001A",
-      //         "scale": "1 : 200.000",
-      //         "distance": "Jarak TD.001A-TD.022 = 88.06 nm",
-      //         "garis_pangkal": "Garis Pangkal Lurus Kepulauan"
-      //       },
-      //       "geometry": {
-      //         "type": "Point",
-      //         "coordinates": [
-      //           104.83055555555555,
-      //           1.047777777777778
-      //         ]
-      //       }
-      //     },
-      //     {
-      //       "type": "Feature",
-      //       "properties": {
-      //         "id": "3",
-      //         "region": "P.Tokong Malang Biru",
-      //         "place": "P.Tokong Malang Biru",
-      //         "titik_dasar": "Titik Dasar No. TD.022",
-      //         "no": "No. 430",
-      //         "pilar_pendekat": "Pilar Pendekat No. TR.022",
-      //         "scale": "1 : 200.000",
-      //         "distance": "Jarak TD.022-TD.023 = 29.50 nm",
-      //         "garis_pangkal": "Garis Pangkal Lurus Kepulauan"
-      //       },
-      //       "geometry": {
-      //         "type": "Point",
-      //         "coordinates": [
-      //           105.59638888888888,
-      //           2.3
-      //         ]
-      //       }
-      //     }
-      //   ]
-      // })
-
-      // const mapMarkers = pointsState().map((user: any) => {
-      //   const marker = new google.maps.Marker({
-      //     position: { lat: user.latitude, lng: user.longitude },
-      //     icon: {
-      //       url: '/rb.png',
-      //       scaledSize: new google.maps.Size(30, 30),
-      //     },
-      //   });
-
-      //   const contentString = `
-      //     <div class="custom-popup">
-      //       <h3 class="flex justify-center">${user.province}</h3>
-      //     </div>
-      //   `;
-      //   const infoWindow = new google.maps.InfoWindow({
-      //     content: contentString,
-      //   });
-      //   marker.addListener("click", () => {
-      //     infoWindow.open(gmaps, marker);
-      //   });
-
-      //   return marker;
-      // });
-      // setMarkers(mapMarkers);
 
       const infoWindow = new google.maps.InfoWindow();
       setInfoWindow(infoWindow);
 
       gmaps.addListener("click", (event : any) => {
-        // const path = newPolyline.getPath();
-        // path.push(event.latLng);
-
-        // const newMarker = new google.maps.Marker({
-        //   position: event.latLng,
-        //   icon: {
-        //     url: '/rb.png',
-        //     scaledSize: new google.maps.Size(30, 30),
-        //   },
-        //   map: gmaps,
-        //   draggable: true,
-        // });
-
-        // newMarker.addListener("drag", () => {
-        //   // Update the path of the polyline when marker is dragged
-        //   const markerIndex = markers().indexOf(newMarker);
-        //   path.setAt(markerIndex, newMarker.getPosition());
-        // });
-
-        // newMarker.addListener("click", () => { 
-        //   setPopupContent(
-        //     <MarkerPopup
-        //       title="Marker Info"
-        //       description={`Latitude: ${event.latLng.lat()}, Longitude: ${event.latLng.lng()}`}
-        //     />
-        //   );
-
-        //   infoWindow.setContent(document.getElementById('popup-container').innerHTML);
-        //   infoWindow.open(gmaps, newMarker);
-        // });
-
-        // setMarkers([...markers(), newMarker]);
-
-        
       })
 
       setTimeout(() => {
 
-        // loadData();
       },100)
 
       drawingManager = new google.maps.drawing.DrawingManager({
@@ -487,7 +339,6 @@ const LogSimulasiMapEditorSimulator : Component<LogSimulasiMapEditorSimulatorPro
           fillOpacity: 0.35,
         },
       });
-    //   drawingManager.setMap(gmaps);
 
       google.maps.event.addListener(drawingManager, 'overlaycomplete', (event: google.maps.drawing.OverlayCompleteEvent) => {
         if (event.type === google.maps.drawing.OverlayType.POLYLINE) {
@@ -536,7 +387,7 @@ const LogSimulasiMapEditorSimulator : Component<LogSimulasiMapEditorSimulatorPro
         }
       });
     });
-  
+
   });
 
   onCleanup(() => {
@@ -559,7 +410,6 @@ const LogSimulasiMapEditorSimulator : Component<LogSimulasiMapEditorSimulatorPro
             marker.setMap(gmap);
           });
         } else {
-          // cluster.addMarkers(markers());
         }
       });
     }
@@ -599,17 +449,16 @@ const LogSimulasiMapEditorSimulator : Component<LogSimulasiMapEditorSimulatorPro
     drawingManager?.setDrawingMode(null);
   };
 
-  
-  
-  const [scrollBehavior, setScrollBehavior] = createSignal("inside"); 
-const [isOpenDataRute, setIsOpenDataRute] = createSignal(false); 
+
+
+  const [scrollBehavior, setScrollBehavior] = createSignal("inside");
+const [isOpenDataRute, setIsOpenDataRute] = createSignal(false);
 const onOpenDataRute = () => setIsOpenDataRute(true);
 const onCloseDataRute = () => {
   props.closeSend
   console.log("close data -> ")
-  // const dataRuteLocal : any = JSON.parse(localStorage.getItem('dataRute')); 
   setIsOpenDataRute(false)
- 
+
 };
 
 
@@ -618,10 +467,10 @@ const handleRuteKapalDetect = (res: any) => {
 };
 
   return (
-    
+
     <>
     <div id="map-container">
-       <Button   onClick={onOpenDataRute} style="  
+       <Button   onClick={onOpenDataRute} style="
               margin-bottom: -10vh;
     right: 10px;
     top: 10px;
@@ -630,7 +479,7 @@ const handleRuteKapalDetect = (res: any) => {
                                 <span class="fntls">Tambah</span>
                             </Button>
       <div id="map-simulator" ref={el => mapRef = el}>
-     
+
       </div>
       <div id="popup-container-gis-simulator" style={{ display: 'none' }}>
               <div style="      margin-top: 10px;
@@ -640,9 +489,6 @@ const handleRuteKapalDetect = (res: any) => {
                 <Flex>
                   <div class="fngis">Area Terpilih : {longlatKoor().latitude} ({longlat().latitude}) , {longlatKoor().longitude} ({longlat().longitude})</div>
                   <div>
-                    {/* <Button id="myButton" class="btgis" leftIcon={<AiOutlinePlus boxSize={18} style="color:black;    font-size: 13px !important;" />}>
-                      <span class="fntlsgis">Tambah</span>
-                    </Button>  */}
                   </div>
 
                 </Flex>
@@ -652,14 +498,14 @@ const handleRuteKapalDetect = (res: any) => {
 
     <Modal  centered size={'6xl'}
         scrollBehavior={scrollBehavior()}
-        opened={isOpenDataRute()} 
+        opened={isOpenDataRute()}
         onCloseAsset={onCloseDataRute}
       >
         <ModalOverlay  />
-        <ModalContent> 
+        <ModalContent>
           <ModalBody>
          <LogSimulasiPopUpRuteAdd  closeSend={onCloseDataRute()} detect={props.detect}/>
-          </ModalBody> 
+          </ModalBody>
         </ModalContent>
       </Modal>
     </>
@@ -667,9 +513,6 @@ const handleRuteKapalDetect = (res: any) => {
 }
 
 export default LogSimulasiMapEditorSimulator;
-
-
-
 
 const MarkerPopup = (props : any) => {
   return (

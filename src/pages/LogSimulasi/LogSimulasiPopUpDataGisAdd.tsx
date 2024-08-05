@@ -64,7 +64,7 @@ const LogSimulasiPopUpDataGisAdd: Component<LogSimulasiPopUpDataGisAddProps> = (
 
   const [infoWindow, setInfoWindow] = createSignal(null);
   const [popupContent, setPopupContent] = createSignal(null);
-  
+
   const [longlat, setLongLat] : any = createSignal({});
   const [longlatKoor, setLongLatKoor] : any = createSignal({});
 
@@ -78,12 +78,12 @@ const LogSimulasiPopUpDataGisAdd: Component<LogSimulasiPopUpDataGisAddProps> = (
   };
 
   const [nama, setNama] = createSignal("Area");
-  const [luas, setLuas] = createSignal("2.173.362 km²"); 
+  const [luas, setLuas] = createSignal("2.173.362 km²");
   const handleChangeNama = (event: Event) => {
-   const input = event.target as HTMLInputElement; 
+   const input = event.target as HTMLInputElement;
    setNama(input.value);
  };
-  
+
 
   onMount(() => {
     mapLoader.load().then(() => {
@@ -177,31 +177,6 @@ const LogSimulasiPopUpDataGisAdd: Component<LogSimulasiPopUpDataGisAddProps> = (
         ]
       });
       setMap(gmaps);
-
-      //   const mapMarkers = pointsState().map((user: any) => {
-      //     const marker = new google.maps.Marker({
-      //       position: { lat: user.latitude, lng: user.longitude },
-      //       icon: {
-      //         url: '/rb.png',
-      //         scaledSize: new google.maps.Size(30, 30),
-      //       },
-      //     });
-
-      //     const contentString = `
-      //       <div class="custom-popup">
-      //         <h3 class="flex justify-center">${user.province}</h3>
-      //       </div>
-      //     `;
-      //     const infoWindow = new google.maps.InfoWindow({
-      //       content: contentString,
-      //     });
-      //     marker.addListener("click", () => {
-      //       infoWindow.open(gmaps, marker);
-      //     });
-
-      //     return marker;
-      //   });
-      //   setMarkers(mapMarkers);
       const infoWindow = new google.maps.InfoWindow();
       setInfoWindow(infoWindow);
 
@@ -225,7 +200,7 @@ const LogSimulasiPopUpDataGisAdd: Component<LogSimulasiPopUpDataGisAddProps> = (
           draggable: true,
         });
         infoWindow.setContent(document.getElementById('popup-container-gis-add').innerHTML);
-        
+
         infoWindow.open(gmaps, newMarker);
 
         newMarker.addListener("click", () => {
@@ -241,10 +216,8 @@ const LogSimulasiPopUpDataGisAdd: Component<LogSimulasiPopUpDataGisAddProps> = (
         const button = document.getElementById('myButton');
         if (button) {
           button.addEventListener('click', onOpen);
-        } 
+        }
       })
-
-     
 
       drawingManager = new google.maps.drawing.DrawingManager({
         drawingMode: null,
@@ -288,7 +261,6 @@ const LogSimulasiPopUpDataGisAdd: Component<LogSimulasiPopUpDataGisAddProps> = (
           fillOpacity: 0.35,
         },
       });
-      //   drawingManager.setMap(gmaps);
 
       google.maps.event.addListener(drawingManager, 'overlaycomplete', (event: google.maps.drawing.OverlayCompleteEvent) => {
         if (event.type === google.maps.drawing.OverlayType.POLYLINE) {
@@ -359,7 +331,6 @@ const LogSimulasiPopUpDataGisAdd: Component<LogSimulasiPopUpDataGisAddProps> = (
             marker.setMap(gmap);
           });
         } else {
-          // cluster.addMarkers(markers());
         }
       });
     }
@@ -394,32 +365,30 @@ const LogSimulasiPopUpDataGisAdd: Component<LogSimulasiPopUpDataGisAddProps> = (
     }
     drawingManager?.setDrawingMode(null);
   };
-  
 
-   const addLocation = () => { 
+   const addLocation = () => {
     console.log("nama lokasi -> " , nama());
-    
+
     let data = {
         "lokasi": nama(),
         "luas": luas(),
         "latitude": longlatKoor().latitude + '('+longlat().latitude+')',
         "longitude": longlatKoor().longitude + '('+longlat().longitude+')',
-    } 
+    }
     console.log("event DATA ALL -> ", data);
-    const dataGisLocal : any = JSON.parse(localStorage.getItem('dataGis')); 
+    const dataGisLocal : any = JSON.parse(localStorage.getItem('dataGis'));
 console.log("before add -> ", dataGisLocal);
 dataGisLocal.push(data)
-    localStorage.setItem('dataGis', JSON.stringify(dataGisLocal));  
+    localStorage.setItem('dataGis', JSON.stringify(dataGisLocal));
     onClose()
   };
 
-  return ( 
+  return (
     <>
-
       <div style="border: 1px solid #c295d0c2;
       background: #817f86;
     border-radius: 20px;">
-        <div style="   
+        <div style="
     padding: 2.4vh;">
 
           <div style="width:100%" class="dvp">
@@ -452,8 +421,6 @@ dataGisLocal.push(data)
               </div>
             </Flex>
           </div>
-
-  
           <div id="map-container-add-data-gis ">
             <div id="map-add-data-gis" ref={el => mapRef = el}></div>
             <div id="popup-container-gis-add" style={{ display: 'none' }}>
@@ -466,7 +433,7 @@ dataGisLocal.push(data)
                   <div>
                     <Button id="myButton" class="btgis" leftIcon={<AiOutlinePlus boxSize={18} style="color:black;    font-size: 13px !important;" />}>
                       <span class="fntlsgis">Tambah</span>
-                    </Button> 
+                    </Button>
                   </div>
 
                 </Flex>
@@ -477,8 +444,6 @@ dataGisLocal.push(data)
           <Modal size={'xs'} opened={isOpenKoor()} onClose={onClose} centered="true">
         <ModalOverlay />
         <ModalContent>
-          {/* <ModalCloseButton /> */}
-          {/* <ModalHeader>Modal Title</ModalHeader> */}
           <ModalBody>
             <div style="    text-align: end;
     justify-content: end;
@@ -491,29 +456,24 @@ dataGisLocal.push(data)
           <span class="fngisadd">Apakah Anda ingin mengubah nama Area ini?</span>
            <div style="padding: 35px;
     padding-top: 10px;
-    padding-bottom: 20px;"> 
+    padding-bottom: 20px;">
              <Input onChange={handleChangeNama} style="text-align: center !important;
     font-family: jaldiBold;
     border: 1px solid #626262 !important;
     color: #404040 !important;" placeholder="Ubah Nama" size="sm" />
              </div>
-          
+
           <div style="text-align: center;
     margin-bottom: 10px;
     margin-top: 10px;">
             <Button class="btgisadd">
              <span class="fntlsgisadd" onClick={addLocation}>Simpan</span>
-              </Button> 
+              </Button>
               </div>
               </div>
           </ModalBody>
-          {/* <ModalFooter>
-            <Button onClick={onClose}>Close</Button>
-          </ModalFooter> */}
         </ModalContent>
       </Modal>
-
-
         </div>
       </div>
 
@@ -530,8 +490,8 @@ function toDMS(coordinate : any, isLatitude : any) {
   const minutes = Math.floor(minutesNotTruncated);
   const seconds = ((minutesNotTruncated - minutes) * 60).toFixed(2);
 
-  const direction = coordinate < 0 
-    ? isLatitude ? 'S' : 'W' 
+  const direction = coordinate < 0
+    ? isLatitude ? 'S' : 'W'
     : isLatitude ? 'N' : 'E';
 
   return `${degrees}° ${minutes}' ${seconds}" ${direction}`;
