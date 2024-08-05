@@ -239,15 +239,12 @@ const MapGeo: Component<MapGeoProps> = (props) => {
             const data = await response.json();
             if (data) {
                 const dataGeoLocal: any = JSON.parse(localStorage.getItem('dataGeo'));
-                // console.log("dataGeoLocal -> ", dataGeoLocal)
                 setDataGeo(data);
                 if (dataGeoLocal == null) {
                     setDataGeo(data);
                     localStorage.setItem('dataGeo', JSON.stringify(dataGeo()));
                 } else {
-                    //   setTimeout(() =>{
                     setDataGeo(dataGeoLocal);
-                    //   },200)
                 }
 
             } else {
@@ -260,46 +257,14 @@ const MapGeo: Component<MapGeoProps> = (props) => {
         polygonS().setPath([]);
         markers().forEach(marker => marker.setMap(null));
         setMarkers([]);
-        // console.log(" dataGeo() -> ",  dataGeo())
         const points = dataGeo().features.map((feature: any) => {
             const [lng, lat] = feature.geometry.coordinates;
             return { lat, lng, name: feature.properties.name };
         });
-        // console.log("points -> ", points);
 
         
 
         points.forEach((point: any) => {
-            //   const newMarker = new google.maps.Marker({
-            //     position: point,
-            //     icon: {
-            //       url: '/rb.png',
-            //       scaledSize: new google.maps.Size(30, 30),
-            //     },
-            //     map: map(),
-            //     draggable: true,
-            //   });
-
-            //   newMarker.addListener("click", () => {
-            //     const contentString = document.createElement('div');
-            //     setPopupContent(
-            //       <MarkerPopup
-            //         title="Marker Info"
-            //         description={`Latitude: ${point.lat}, Longitude: ${point.lng}`}
-            //         cek={cek}
-            //       />
-            //     );
-            //     contentString.innerHTML = document.getElementById('popup-container').innerHTML;
-            //     infoWindow().setContent(contentString);
-            //     infoWindow().open(map(), newMarker);
-            //   });
-
-            //   newMarker.addListener("drag", () => {
-            //     const markerIndex = markers().indexOf(newMarker);
-            //     polyline().getPath().setAt(markerIndex, newMarker.getPosition());
-            //   });
-
-            //   setMarkers([...markers(), newMarker]);
         });
         
 
@@ -312,7 +277,6 @@ const MapGeo: Component<MapGeoProps> = (props) => {
         markers().forEach(marker => marker.setMap(null));
         setMarkers([]);
 
-        // console.log(" dataGeo() -> ", dataGeo())
         const points = dataGeo().features.map((feature: any) => {
             const [lng, lat] = feature.geometry.coordinates;
             if (lng === 109.64527777777778 && lat === 2.0861111111111112) {
@@ -324,7 +288,7 @@ const MapGeo: Component<MapGeoProps> = (props) => {
         }).filter((point: any) => point !== null);;
 
         const path = points.map((point: any) => new google.maps.LatLng(point.lat, point.lng));
-        // console.log("points -> ", points);
+
         const polygon = new google.maps.Polygon({
             paths: path,
             strokeColor: '#e6b238',
@@ -339,45 +303,11 @@ const MapGeo: Component<MapGeoProps> = (props) => {
        
         polygon.setMap(map());
         setPolygonS(polygon);
-
-        // points.forEach((point : any ) => {
-        //   const newMarker = new google.maps.Marker({
-        //     position: point,
-        //     icon: {
-        //       url: '/rb.png',
-        //       scaledSize: new google.maps.Size(30, 30),
-        //     },
-        //     map: map(),
-        //     draggable: true,
-        //   });
-
-        //   newMarker.addListener("click", () => {
-        //     const contentString = document.createElement('div');
-        //     setPopupContent(
-        //       <MarkerPopup
-        //         title="Marker Info"
-        //         description={`Latitude: ${point.lat}, Longitude: ${point.lng}`}
-        //         cek={cek}
-        //       />
-        //     );
-        //     contentString.innerHTML = document.getElementById('popup-container').innerHTML;
-        //     infoWindow().setContent(contentString);
-        //     infoWindow().open(map(), newMarker);
-        //   });
-
-        //   newMarker.addListener("drag", () => {
-        //     const markerIndex = markers().indexOf(newMarker);
-        //     polyline().getPath().setAt(markerIndex, newMarker.getPosition());
-        //   });
-
-        //   setMarkers([...markers(), newMarker]);
-        // });
-
     }
     const loadGeoJsonMarker = () => {
         polyline().setPath([]);
         polygonS().setPath([]);
-        // console.log(" dataGeo() -> ", dataGeo())
+
         const points = dataGeo().features.map((feature: any) => {
             const [lng, lat] = feature.geometry.coordinates;
             if (lng === 109.64527777777778 && lat === 2.0861111111111112) {
@@ -399,25 +329,6 @@ const MapGeo: Component<MapGeoProps> = (props) => {
             map: map(),
             draggable: true,
           });
-
-        //   newMarker.addListener("click", () => {
-        //     const contentString = document.createElement('div');
-        //     setPopupContent(
-        //       <MarkerPopup
-        //         title="Marker Info"
-        //         description={`Latitude: ${point.lat}, Longitude: ${point.lng}`}
-        //         cek={cek}
-        //       />
-        //     );
-        //     contentString.innerHTML = document.getElementById('popup-container').innerHTML;
-        //     infoWindow().setContent(contentString);
-        //     infoWindow().open(map(), newMarker);
-        //   });
-
-        //   newMarker.addListener("drag", () => {
-        //     const markerIndex = markers().indexOf(newMarker);
-        //     polyline().getPath().setAt(markerIndex, newMarker.getPosition());
-        //   });
 
           setMarkers([...markers(), newMarker]);
         });
@@ -519,35 +430,6 @@ const MapGeo: Component<MapGeoProps> = (props) => {
             });
             setMap(gmaps);
 
-            //   setTimeout(() => {
-            //      gmaps.data.addGeoJson(dataGeo())
-            //   },100)
-
-            //   const mapMarkers = pointsState().map((user: any) => {
-            //     const marker = new google.maps.Marker({
-            //       position: { lat: user.latitude, lng: user.longitude },
-            //       icon: {
-            //         url: '/rb.png',
-            //         scaledSize: new google.maps.Size(30, 30),
-            //       },
-            //     });
-
-            //     const contentString = `
-            //       <div class="custom-popup">
-            //         <h3 class="flex justify-center">${user.province}</h3>
-            //       </div>
-            //     `;
-            //     const infoWindow = new google.maps.InfoWindow({
-            //       content: contentString,
-            //     });
-            //     marker.addListener("click", () => {
-            //       infoWindow.open(gmaps, marker);
-            //     });
-
-            //     return marker;
-            //   });
-            //   setMarkers(mapMarkers);
-
             const newPolyline = new google.maps.Polyline({
                 path: [],
                 geodesic: true,
@@ -587,37 +469,10 @@ const MapGeo: Component<MapGeoProps> = (props) => {
                 const lng = event.latLng.lng();
 
                 console.log("Latitude: ", lat, "Longitude: ", lng);
-                // const path = newPolyline.getPath();
-                // path.push(event.latLng);
-                // if (markers().length < 2) {
-                //     const newMarker = new google.maps.Marker({
-                //         position: event.latLng,
-                //         icon: {
-                //             url: '/rb.png',
-                //             scaledSize: new google.maps.Size(30, 30),
-                //         },
-                //         map: gmaps,
-                //         draggable: true,
-                //     });
 
-                //     newMarker.addListener("drag", () => { 
-                //         const markerIndex = markers().indexOf(newMarker);
-                //         path.setAt(markerIndex, newMarker.getPosition());
-                //     });
-
-                //     newMarker.addListener("click", () => {
-                //         // Remove marker and update polyline
-                //         newMarker.setMap(null);
-                //         const markerIndex = markers().indexOf(newMarker);
-                //         path.removeAt(markerIndex);
-                //         setMarkers(markers().filter(marker => marker !== newMarker));
-                //     });
-
-                //     setMarkers([...markers(), newMarker]);
-                // }
             });
 
-            // loadData();
+   
             const infoWindow: any = new google.maps.InfoWindow();
             setInfoWindow(infoWindow);
 
@@ -684,7 +539,6 @@ const MapGeo: Component<MapGeoProps> = (props) => {
                     fillOpacity: 0.35,
                 },
             });
-            //   drawingManager.setMap(gmaps);
 
             google.maps.event.addListener(drawingManager, 'overlaycomplete', (event: google.maps.drawing.OverlayCompleteEvent) => {
                 if (event.type === google.maps.drawing.OverlayType.POLYLINE) {
@@ -734,8 +588,6 @@ const MapGeo: Component<MapGeoProps> = (props) => {
             });
         });
         setTimeout(() => { loadGeoJsonLine() }, 1000)
-        // setTimeout(() => { loadGeoJsonPolygon()},200)
-
 
     });
 
@@ -759,7 +611,6 @@ const MapGeo: Component<MapGeoProps> = (props) => {
                         marker.setMap(gmap);
                     });
                 } else {
-                    // cluster.addMarkers(markers());
                 }
             });
         }
@@ -803,15 +654,11 @@ const MapGeo: Component<MapGeoProps> = (props) => {
         }else{
             setTimeout(() => { loadGeoJsonMarker()},300)
         }
-       
-       
     }
 
 
     return (
         <>
-
-
             <Flex style="margin-bottom: 10px;">
             <Button onClick={() => changeMap('line')} class="btgis" leftIcon={<AiOutlineDash boxSize={18} style="color:black;    font-size: 13px !important;" />}>
                 <span class="fntlsgis">Polyline</span>
@@ -827,9 +674,6 @@ const MapGeo: Component<MapGeoProps> = (props) => {
             <div id="map-container-history ">
                 <div id="map-history" ref={el => mapRef = el}></div>
             </div>
-
-
-            {/* <button onClick={saveData}>Save</button> */}
 
         </>
     );
