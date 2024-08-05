@@ -28,9 +28,6 @@ import GisPopUpDataPoint from "./GisPopUpDataPoint";
 import GisPopUpDataPolyline from "./GisPopUpDataPolyline";
 import GisPopUpDataPolygon from "./GisPopUpDataPolygon";
 import { fetchDataPoint, fetchDataPolygon, fetchDataPolyline } from "../../service/service";
-// import GisPopUpAssetAdd from "./GisPopUpAssetAdd";
-// import GisPopUpDataPolylineAdd from "./GisPopUpDataPolylineAdd";
-
 
 type GisContentProps = {
 };
@@ -82,7 +79,6 @@ const GisContent: Component<GisContentProps> = (props) => {
       console.log(data)
     })
     if (data == undefined) {
-      // return 'masuk'
       return
     }
     return (
@@ -115,7 +111,6 @@ const GisContent: Component<GisContentProps> = (props) => {
 
     return (
       <>
-
         <span><svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
           <circle cx="5" cy="5" r="5" fill="#F44336" />
         </svg>
@@ -129,7 +124,6 @@ const GisContent: Component<GisContentProps> = (props) => {
     {
       headerName: "Lokasi",
       field: "lokasi",
-      // width: 95,
       flex: 1,
       cellStyle: {
         display: "flex",
@@ -140,7 +134,6 @@ const GisContent: Component<GisContentProps> = (props) => {
     {
       headerName: "Titik",
       field: "titik",
-      // width: 95,
       flex: 1,
       cellStyle: {
         display: "flex",
@@ -151,7 +144,6 @@ const GisContent: Component<GisContentProps> = (props) => {
     {
       headerName: "Jenis",
       field: "jenis",
-      // width: 95,
       flex: 1,
       cellStyle: {
         display: "flex",
@@ -162,7 +154,6 @@ const GisContent: Component<GisContentProps> = (props) => {
     {
       headerName: "Batas",
       field: "batas",
-      // width: 95,
       flex: 1,
       cellStyle: {
         display: "flex",
@@ -173,7 +164,6 @@ const GisContent: Component<GisContentProps> = (props) => {
     {
       headerName: "Latitude",
       field: "lat",
-      // width: 80,
       flex: 1,
       cellStyle: {
         display: "flex",
@@ -184,7 +174,6 @@ const GisContent: Component<GisContentProps> = (props) => {
     {
       headerName: "Longitude",
       field: "lng",
-      // width: 90,
       flex: 1,
       cellStyle: {
         display: "flex",
@@ -201,8 +190,7 @@ const GisContent: Component<GisContentProps> = (props) => {
       display: "flex",
       justifyContent: "left",
       alignItems: "center",
-    }, 
-    // cellClass: "center-cell",
+    },
     cellRenderer: 'agGroupCellRenderer',
     cellRendererParams: {
       innerRendererFramework: (params: any) => {
@@ -226,31 +214,19 @@ const GisContent: Component<GisContentProps> = (props) => {
       headerName: "Garis",
       field: "lokasi",
       width: 110,
-      // rowGroup: true,
       hide: true,
       rowGroup: true,
 
       cellRenderer: "agGroupCellRenderer",
-      // flex: 1,
-
-      // cellStyle: {
-      //   display: "flex",
-      //   justifyContent: "center",
-      //   alignItems: "center",
-      // }, cellClass: "center-cell",
     },
     {
       field: "jarak_polyline",
       headerName: "Panjang",
       width: 100,
       aggFunc: (params: { values: any[]; }) => {
-        let km = params.values[0] / 1000 
+        let km = params.values[0] / 1000
         return params.values && params.values[0] ? km.toFixed(1)+' km' : "N/A";
       },
-      //  showRowGroup: 'length',
-      // rowGroup: true, 
-      // cellRenderer: "agGroupCellRenderer",
-      // flex: 1, 
       cellStyle: {
         display: "flex",
         justifyContent: "center",
@@ -277,13 +253,11 @@ const GisContent: Component<GisContentProps> = (props) => {
       aggFunc: (params: { values: any[]; }) => {
         return params.values && params.values[0] ? params.values[0] : "N/A";
       },
-      // showRowGroup: true,
       cellStyle: {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
       }, cellClass: "center-cell",
-      // cellRenderer: ImageRenderer
     },
     {
       headerName: "Longitude",
@@ -293,7 +267,6 @@ const GisContent: Component<GisContentProps> = (props) => {
       aggFunc: (params: { values: any[]; }) => {
         return params.values && params.values[0] ? params.values[0] : "N/A";
       },
-      // showRowGroup: true,
       cellStyle: {
         display: "flex",
         justifyContent: "center",
@@ -308,7 +281,7 @@ const GisContent: Component<GisContentProps> = (props) => {
       display: "flex",
       justifyContent: "left",
       alignItems: "center",
-    }, 
+    },
     cellClass: "center-cell",
     cellRenderer: 'agGroupCellRenderer',
     cellRendererParams: {
@@ -392,7 +365,6 @@ const GisContent: Component<GisContentProps> = (props) => {
       aggFunc: (params: { values: any[]; }) => {
         return params.values && params.values[0] ? params.values[0] : "N/A";
       },
-      // cellRenderer: ButtonRenderer,
     },
   ]);
 
@@ -400,105 +372,6 @@ const GisContent: Component<GisContentProps> = (props) => {
   const [dataPolyline, setDataPolyline] : any = createSignal([]);
   const [dataPolygon, setDataPolygon] : any= createSignal([]);
   const [editorSimulatorSend, setEditorSimulatorSend]: any = createSignal([]);
-
-  // const fetchDataPoint = async () => {
-  //   try {
-  //     const response = await fetch('/public/json/data-point.json');
-  //     if (!response.ok) {
-  //       throw new Error("Gagal");
-  //     }
-  //     const data = await response.json();
-  //     if (data) {
-  //       // const dataPointLocal : any = JSON.parse(localStorage.getItem('dataPoint'));
-  //       // console.log("dataPointLocal -> ", dataPointLocal)
-  //       // if(dataPointLocal == null){
-  //       setDataPoint(data);
-  //       setRowDataPoint(dataPoint())
-       
-  //       //   localStorage.setItem('dataPoint', JSON.stringify(dataPoint())); 
-  //       // }else{
-  //       //   setTimeout(() =>{
-  //       //     setDataPoint(dataPointLocal); 
-  //       //     setRowDataPoint(dataPointLocal) 
-  //       //   },200)
-  //       // }
-
-  //     } else {
-  //     }
-  //   } catch (error) {
-  //   }
-  // };
-
-  // const fetchDataPolyline = async () => {
-  //   try {
-  //     const response = await fetch('/public/json/data-polyline.json');
-  //     if (!response.ok) {
-  //       throw new Error("Gagal");
-  //     }
-  //     const data = await response.json();
-  //     if (data) {
-  //       // const dataPolylineLocal : any = JSON.parse(localStorage.getItem('dataPolyline'));
-  //       // console.log("dataPolylineLocal -> ", dataPolylineLocal)
-  //       // if(dataPolylineLocal == null){
-       
-  //       setRowDataPolyline(data)
-  //       //   localStorage.setItem('dataPolyline', JSON.stringify(dataPolyline())); 
-  //       // }else{
-  //       //   setTimeout(() =>{
-  //       //     setDataPolyline(dataPolylineLocal); 
-  //       //     setRowDataPolyline(dataPolylineLocal) 
-  //       //   },200)
-  //       // }
-        
-
-  //       let uniqueLines = new Set(data.map((item :any)=> item.line)); 
-  //       let result = [...uniqueLines].map(line => { 
-  //         let filteredData = data.filter((item :any) => item.line === line); 
-  //         return filteredData[0];
-  //       }); 
-  //       setDataPolyline(result); 
-
-        
-
-  //     } else {
-  //     }
-  //   } catch (error) {
-  //   }
-  // };
-
-  // const fetchDataPolygon = async () => {
-  //   try {
-  //     const response = await fetch('/public/json/data-polygon.json');
-  //     if (!response.ok) {
-  //       throw new Error("Gagal");
-  //     }
-  //     const data = await response.json();
-  //     if (data) {
-  //       // const dataPolygonLocal : any = JSON.parse(localStorage.getItem('dataPolygon'));
-  //       // console.log("dataPolygonLocal -> ", dataPolygonLocal)
-  //       // if(dataPolygonLocal == null){
-  //       // setDataPolygon(data);
-  //       setRowDataPolygon(data)
-  //       //   localStorage.setItem('dataPolygon', JSON.stringify(dataPolygon())); 
-  //       // }else{
-  //       //   setTimeout(() =>{
-  //       //     setDataPolygon(dataPolygonLocal); 
-  //       //     setRowDataPolygon(dataPolygonLocal) 
-  //       //   },200)
-  //       // }
-
-  //       let uniqueArea = new Set(data.map((item :any)=> item.area)); 
-  //       let result = [...uniqueArea].map(area => { 
-  //         let filteredData = data.filter((item :any) => item.area === area); 
-  //         return filteredData[0];
-  //       }); 
-  //       setDataPolygon(result); 
-  //     } else {
-  //     }
-  //   } catch (error) {
-  //   }
-  // };
-
 
   const convertM2ToKm2 = (squareMeters : any) => {
     console.log("squareKilometers 1-> ", squareMeters);
@@ -508,76 +381,19 @@ const GisContent: Component<GisContentProps> = (props) => {
 }
 
   onMount(() => {
-    // fetchDataPoint()
-    fetchDataPoint().then((data: any) => { 
+    fetchDataPoint().then((data: any) => {
       setDataPoint(data.filter);
       setRowDataPoint(data.data)
-
     })
-    fetchDataPolyline().then((data: any) => { 
+    fetchDataPolyline().then((data: any) => {
       setDataPolyline(data.filter);
       setRowDataPolyline(data.data)
-
     })
 
-    fetchDataPolygon().then((data: any) => { 
+    fetchDataPolygon().then((data: any) => {
       setDataPolygon(data.filter);
       setRowDataPolygon(data.data)
-
     })
-    // fetchDataPolyline()
-    // fetchDataPolygon()
-
-    // setEditorSimulatorSend([ {
-    //     "hari": "22 Juni 2024",
-    //     "aset": "HQ 20",
-    //     "lat": -3.30578,
-    //     "lng": 117.89121,
-    //     "latkoor": "3° 18' 20.8\" S",
-    //     "lngkoor": "117° 53' 28.4\" E",
-    //     "markers": [
-    //       {
-    //         "lat": 0.7533054748951525,
-    //         "lng": 107.21034192825111
-    //       },
-    //       {
-    //         "lat": -6.998264917318715,
-    //         "lng": 118.76303251121074
-    //       }
-    //     ],
-    //     "polyline": [
-    //       {
-    //         "lat": 0.7533054748951525,
-    //         "lng": 107.21034192825111
-    //       },
-    //       {
-    //         "lat": -0.7346159307168078,
-    //         "lng": 105.91395613775582
-    //       },
-    //       {
-    //         "lat": -3.735347101714719,
-    //         "lng": 108.95791821844597
-    //       },
-    //       {
-    //         "lat": -5.70114345958807,
-    //         "lng": 111.92775553138705
-    //       },
-    //       {
-    //         "lat": -4.597002902082299,
-    //         "lng": 115.24523117763819
-    //       },
-    //       {
-    //         "lat": -6.305438814341642,
-    //         "lng": 116.24441441368486
-    //       },
-    //       {
-    //         "lat": -6.998264917318715,
-    //         "lng": 118.76303251121074
-    //       }
-    //     ]
-    //   }
-    // ]);
-
   })
 
   const dataSelectPoint = createOptions(
@@ -594,8 +410,6 @@ const GisContent: Component<GisContentProps> = (props) => {
     dataPolygon,
     { key: "lokasi" }
   )
-
-
 
   const onFilterPoint = (event: any) => {
     if (event == null) {
@@ -623,10 +437,6 @@ const GisContent: Component<GisContentProps> = (props) => {
     }
   }
 
-
-
-
-
   const [scrollBehavior, setScrollBehavior] = createSignal("inside");
   const [isOpenPoint, setIsOpenPoint] = createSignal(false);
   const [isOpenPolyline, setIsOpenPolyline] = createSignal(false);
@@ -636,8 +446,6 @@ const GisContent: Component<GisContentProps> = (props) => {
   const onOpenPoint = () => setIsOpenPoint(true);
   const onClosePoint = () => {
     const dataPointLocal: any = JSON.parse(localStorage.getItem('dataPoint'));
-    // setDataPoint(dataPointLocal);
-    // setRowDataPoint(dataPoint())
     setIsOpenPoint(false)
 
   };
@@ -645,8 +453,6 @@ const GisContent: Component<GisContentProps> = (props) => {
   const onOpenPolyline = () => setIsOpenPolyline(true);
   const onCloseDataPolyline = () => {
     const dataPolylineLocal: any = JSON.parse(localStorage.getItem('dataPolyline'));
-    // setDataPolyline(dataPolylineLocal);
-    // setRowDataPolyline(dataPolyline())
     setIsOpenPolyline(false)
   };
 
@@ -654,11 +460,8 @@ const GisContent: Component<GisContentProps> = (props) => {
   const onCloseDataPolygon = () => {
     console.log("close head")
     const dataPolygonLocal: any = JSON.parse(localStorage.getItem('dataPolygon'));
-    // setDataPolygon(dataPolygonLocal);
-    // setRowDataPolygon(dataPolygon())
     setIsOpenPolygon(false)
   };
-
 
   const selectionChangedCallback = (params: any) => {
     console.log('selection has changed', params.api.getSelectedRows());
@@ -668,43 +471,34 @@ const GisContent: Component<GisContentProps> = (props) => {
   const handlePointDetect = (res: any) => {
     console.log("RES -> ", res)
     if (res) {
-      fetchDataPoint().then((data: any) => { 
+      fetchDataPoint().then((data: any) => {
         setDataPoint(data.filter);
         setRowDataPoint(data.data)
-  
       })
-    } 
+    }
   };
   const handlePolylineDetect = (res: any) => {
     console.log("RES -> ", res)
     if (res) {
-      fetchDataPolyline().then((data: any) => { 
+      fetchDataPolyline().then((data: any) => {
         setDataPolyline(data.filter);
         setRowDataPolyline(data.data)
-  
-      }) 
+      })
   }
 } ;
 
 const handlePolygonDetect = (res: any) => {
   console.log("RES -> ", res)
   if (res) {
-    fetchDataPolygon().then((data: any) => { 
+    fetchDataPolygon().then((data: any) => {
       setDataPolygon(data.filter);
       setRowDataPolygon(data.data)
-
-    }) 
+    })
 }
 } ;
 
   return (
     <>
-
-      {/* <div class="search-container">
-        <input type="text" placeholder="Search" />
-    </div> */}
-
-
       <div>
         <Flex>
           <div style="width:50%;margin: 5px;">
@@ -743,10 +537,7 @@ const handlePolygonDetect = (res: any) => {
                   rowSelection="single"
                   defaultColDef={defaultColdefPoint}
                   gridOptions={gridOptionsPoint}
-                  // pagination={true}
                   ref={gridRefPoint!}
-                // paginationPageSize={100}
-                // onGridReady={onGridReady}
                 />
               </div>
             </div>
@@ -789,7 +580,6 @@ const handlePolygonDetect = (res: any) => {
                   gridOptions={gridOptionsPolyline}
                   ref={gridRefPolyline!}
                   suppressRowClickSelection={true}
-                  // groupDefaultExpanded={1} 
                   groupSelectsChildren={true}
                   autoGroupColumnDef={autoGroupColumnDef}
                   masterDetail={true}
@@ -838,13 +628,10 @@ const handlePolygonDetect = (res: any) => {
                   rowSelection="single"
                   defaultColDef={defaultColdefPolygon}
                   gridOptions={gridOptionsPolygon}
-                  // pagination={true}
                   ref={gridRefPolygon!}
                   groupSelectsChildren={true}
                   autoGroupColumnDef={autoGroupColumnDefPolygon}
                   masterDetail={true}
-                // paginationPageSize={100}
-                // onGridReady={onGridReady}
                 />
               </div>
             </div>
@@ -882,14 +669,14 @@ const handlePolygonDetect = (res: any) => {
 
       <Modal  centered size={'5xl'}
         scrollBehavior={scrollBehavior()}
-        opened={isOpenPoint()} 
+        opened={isOpenPoint()}
         onClosePoint={onClosePoint}
       >
         <ModalOverlay  />
-        <ModalContent> 
+        <ModalContent>
           <ModalBody>
          <GisPopUpDataPoint  closeSend={onClosePoint()} detect={handlePointDetect}/>
-          </ModalBody> 
+          </ModalBody>
         </ModalContent>
       </Modal>
 
@@ -898,14 +685,14 @@ const handlePolygonDetect = (res: any) => {
 
         <Modal  centered size={'5xl'}
         scrollBehavior={scrollBehavior()}
-        opened={isOpenPolyline()} 
+        opened={isOpenPolyline()}
         onClosePoint={onCloseDataPolyline}
       >
         <ModalOverlay  />
-        <ModalContent> 
+        <ModalContent>
           <ModalBody>
          <GisPopUpDataPolyline  closeSend={onCloseDataPolyline()} detect={handlePolylineDetect}/>
-          </ModalBody> 
+          </ModalBody>
         </ModalContent>
       </Modal>
 
@@ -914,36 +701,16 @@ const handlePolygonDetect = (res: any) => {
 
  <Modal  centered size={'5xl'}
         scrollBehavior={scrollBehavior()}
-        opened={isOpenPolygon()} 
+        opened={isOpenPolygon()}
         onClosePoint={onCloseDataPolygon}
       >
         <ModalOverlay  />
-        <ModalContent> 
+        <ModalContent>
           <ModalBody>
          <GisPopUpDataPolygon  closeSend={onCloseDataPolygon()} detect={handlePolygonDetect}/>
-          </ModalBody> 
+          </ModalBody>
         </ModalContent>
       </Modal>
-
-
-
-      {/* ----------------------- */}
-      {/* 
-<Modal  centered size={'4xl'}
-        scrollBehavior={scrollBehavior()}
-        opened={isOpenDataPolyline()} 
-        onClosePoint={onCloseDataPolyline}
-      >
-        <ModalOverlay  />
-        <ModalContent> 
-          <ModalBody>
-         <GisPopUpDataPolylineAdd  closeSend={onCloseDataPolyline()}/>
-          </ModalBody> 
-        </ModalContent>
-      </Modal> */}
-
-
-
     </>
   );
 };

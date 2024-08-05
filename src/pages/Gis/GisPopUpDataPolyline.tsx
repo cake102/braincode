@@ -10,9 +10,9 @@ import { ColDef } from "ag-grid-community";
 import "ag-grid-enterprise";
 import { BiRegularSearchAlt } from "solid-icons/bi";
 import { AiOutlinePlus } from 'solid-icons/ai'
-import { BsFilterSquare } from "solid-icons/bs"; 
+import { BsFilterSquare } from "solid-icons/bs";
 import { AiFillCloseSquare } from 'solid-icons/ai'
-import { 
+import {
   Alert,
   AlertDescription,
   AlertIcon,
@@ -45,7 +45,7 @@ import { fetchDataPolylineAdd } from "../../service/service";
 
 type GisPopUpDataPolylineProps = {
   closeSend?: any,
-  
+
   detect?: any
 };
 
@@ -64,9 +64,9 @@ const GisPopUpDataPolyline: Component<GisPopUpDataPolylineProps> = (props) => {
   let circle: google.maps.Circle | undefined;
   let marker: google.maps.Marker | undefined;
 
-  
-  const [alertStatusOk, setAlertStatusOk] = createSignal(false); 
-  const [alertStatusError, setAlertStatusError] = createSignal(false); 
+
+  const [alertStatusOk, setAlertStatusOk] = createSignal(false);
+  const [alertStatusError, setAlertStatusError] = createSignal(false);
   const [map, setMap] = createSignal<google.maps.Map | null>(null);
   const [markers, setMarkers] : any = createSignal<google.maps.Marker[]>([]);
   const [polyline, setPolyline]: any = createSignal(null);
@@ -75,7 +75,7 @@ const GisPopUpDataPolyline: Component<GisPopUpDataPolylineProps> = (props) => {
 
   const [infoWindow, setInfoWindow] : any = createSignal(null);
   const [popupContent, setPopupContent] = createSignal(null);
-  
+
   const [longlat, setLongLat] : any = createSignal({});
   const [longlatKoor, setLongLatKoor] : any = createSignal({});
 
@@ -89,9 +89,9 @@ const GisPopUpDataPolyline: Component<GisPopUpDataPolylineProps> = (props) => {
   };
 
   const [nama, setNama] : any = createSignal(null);
-  const [luas, setLuas] = createSignal("2.173.362 km²"); 
+  const [luas, setLuas] = createSignal("2.173.362 km²");
   const handleChangeNama = (event: Event) => {
-   const input = event.target as HTMLInputElement; 
+   const input = event.target as HTMLInputElement;
    setNama(input.value);
  };
 
@@ -101,7 +101,6 @@ const GisPopUpDataPolyline: Component<GisPopUpDataPolylineProps> = (props) => {
   bounds.extend(secondMarkerPos);
   return bounds.contains(point);
 };
-  
 
   onMount(() => {
     mapLoader.load().then(() => {
@@ -196,32 +195,6 @@ const GisPopUpDataPolyline: Component<GisPopUpDataPolylineProps> = (props) => {
       });
       setMap(gmaps);
 
-      //   const mapMarkers = pointsState().map((user: any) => {
-      //     const marker = new google.maps.Marker({
-      //       position: { lat: user.latitude, lng: user.longitude },
-      //       icon: {
-      //         url: '/rb.png',
-      //         scaledSize: new google.maps.Size(30, 30),
-      //       },
-      //     });
-
-      //     const contentString = `
-      //       <div class="custom-popup">
-      //         <h3 class="flex justify-center">${user.province}</h3>
-      //       </div>
-      //     `;
-      //     const infoWindow = new google.maps.InfoWindow({
-      //       content: contentString,
-      //     });
-      //     marker.addListener("click", () => {
-      //       infoWindow.open(gmaps, marker);
-      //     });
-
-      //     return marker;
-      //   });
-      //   setMarkers(mapMarkers);
-
-      
       const newPolyline = new google.maps.Polyline({
         path: [],
         geodesic: true,
@@ -248,27 +221,27 @@ const GisPopUpDataPolyline: Component<GisPopUpDataPolylineProps> = (props) => {
       console.log("Polyline point set at new position");
       handlePolylineDrag();
   });
-  
+
   path.addListener('insert_at', () => {
       console.log("New point inserted into polyline");
       handlePolylineDrag();
   });
-  
+
   path.addListener('remove_at', () => {
       console.log("Point removed from polyline");
       handlePolylineDrag();
   });
-  
+
   newPolyline.addListener('mouseup', () => {
       console.log("Polyline drag ended");
       handlePolylineDrag();
   });
-  
+
   const handlePolylineDrag = () => {
       if (markers().length === 2) {
           const polylinePath = newPolyline.getPath();
           const subPath = new google.maps.MVCArray();
-   
+
           for (let i = 0; i < polylinePath.getLength(); i++) {
               const point = polylinePath.getAt(i);
               if (point.equals(markers()[0].getPosition()) || subPath.getLength() > 0) {
@@ -278,14 +251,12 @@ const GisPopUpDataPolyline: Component<GisPopUpDataPolylineProps> = (props) => {
                   break;
               }
           }
-  
+
           const distance = google.maps.geometry.spherical.computeLength(subPath);
-  
+
           console.log("jarak: ", distance, " meter");
       }
   };
-  
-
 
       const infoWindow = new google.maps.InfoWindow();
       setInfoWindow(infoWindow);
@@ -296,21 +267,19 @@ const GisPopUpDataPolyline: Component<GisPopUpDataPolylineProps> = (props) => {
         const lng = event.latLng.lng();
 
         if (markers().length >= 2) {
-                    
+
           console.log( "marker -> ", markers())
-         
+
           // Get positions of the first and second markers
           const firstMarkerPos = markers()[0].getPosition();
           const secondMarkerPos = markers()[1].getPosition();
-  
+
           // Restrict clicks outside the bounds of the markers
           if (!isPointWithinBounds(event.latLng, firstMarkerPos, secondMarkerPos)) {
             return;
           }
         }
 
-
-        
         const path = newPolyline.getPath();
 
         path.push(event.latLng);
@@ -322,7 +291,7 @@ const GisPopUpDataPolyline: Component<GisPopUpDataPolylineProps> = (props) => {
                             scaledSize: new google.maps.Size(30, 30),
                         },
                         map: gmaps,
-                        draggable: true, 
+                        draggable: true,
                     });
 
                     setMarkersNew(newMarker);
@@ -341,14 +310,14 @@ const GisPopUpDataPolyline: Component<GisPopUpDataPolylineProps> = (props) => {
 
                     if(markers().length == 1){
                     infoWindow.setContent(document.getElementById('popup-container-gis-add').innerHTML);
-        
+
                     console.log("NEW -> ", newMarker);
                     infoWindow.open(gmaps, newMarker);
                   }
-            
+
                     setMarkers([...markers(), newMarker]);
                 }
-        
+
 
         console.log("Latitude: ", lat, "Longitude: ", lng);
         setLongLat({"latitude": lat, "longitude": lng})
@@ -361,28 +330,18 @@ const GisPopUpDataPolyline: Component<GisPopUpDataPolylineProps> = (props) => {
         const firstMarkerPos = markers()[0].getPosition();
         const latFirst = firstMarkerPos.lat();
         const lngFirst = firstMarkerPos.lng();
-        
+
         console.log("Latitude of first marker: ", latFirst);
         console.log("Longitude of first marker: ", lngFirst);
 
-        console.log("M 2", markers()[1].getPosition() ); 
+        console.log("M 2", markers()[1].getPosition() );
         const secondMarkerPos = markers()[1].getPosition();
         const latSecond = secondMarkerPos.lat();
         const lngSecond = secondMarkerPos.lng();
-        
+
         console.log("Latitude of second marker: ", latSecond);
         console.log("Longitude of second marker: ", lngSecond);
         }
-
-      //   if (markers().length === 2) {
-
-      //     const distance = google.maps.geometry.spherical.computeDistanceBetween(
-      //         markers()[0].getPosition(),
-      //         markers()[1].getPosition()
-      //     );
- 
-      //     console.log("Distance between markers: ", distance, " meters");
-      // }
 
       if (markers().length === 2) {
         handlePolylineDrag();
@@ -394,10 +353,8 @@ const GisPopUpDataPolyline: Component<GisPopUpDataPolylineProps> = (props) => {
         const button = document.getElementById('myButton');
         if (button) {
           button.addEventListener('click', onOpen);
-        } 
+        }
       })
-
-     
 
       drawingManager = new google.maps.drawing.DrawingManager({
         drawingMode: null,
@@ -441,7 +398,6 @@ const GisPopUpDataPolyline: Component<GisPopUpDataPolylineProps> = (props) => {
           fillOpacity: 0.35,
         },
       });
-      //   drawingManager.setMap(gmaps);
 
       google.maps.event.addListener(drawingManager, 'overlaycomplete', (event: google.maps.drawing.OverlayCompleteEvent) => {
         if (event.type === google.maps.drawing.OverlayType.POLYLINE) {
@@ -512,7 +468,6 @@ const GisPopUpDataPolyline: Component<GisPopUpDataPolylineProps> = (props) => {
             marker.setMap(gmap);
           });
         } else {
-          // cluster.addMarkers(markers());
         }
       });
     }
@@ -547,9 +502,9 @@ const GisPopUpDataPolyline: Component<GisPopUpDataPolylineProps> = (props) => {
     }
     drawingManager?.setDrawingMode(null);
   };
-  
 
-   const addLocation = () => { 
+
+   const addLocation = () => {
     console.log("nama lokasi -> " , nama());
 
     const markerPositions = markers().map((marker: any) => ({
@@ -575,56 +530,46 @@ const GisPopUpDataPolyline: Component<GisPopUpDataPolylineProps> = (props) => {
   const distance = google.maps.geometry.spherical.computeDistanceBetween(latLng1, latLng2);
   console.log(`Jarak markers: ${distance} meter`);
 
-    
+
     let data = {
         "lokasi": nama(),
         "jarak_polyline": length,
         "jarak_marker": distance,
-        // "lat": longlat().latitude,
-        // "lng":longlat().longitude,
-        // "lat_koor": longlatKoor().latitude,
-        // "lng_koor": longlatKoor().longitude,
         "markers": markerPositions,
         "polylines": polylinePath
-    } 
+    }
     console.log("event DATA ALL -> ", data);
     console.log("event DATA ALL -> ", JSON.stringify(data));
-     
-    if(nama() !== null ) { 
+
+    if(nama() !== null ) {
       fetchDataPolylineAdd(data).then((data: any) => {
         console.log("data add -> ", data);
         if(data.status === 'ok'){
         setAlertStatusOk(true)
         setTimeout(() => {
     setAlertStatusOk(false)
-        },1000) 
-        setNama(null); 
-        props.detect(true);  
-        onClose()  
+        },1000)
+        setNama(null);
+        props.detect(true);
+        onClose()
       }
-      }) 
-   
+      })
+
     }else{
       setAlertStatusError(true)
       setTimeout(() => {
   setAlertStatusError(false)
-      },1000) 
-   
+      },1000)
+
     }
-//     const dataGisLocal : any = JSON.parse(localStorage.getItem('dataGis')); 
-// console.log("before add -> ", dataGisLocal);
-// dataGisLocal.push(data)
-//     localStorage.setItem('dataGis', JSON.stringify(dataGisLocal));  
-   
   };
 
-  return ( 
+  return (
     <>
-
       <div style="border: 1px solid #c295d0c2;
       background: #817f86;
     border-radius: 20px;">
-        <div style="   
+        <div style="
     padding: 2.4vh;">
 
           <div style="width:100%" class="dvp">
@@ -647,8 +592,6 @@ const GisPopUpDataPolyline: Component<GisPopUpDataPolylineProps> = (props) => {
               </div>
             </Flex>
           </div>
-
-  
           <div id="map-container-add-data-gis-polyline-point">
             <div id="map-add-data-gis-polyline" ref={el => mapRef = el}></div>
             <Show
@@ -660,8 +603,6 @@ const GisPopUpDataPolyline: Component<GisPopUpDataPolylineProps> = (props) => {
    Menambah Data Line Berhasil !
   </Alert>
 </Show>
-
-
 <Show
   when={alertStatusError()}
   fallback={''}
@@ -677,14 +618,12 @@ const GisPopUpDataPolyline: Component<GisPopUpDataPolylineProps> = (props) => {
     padding: 20px;
     padding-left: 30px;">
                 <Flex>
-                  {/* <div class="fngis">Garis Terpilih : {longlatKoor().latitude} ({longlat().latitude}) , {longlatKoor().longitude} ({longlat().longitude})</div> */}
                   <div class="fngis">Garis Terpilih : titik longlat 1 , titik longlat 2</div>
                   <div>
                     <Button id="myButton" class="btgis" leftIcon={<AiOutlinePlus boxSize={18} style="color:black;    font-size: 13px !important;" />}>
                       <span class="fntlsgis">Tambah</span>
-                    </Button> 
+                    </Button>
                   </div>
-
                 </Flex>
               </div>
             </div>
@@ -693,8 +632,6 @@ const GisPopUpDataPolyline: Component<GisPopUpDataPolylineProps> = (props) => {
           <Modal size={'xs'} opened={isOpenKoor()} onClose={onClose} centered="true">
         <ModalOverlay />
         <ModalContent>
-          {/* <ModalCloseButton /> */}
-          {/* <ModalHeader>Modal Title</ModalHeader> */}
           <ModalBody>
             <div style="    text-align: end;
     justify-content: end;
@@ -707,37 +644,30 @@ const GisPopUpDataPolyline: Component<GisPopUpDataPolylineProps> = (props) => {
           <span class="fngisadd">Apakah Anda ingin mengubah nama Garis ini?</span>
            <div style="padding: 35px;
     padding-top: 10px;
-    padding-bottom: 20px;"> 
+    padding-bottom: 20px;">
              <Input onChange={handleChangeNama} style="text-align: center !important;
     font-family: jaldiBold;
     border: 1px solid #626262 !important;
     color: #404040 !important;" placeholder="Ubah Nama" size="sm" />
              </div>
-          
+
           <div style="text-align: center;
     margin-bottom: 10px;
     margin-top: 10px;">
             <Button class="btgisadd">
              <span class="fntlsgisadd" onClick={addLocation}>Simpan</span>
-              </Button> 
+              </Button>
               </div>
               </div>
           </ModalBody>
-          {/* <ModalFooter>
-            <Button onClick={onClose}>Close</Button>
-          </ModalFooter> */}
         </ModalContent>
       </Modal>
-
-
         </div>
       </div>
-
     </>
   );
 };
 export default GisPopUpDataPolyline;
-
 
 function toDMS(coordinate : any, isLatitude : any) {
   const absolute = Math.abs(coordinate);
@@ -746,8 +676,8 @@ function toDMS(coordinate : any, isLatitude : any) {
   const minutes = Math.floor(minutesNotTruncated);
   const seconds = ((minutesNotTruncated - minutes) * 60).toFixed(2);
 
-  const direction = coordinate < 0 
-    ? isLatitude ? 'S' : 'W' 
+  const direction = coordinate < 0
+    ? isLatitude ? 'S' : 'W'
     : isLatitude ? 'N' : 'E';
 
   return `${degrees}° ${minutes}' ${seconds}" ${direction}`;

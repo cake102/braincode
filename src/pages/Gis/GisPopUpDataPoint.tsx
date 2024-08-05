@@ -10,9 +10,9 @@ import { ColDef } from "ag-grid-community";
 import "ag-grid-enterprise";
 import { BiRegularSearchAlt } from "solid-icons/bi";
 import { AiOutlinePlus } from 'solid-icons/ai'
-import { BsFilterSquare } from "solid-icons/bs"; 
+import { BsFilterSquare } from "solid-icons/bs";
 import { AiFillCloseSquare } from 'solid-icons/ai'
-import { 
+import {
   Alert,
   AlertDescription,
   AlertIcon,
@@ -45,7 +45,7 @@ import { fetchDataPointAdd } from "../../service/service";
 
 type GisPopUpDataPointProps = {
   closeSend?: any,
-  
+
   detect?: any
 };
 
@@ -64,8 +64,8 @@ const GisPopUpDataPoint: Component<GisPopUpDataPointProps> = (props) => {
   let circle: google.maps.Circle | undefined;
   let marker: google.maps.Marker | undefined;
 
-  const [alertStatusOk, setAlertStatusOk] = createSignal(false); 
-  const [alertStatusError, setAlertStatusError] = createSignal(false);  
+  const [alertStatusOk, setAlertStatusOk] = createSignal(false);
+  const [alertStatusError, setAlertStatusError] = createSignal(false);
   const [map, setMap] = createSignal<google.maps.Map | null>(null);
   const [markers, setMarkers] = createSignal<google.maps.Marker[]>([]);
 
@@ -73,7 +73,7 @@ const GisPopUpDataPoint: Component<GisPopUpDataPointProps> = (props) => {
 
   const [infoWindow, setInfoWindow] = createSignal(null);
   const [popupContent, setPopupContent] = createSignal(null);
-  
+
   const [longlat, setLongLat] : any = createSignal({});
   const [longlatKoor, setLongLatKoor] : any = createSignal({});
 
@@ -90,24 +90,23 @@ const GisPopUpDataPoint: Component<GisPopUpDataPointProps> = (props) => {
   const [jenis, setJenis] : any = createSignal(null);
   const [titik, setTitik] : any = createSignal(null);
   const [batas, setBatas] : any = createSignal(null);
-  const [luas, setLuas] = createSignal("2.173.362 km²"); 
+  const [luas, setLuas] = createSignal("2.173.362 km²");
   const handleChangeLokasi = (event: Event) => {
-   const input = event.target as HTMLInputElement; 
+   const input = event.target as HTMLInputElement;
    setLokasi(input.value);
  };
  const handleChangeJenis = (event: Event) => {
-  const input = event.target as HTMLInputElement; 
+  const input = event.target as HTMLInputElement;
   setJenis(input.value);
 };
 const handleChangeTitik = (event: Event) => {
-  const input = event.target as HTMLInputElement; 
+  const input = event.target as HTMLInputElement;
   setTitik(input.value);
 };
 const handleChangeBatas = (event: Event) => {
-  const input = event.target as HTMLInputElement; 
+  const input = event.target as HTMLInputElement;
   setBatas(input.value);
 };
-  
 
   onMount(() => {
     mapLoader.load().then(() => {
@@ -201,31 +200,6 @@ const handleChangeBatas = (event: Event) => {
         ]
       });
       setMap(gmaps);
-
-      //   const mapMarkers = pointsState().map((user: any) => {
-      //     const marker = new google.maps.Marker({
-      //       position: { lat: user.latitude, lng: user.longitude },
-      //       icon: {
-      //         url: '/rb.png',
-      //         scaledSize: new google.maps.Size(30, 30),
-      //       },
-      //     });
-
-      //     const contentString = `
-      //       <div class="custom-popup">
-      //         <h3 class="flex justify-center">${user.province}</h3>
-      //       </div>
-      //     `;
-      //     const infoWindow = new google.maps.InfoWindow({
-      //       content: contentString,
-      //     });
-      //     marker.addListener("click", () => {
-      //       infoWindow.open(gmaps, marker);
-      //     });
-
-      //     return marker;
-      //   });
-      //   setMarkers(mapMarkers);
       const infoWindow = new google.maps.InfoWindow();
       setInfoWindow(infoWindow);
 
@@ -249,7 +223,7 @@ const handleChangeBatas = (event: Event) => {
           draggable: true,
         });
         infoWindow.setContent(document.getElementById('popup-container-gis-add').innerHTML);
-        
+
         infoWindow.open(gmaps, newMarker);
 
         newMarker.addListener("click", () => {
@@ -258,17 +232,14 @@ const handleChangeBatas = (event: Event) => {
         });
 
         setMarkers([...markers(), newMarker]);
-
       });
 
       google.maps.event.addListener(infoWindow, 'domready', () => {
         const button = document.getElementById('myButton');
         if (button) {
           button.addEventListener('click', onOpen);
-        } 
+        }
       })
-
-     
 
       drawingManager = new google.maps.drawing.DrawingManager({
         drawingMode: null,
@@ -312,8 +283,6 @@ const handleChangeBatas = (event: Event) => {
           fillOpacity: 0.35,
         },
       });
-      //   drawingManager.setMap(gmaps);
-
       google.maps.event.addListener(drawingManager, 'overlaycomplete', (event: google.maps.drawing.OverlayCompleteEvent) => {
         if (event.type === google.maps.drawing.OverlayType.POLYLINE) {
           if (line) {
@@ -383,7 +352,6 @@ const handleChangeBatas = (event: Event) => {
             marker.setMap(gmap);
           });
         } else {
-          // cluster.addMarkers(markers());
         }
       });
     }
@@ -418,14 +386,12 @@ const handleChangeBatas = (event: Event) => {
     }
     drawingManager?.setDrawingMode(null);
   };
-  
 
-   const addLocation = () => {  
-    
-    
-    let data = 
+   const addLocation = () => {
+
+    let data =
     {
-      "batas": batas(), 
+      "batas": batas(),
       "jenis": jenis(),
       "lat": longlat().latitude.toString(),
       "lat_koor":  longlatKoor().latitude,
@@ -435,41 +401,39 @@ const handleChangeBatas = (event: Event) => {
       "no": 0,
       "titik": titik()
     }
-    if(batas() !== null && jenis() !== null && lokasi() !== null && titik() !== null ) { 
+    if(batas() !== null && jenis() !== null && lokasi() !== null && titik() !== null ) {
       fetchDataPointAdd(data).then((data: any) => {
         console.log("data add -> ", data);
         if(data.status === 'ok'){
         setAlertStatusOk(true)
         setTimeout(() => {
     setAlertStatusOk(false)
-        },1000) 
+        },1000)
         setBatas(null);
         setJenis(null);
         setTitik(null);
         setLokasi(null);
-        props.detect(true);  
-        onClose()  
+        props.detect(true);
+        onClose()
       }
-      }) 
-   
+      })
+
     }else{
       setAlertStatusError(true)
       setTimeout(() => {
   setAlertStatusError(false)
-      },1000) 
-   
+      },1000)
+
     }
   };
 
-  return ( 
+  return (
     <>
-
       <div style="border: 1px solid #c295d0c2;
       background: #817f86;
     border-radius: 20px;">
-        <div style="   
+        <div style="
     padding: 2.4vh;">
-
           <div style="width:100%" class="dvp">
             <Flex>
               <div style="width:80%">
@@ -483,15 +447,11 @@ const handleChangeBatas = (event: Event) => {
     margin-top: 5px;">Tambah Data Point</span>
                 </Flex>
               </div>
-
               <div class="w20">
                 <AiFillCloseSquare onClick={() => props.closeSend} class="cp" style="cursor:pointer" />
-
               </div>
             </Flex>
           </div>
-
-  
           <div id="map-container-add-data-gis-point -point">
             <div id="map-add-data-gis-point" ref={el => mapRef = el}></div>
             <Show
@@ -503,8 +463,6 @@ const handleChangeBatas = (event: Event) => {
    Menambah Data Point Berhasil !
   </Alert>
 </Show>
-
-
 <Show
   when={alertStatusError()}
   fallback={''}
@@ -514,7 +472,6 @@ const handleChangeBatas = (event: Event) => {
   Lengkapi isian form terlebih dahulu !
   </Alert>
 </Show>
-     
             <div id="popup-container-gis-add" style={{ display: 'none' }}>
               <div style="      margin-top: 10px;
     background: #85319C80;
@@ -525,7 +482,7 @@ const handleChangeBatas = (event: Event) => {
                   <div>
                     <Button id="myButton" class="btgis" leftIcon={<AiOutlinePlus boxSize={18} style="color:black;font-size: 13px !important;" />}>
                       <span class="fntlsgis">Tambah</span>
-                    </Button> 
+                    </Button>
                   </div>
 
                 </Flex>
@@ -536,8 +493,6 @@ const handleChangeBatas = (event: Event) => {
           <Modal size={'xs'} opened={isOpenKoor()} onClose={onClose} centered="true">
         <ModalOverlay />
         <ModalContent>
-          {/* <ModalCloseButton /> */}
-          {/* <ModalHeader>Modal Title</ModalHeader> */}
           <ModalBody>
             <div style="    text-align: end;
     justify-content: end;
@@ -550,42 +505,42 @@ const handleChangeBatas = (event: Event) => {
           <span class="fngisadd">Tambah Data Point ?</span>
           <div style="padding: 35px;
     padding-top: 20px;
-    padding-bottom: 0px;"> 
+    padding-bottom: 0px;">
              <Input onChange={handleChangeLokasi} style="text-align: center !important;
     font-family: jaldiBold;
     border: 1px solid #626262 !important;
-    color: #404040 !important;" placeholder="Lokasi"   _placeholder={{ 
-      color: 'rgb(114 114 114) !important',  
+    color: #404040 !important;" placeholder="Lokasi"   _placeholder={{
+      color: 'rgb(114 114 114) !important',
     }} size="sm" />
              </div>
              <div style="padding: 35px;
     padding-top: 10px;
-    padding-bottom: 0px;"> 
+    padding-bottom: 0px;">
              <Input onChange={handleChangeTitik} style="text-align: center !important;
     font-family: jaldiBold;
     border: 1px solid #626262 !important;
-    color: #404040 !important;" placeholder="Titik"   _placeholder={{ 
-      color: 'rgb(114 114 114) !important',  
+    color: #404040 !important;" placeholder="Titik"   _placeholder={{
+      color: 'rgb(114 114 114) !important',
     }}  size="sm" />
              </div>
              <div style="padding: 35px;
     padding-top: 10px;
-    padding-bottom: 0px;"> 
+    padding-bottom: 0px;">
              <Input onChange={handleChangeJenis} style="text-align: center !important;
     font-family: jaldiBold;
     border: 1px solid #626262 !important;
-    color: #404040 !important;" placeholder="Jenis"   _placeholder={{ 
-      color: 'rgb(114 114 114) !important',  
+    color: #404040 !important;" placeholder="Jenis"   _placeholder={{
+      color: 'rgb(114 114 114) !important',
     }}  size="sm" />
              </div>
              <div style="padding: 35px;
     padding-top: 10px;
-    padding-bottom: 20px;"> 
+    padding-bottom: 20px;">
              <Input onChange={handleChangeBatas} style="text-align: center !important;
     font-family: jaldiBold;
     border: 1px solid #626262 !important;
-    color: #404040 !important;" placeholder="Batas"   _placeholder={{ 
-      color: 'rgb(114 114 114) !important',  
+    color: #404040 !important;" placeholder="Batas"   _placeholder={{
+      color: 'rgb(114 114 114) !important',
     }}  size="sm" />
              </div>
           <div style="text-align: center;
@@ -593,20 +548,14 @@ const handleChangeBatas = (event: Event) => {
     margin-top: 10px;">
             <Button class="btgisadd">
              <span class="fntlsgisadd" onClick={addLocation}>Simpan</span>
-              </Button> 
+              </Button>
               </div>
               </div>
           </ModalBody>
-          {/* <ModalFooter>
-            <Button onClick={onClose}>Close</Button>
-          </ModalFooter> */}
         </ModalContent>
       </Modal>
-
-
         </div>
       </div>
-
     </>
   );
 };
@@ -620,8 +569,8 @@ function toDMS(coordinate : any, isLatitude : any) {
   const minutes = Math.floor(minutesNotTruncated);
   const seconds = ((minutesNotTruncated - minutes) * 60).toFixed(2);
 
-  const direction = coordinate < 0 
-    ? isLatitude ? 'S' : 'W' 
+  const direction = coordinate < 0
+    ? isLatitude ? 'S' : 'W'
     : isLatitude ? 'N' : 'E';
 
   return `${degrees}° ${minutes}' ${seconds}" ${direction}`;
