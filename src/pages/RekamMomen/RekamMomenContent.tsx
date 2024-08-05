@@ -52,29 +52,22 @@ const RekamMomenContent: Component<RekamMomenContentProps> = (props) => {
   return (
     <>
       <div class="fl">
-        <div style="height: 100px;
-    align-items: center;
-    display: grid;
-    border-bottom: 1px solid #9b76ab;">
+        <div class="header">
           <Flex>
-            <div style="width:100%;justify-content: left;
-    align-items: center;
-    display: flex;
-    font-family: 'jaldiBold';">
-              <span style="margin-left: 30px;">Live Report Ly Thai To - 06 June 2024 - Kep. Bangka Belitung</span>
+            <div class="header-content">
+              <span class="header-text">
+                Live Report Ly Thai To - 06 June 2024 - Kep. Bangka Belitung
+              </span>
             </div>
           </Flex>
         </div>
         <div>
-          <Flex >
-            <div style="width:100%;    margin: 25px;" >
+          <Flex>
+            <div class="video-container">
               {/* <MapSet /> */}
-              <video style="    width: 100%;
-    height:720px;"  controls
-    autoplay
-    muted>
- <source src="/video/rekaman.mp4" type="video/mp4" />
-</video>
+              <video class="video" controls autoplay muted>
+                <source src="/video/rekaman.mp4" type="video/mp4" />
+              </video>
             </div>
           </Flex>
         </div>

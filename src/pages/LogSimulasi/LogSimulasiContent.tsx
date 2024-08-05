@@ -486,104 +486,92 @@ const selectionChangedCallback = (params: any) => {
   setEditorSimulatorSend(params.api.getSelectedRows())
 };
 
-  return (
-    <>
-<div style="width:100%;margin: 5px;">
-  <div style="border: 1px solid #c295d0c2;
-      background: #251c3d;
-    border-radius: 20px;">
-    <div style="    border-bottom: 1px solid #c295d0c2;
-    padding: 2.4vh;">
-      <Flex>
-        <div style="width:50%">
-          <Flex>
-<span>
-<svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g clip-path="url(#clip0_705_253)">
-<path d="M15.0001 3.54163C12.3774 3.53863 9.80854 4.28625 7.59703 5.69619C5.38551 7.10614 3.62367 9.11952 2.5196 11.4985C1.41552 13.8776 1.01532 16.5229 1.36626 19.122C1.7172 21.7212 2.80462 24.1656 4.50009 26.1666L4.75009 26.4583H25.2501L25.5001 26.1666C27.1956 24.1656 28.283 21.7212 28.6339 19.122C28.9849 16.5229 28.5847 13.8776 27.4806 11.4985C26.3765 9.11952 24.6147 7.10614 22.4032 5.69619C20.1916 4.28625 17.6228 3.53863 15.0001 3.54163ZM22.1668 11.4416L17.2334 16.2833C17.4856 16.8164 17.5412 17.4214 17.3904 17.9915C17.2396 18.5616 16.8922 19.06 16.4094 19.3988C15.9267 19.7375 15.3398 19.8946 14.7524 19.8425C14.165 19.7903 13.615 19.5322 13.1995 19.1138C12.784 18.6953 12.5298 18.1435 12.4818 17.5557C12.4338 16.968 12.5951 16.3822 12.9372 15.9019C13.2793 15.4216 13.7802 15.0777 14.3514 14.9309C14.9225 14.7842 15.5272 14.8441 16.0584 15.1L20.9834 10.2583L22.1668 11.4416ZM3.00009 16.5833H5.83343V18.25H2.96676C2.96676 17.925 2.92509 17.6083 2.92509 17.275C2.92509 16.9416 2.94176 16.8166 2.95843 16.5833H3.00009ZM7.06676 8.24997L9.11676 10.3L7.89176 11.45L5.83343 9.4083C6.20367 8.98759 6.60179 8.59225 7.02509 8.22497L7.06676 8.24997ZM15.8334 8.1583H14.1668V5.24163H15.0001C15.3084 5.24163 15.5834 5.24163 15.8334 5.2833V8.1583ZM27.0751 17.2833C27.0751 17.6083 27.0751 17.9416 27.0334 18.2583H24.1001V16.5916H27.0418C27.0584 16.8166 27.0751 17.05 27.0751 17.2833Z" fill="white"/>
-</g>
-<defs>
-<clipPath id="clip0_705_253">
-<rect width="30" height="30" fill="white"/>
-</clipPath>
-</defs>
-</svg>
-
-
-</span>
-<span style="font-family: 'jaldiBold';
-    color: white;
-    margin-left: 10px;
-    margin-top: 5px;">Editor Simulator</span>
-</Flex>
+return (
+  <>
+    <div class="container">
+      <div class="popup">
+        <div class="header">
+          <Flex class="header-content">
+            <div class="left-section">
+              <Flex>
+                <span>
+                  <svg
+                    class="icon"
+                    width="30"
+                    height="30"
+                    viewBox="0 0 30 30"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g clip-path="url(#clip0_705_253)">
+                      <path
+                        d="M15.0001 3.54163C12.3774 3.53863 9.80854 4.28625 7.59703 5.69619C5.38551 7.10614 3.62367 9.11952 2.5196 11.4985C1.41552 13.8776 1.01532 16.5229 1.36626 19.122C1.7172 21.7212 2.80462 24.1656 4.50009 26.1666L4.75009 26.4583H25.2501L25.5001 26.1666C27.1956 24.1656 28.283 21.7212 28.6339 19.122C28.9849 16.5229 28.5847 13.8776 27.4806 11.4985C26.3765 9.11952 24.6147 7.10614 22.4032 5.69619C20.1916 4.28625 17.6228 3.53863 15.0001 3.54163ZM22.1668 11.4416L17.2334 16.2833C17.4856 16.8164 17.5412 17.4214 17.3904 17.9915C17.2396 18.5616 16.8922 19.06 16.4094 19.3988C15.9267 19.7375 15.3398 19.8946 14.7524 19.8425C14.165 19.7903 13.615 19.5322 13.1995 19.1138C12.784 18.6953 12.5298 18.1435 12.4818 17.5557C12.4338 16.968 12.5951 16.3822 12.9372 15.9019C13.2793 15.4216 13.7802 15.0777 14.3514 14.9309C14.9225 14.7842 15.5272 14.8441 16.0584 15.1L20.9834 10.2583L22.1668 11.4416ZM3.00009 16.5833H5.83343V18.25H2.96676C2.96676 17.925 2.92509 17.6083 2.92509 17.275C2.92509 16.9416 2.94176 16.8166 2.95843 16.5833H3.00009ZM7.06676 8.24997L9.11676 10.3L7.89176 11.45L5.83343 9.4083C6.20367 8.98759 6.60179 8.59225 7.02509 8.22497L7.06676 8.24997ZM15.8334 8.1583H14.1668V5.24163H15.0001C15.3084 5.24163 15.5834 5.24163 15.8334 5.2833V8.1583ZM27.0751 17.2833C27.0751 17.6083 27.0751 17.9416 27.0334 18.2583H24.1001V16.5916H27.0418C27.0584 16.8166 27.0751 17.05 27.0751 17.2833Z"
+                        fill="white"
+                      />
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_705_253">
+                        <rect width="30" height="30" fill="white" />
+                      </clipPath>
+                    </defs>
+                  </svg>
+                </span>
+                <span class="title">Editor Simulator</span>
+              </Flex>
+            </div>
+            <div class="right-section">
+              <Flex class="search-filter">
+                <BiRegularSearchAlt class="icsearchls" />
+                <Select
+                  placeholder='Search'
+                  class="custom-ls"
+                  {...dataSelectEditorSimulator}
+                  onChange={(e : any) => onFilterEditor(e)}
+                />
+                <BsFilterSquare class="icfills" />
+              </Flex>
+            </div>
+          </Flex>
         </div>
-        <div style="width:50%;    width: 50%;
-    justify-content: end;
-    display: flex;">
-          <Flex>
-        <BiRegularSearchAlt class="icsearchls" />
-        <Select placeholder='Search' class="custom-ls" {...dataSelectEditorSimulator} onChange={(e : any) => onFilterEditor(e)}/>
-        <BsFilterSquare class="icfills" />
-                            </Flex>
+        <Flex>
+          <div style="width:65%">
+            <LogSimulasiMapEditorSimulator closeSend={onCloseDataEditorSimulator()} sendData={editorSimulatorSend()} />
           </div>
-      </Flex>
-    </div>
-    <Flex>
-    <div style="width:65%">
-      <LogSimulasiMapEditorSimulator closeSend={onCloseDataEditorSimulator()} sendData={editorSimulatorSend()} />
-    </div>
-    <div style="width:35%">
-<div class="ag-theme-balham" style="width:100%;height:400px;border: none;    padding: 2vh;">
-        <AgGridSolid
-          columnDefs={columnDefsDataEditorSimulator()}
-          rowData={rowDataEditorSimulator()}
-          rowSelection="single"
-          defaultColDef={defaultColdefEditorSimulator}
-          gridOptions={gridOptionsEditorSimulator}
-          onSelectionChanged={selectionChangedCallback}
-
-          ref={gridRefEditorSimulator!}
-        />
-        </div>
-        </div>
+          <div style="width:35%">
+            <div class="ag-theme-balham">
+              <AgGridSolid
+                columnDefs={columnDefsDataEditorSimulator()}
+                rowData={rowDataEditorSimulator()}
+                rowSelection="single"
+                defaultColDef={defaultColdefEditorSimulator}
+                gridOptions={gridOptionsEditorSimulator}
+                onSelectionChanged={selectionChangedCallback}
+                ref={gridRefEditorSimulator!}
+              />
+            </div>
+          </div>
         </Flex>
       </div>
-</div>
+    </div>
 
-{/* ----------------------- */}
+    <Modal centered size={'xl'} scrollBehavior={scrollBehavior()} opened={isOpenAsset()} onCloseAsset={onCloseAsset}>
+      <ModalOverlay />
+      <ModalContent>
+        <ModalBody>
+          <LogSimulasiPopUpAssetAdd closeSend={onCloseAsset()} />
+        </ModalBody>
+      </ModalContent>
+    </Modal>
 
-      <Modal  centered size={'xl'}
-        scrollBehavior={scrollBehavior()}
-        opened={isOpenAsset()}
-        onCloseAsset={onCloseAsset}
-      >
-        <ModalOverlay  />
-        <ModalContent>
-          <ModalBody>
-         <LogSimulasiPopUpAssetAdd  closeSend={onCloseAsset()}/>
-          </ModalBody>
-        </ModalContent>
-      </Modal>
-
-
-
-{/* ----------------------- */}
-
-<Modal  centered size={'4xl'}
-        scrollBehavior={scrollBehavior()}
-        opened={isOpenDataGis()}
-        onCloseAsset={onCloseDataGis}
-      >
-        <ModalOverlay  />
-        <ModalContent>
-          <ModalBody>
-         <LogSimulasiPopUpDataGisAdd  closeSend={onCloseDataGis()}/>
-          </ModalBody>
-        </ModalContent>
-      </Modal>
-
-
-    </>
-  );
+    <Modal centered size={'4xl'} scrollBehavior={scrollBehavior()} opened={isOpenDataGis()} onCloseAsset={onCloseDataGis}>
+      <ModalOverlay />
+      <ModalContent>
+        <ModalBody>
+          <LogSimulasiPopUpDataGisAdd closeSend={onCloseDataGis()} />
+        </ModalBody>
+      </ModalContent>
+    </Modal>
+  </>
+);
 };
 export default LogSimulasiContent;

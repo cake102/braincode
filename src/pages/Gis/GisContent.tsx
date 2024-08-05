@@ -12,7 +12,8 @@ import "ag-grid-enterprise";
 import { BiRegularSearchAlt } from "solid-icons/bi";
 import { AiOutlinePlus } from 'solid-icons/ai'
 import { BsFilterSquare } from "solid-icons/bs";
-// import GisMapEditorSimulator from "./GisMapEditorSimulator";
+
+
 import {
   Modal,
   ModalBody,

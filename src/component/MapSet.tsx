@@ -183,7 +183,6 @@ const MapSet: Component<MapSetProps> = (props) => {
         strokeColor: "#ffc746",
         strokeOpacity: 1.0,
         strokeWeight: 0.4,
-        // editable: true,
         icons: [{
           icon: {
             path: 'M 0,-1 0,1',
@@ -293,31 +292,6 @@ const MapSet: Component<MapSetProps> = (props) => {
         ]
       });
       setMap(gmaps);
-
-    //   const mapMarkers = pointsState().map((user: any) => {
-    //     const marker = new google.maps.Marker({
-    //       position: { lat: user.latitude, lng: user.longitude },
-    //       icon: {
-    //         url: '/rb.png',
-    //         scaledSize: new google.maps.Size(30, 30),
-    //       },
-    //     });
-
-    //     const contentString = `
-    //       <div class="custom-popup">
-    //         <h3 class="flex justify-center">${user.province}</h3>
-    //       </div>
-    //     `;
-    //     const infoWindow = new google.maps.InfoWindow({
-    //       content: contentString,
-    //     });
-    //     marker.addListener("click", () => {
-    //       infoWindow.open(gmaps, marker);
-    //     });
-
-    //     return marker;
-    //   });
-    //   setMarkers(mapMarkers);
 
     const newPolyline = new google.maps.Polyline({
         path: [],
@@ -438,7 +412,6 @@ const MapSet: Component<MapSetProps> = (props) => {
           fillOpacity: 0.35,
         },
       });
-    //   drawingManager.setMap(gmaps);
 
       google.maps.event.addListener(drawingManager, 'overlaycomplete', (event: google.maps.drawing.OverlayCompleteEvent) => {
         if (event.type === google.maps.drawing.OverlayType.POLYLINE) {
@@ -509,7 +482,6 @@ const MapSet: Component<MapSetProps> = (props) => {
             marker.setMap(gmap);
           });
         } else {
-          // cluster.addMarkers(markers());
         }
       });
     }
@@ -545,19 +517,11 @@ const MapSet: Component<MapSetProps> = (props) => {
     drawingManager?.setDrawingMode(null);
   };
 
-
     return (
         <>
-
-                    
-
                     <div id="map-container-history "> 
       <div id="map-history" ref={el => mapRef = el}></div> 
     </div>
-
-
-            {/* <button onClick={saveData}>Save</button> */}
-
         </>
     );
 };
