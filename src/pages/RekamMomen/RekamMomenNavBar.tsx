@@ -51,18 +51,7 @@ const RekamMomenNavBar: Component<RekamMomenNavBarProps> = (props) =>  {
 
   onMount(() => {
     const currentDateIndex = findCurrentDateIndex();
-    // console.log(currentDateIndex)
-    // if (currentDateIndex !== -1) {
-    //   setIndex(currentDateIndex);
-    //   updateWidth();
-    //   track.style.transform = `translateX(${currentDateIndex * -carousel.offsetWidth}px)`;
-    //   prevButton.classList.add("show");
-    // }
-    // console.log("DATE -> ",getAllDates(year()));
-    // console.log("formatTanggalSekarang -> ", formatTanggalSekarang());
   })
-
-  
 
   return (
     <div class="carousel-container" ref={carousel}>

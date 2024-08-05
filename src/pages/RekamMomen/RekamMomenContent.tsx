@@ -67,9 +67,6 @@ const RekamMomenContent: Component<RekamMomenContentProps> = (props) => {
             </div> 
           </Flex>
         </div>
-
-
-
         <div>
           <Flex >
            
@@ -88,20 +85,6 @@ const RekamMomenContent: Component<RekamMomenContentProps> = (props) => {
 
 
       </div>
-
-
-
-
-      {/* <div class="stepper-container">
-        {steps().map((step, index) => (
-          <div class="step-container" >
-            <div class="step-icon" onClick={() => completeStep(index)}>
-              {step.completed ? "✓" : index + 1}
-            </div>
-            <div class={`step-line ${step.completed ? "completed" : ""}`} />
-          </div>
-        ))}
-      </div> */}
     </>
   );
 };
