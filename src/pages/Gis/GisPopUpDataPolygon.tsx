@@ -12,7 +12,7 @@ import { BiRegularSearchAlt } from "solid-icons/bi";
 import { AiOutlinePlus } from 'solid-icons/ai'
 import { BsFilterSquare } from "solid-icons/bs";
 import { AiFillCloseSquare } from 'solid-icons/ai'
-import { 
+import {
   Alert,
   AlertDescription,
   AlertIcon,
@@ -63,9 +63,9 @@ const GisPopUpDataPolygon: Component<GisPopUpDataPolygonProps> = (props) => {
   let circle: google.maps.Circle | undefined;
   let marker: google.maps.Marker | undefined;
 
-  
-  const [alertStatusOk, setAlertStatusOk] = createSignal(false); 
-  const [alertStatusError, setAlertStatusError] = createSignal(false); 
+
+  const [alertStatusOk, setAlertStatusOk] = createSignal(false);
+  const [alertStatusError, setAlertStatusError] = createSignal(false);
   const [map, setMap] = createSignal<google.maps.Map | null>(null);
   const [markers, setMarkers]: any = createSignal<google.maps.Marker[]>([]);
   const [polyline, setPolyline]: any = createSignal(null);
@@ -104,7 +104,7 @@ const GisPopUpDataPolygon: Component<GisPopUpDataPolygonProps> = (props) => {
   };
 
 
-  onMount(() => { 
+  onMount(() => {
       mapLoader.load().then(() => {
         const gmaps = new google.maps.Map(mapRef as HTMLElement, {
           center: { lat: -2.5, lng: 118.0 },
@@ -197,7 +197,6 @@ const GisPopUpDataPolygon: Component<GisPopUpDataPolygonProps> = (props) => {
         });
         setMap(gmaps);
 
-    
         let drawingManager = new google.maps.drawing.DrawingManager({
           drawingMode: google.maps.drawing.OverlayType.POLYGON,
           drawingControl: false,
@@ -212,30 +211,30 @@ const GisPopUpDataPolygon: Component<GisPopUpDataPolygonProps> = (props) => {
           },
         });
         drawingManager.setMap(gmaps);
-  
+
         const infoWindow = new google.maps.InfoWindow();
         setInfoWindow(infoWindow);
-  
+
         google.maps.event.addListener(drawingManager, 'overlaycomplete', (event) => {
           if (event.type === google.maps.drawing.OverlayType.POLYGON) {
             let polygon = event.overlay;
             polygon.setEditable(true);
             polygon.setDraggable(true);
 
-            const area = google.maps.geometry.spherical.computeArea(polygon.getPath()); 
+            const area = google.maps.geometry.spherical.computeArea(polygon.getPath());
             console.log("Area" , area.toFixed(2) )
 
-  
-            let path = polygon.getPath(); 
+
+            let path = polygon.getPath();
             console.log("path polygon -> " , path);
-            
-              if (path.getLength() == 2) { 
+
+              if (path.getLength() == 2) {
                 const latLng = path.getAt(2);
                 addMarker(latLng);
                 showInfoWindowAtLastMarker();
                  setPolygonS(path);
               }
-              else if (path.getLength() >= 3) { 
+              else if (path.getLength() >= 3) {
                 while (path.getLength() > 3) {
                   path.removeAt(path.getLength() - 1);
                 }
@@ -243,25 +242,16 @@ const GisPopUpDataPolygon: Component<GisPopUpDataPolygonProps> = (props) => {
                 addMarker(latLng);
                 showInfoWindowAtLastMarker();
                 setPolygonS(path);
-              } 
+              }
             google.maps.event.addListener(polygon, 'click', () => {
-              if (path.getLength() >= 3) { 
+              if (path.getLength() >= 3) {
                 showInfoWindowAtLastMarker();
               }
             });
-
-          //   google.maps.event.addListener(polygon, 'click', () => {
-          //     if (confirm('Do you want to remove this polygon?')) {
-          //         polygon.setMap(null);
-          //         polygon = null; 
-          //         markersArray().forEach(marker => marker.setMap(null));
-          //         markersArray([])
-          //     }
-          // });
           }
         });
-  
-        const addMarker = (latLng) => { 
+
+        const addMarker = (latLng) => {
           const newMarker = new google.maps.Marker({
             position: latLng,
             icon: {
@@ -271,34 +261,31 @@ const GisPopUpDataPolygon: Component<GisPopUpDataPolygonProps> = (props) => {
             map: gmaps,
             draggable: true,
           });
-  
+
           newMarker.addListener("click", () => {
             newMarker.setMap(null);
             setMarkersArray(markersArray().filter(marker => marker !== newMarker));
           });
-  
+
           setMarkersArray([...markersArray(), newMarker]);
         };
-  
+
         const showInfoWindowAtLastMarker = () => {
           console.log("L")
           const lastMarker = markersArray()[markersArray().length - 1];
           infoWindow.setContent(document.getElementById('popup-container-gis-add').innerHTML);
           infoWindow.open(gmaps, lastMarker);
         };
-  
+
         google.maps.event.addListener(infoWindow, 'domready', () => {
           const button = document.getElementById('myButton');
           if (button) {
             button.addEventListener('click', onOpen);
           }
         });
-  
+
   });
-
- 
       });
-
 
   const handlePolygonDrag = () => {
     const currentPolygon = polygonS();
@@ -327,7 +314,6 @@ const GisPopUpDataPolygon: Component<GisPopUpDataPolygonProps> = (props) => {
 
   });
 
-
   const addLocation = () => {
     console.log("nama lokasi -> ", nama());
 
@@ -336,22 +322,17 @@ const GisPopUpDataPolygon: Component<GisPopUpDataPolygonProps> = (props) => {
       lng: marker.getPosition().lng()
     }));
 
-    // const polygonPath = polygon().getPath().getArray().map((latLng: any) => ({
-    //   lat: latLng.lat(),
-    //   lng: latLng.lng()
-    // }));
-
     let polygon_data : any = [];
     polygonS().forEach((latLng: { lat: () => any; lng: () => any; }, index: number) => {
       let lat = latLng.lat();
       let lng = latLng.lng();
-      console.log(`Point ${index + 1}: Latitude: ${lat}, Longitude: ${lng}`); 
+      console.log(`Point ${index + 1}: Latitude: ${lat}, Longitude: ${lng}`);
       polygon_data.push({
         "lat": lat,
         "lng": lng
       },)
     });
-    const area = google.maps.geometry.spherical.computeArea(polygonS()); 
+    const area = google.maps.geometry.spherical.computeArea(polygonS());
     console.log("Area" , area.toFixed(2) )
     console.log("polygon_data" , polygon_data )
 
@@ -359,52 +340,42 @@ const GisPopUpDataPolygon: Component<GisPopUpDataPolygonProps> = (props) => {
     let data = {
       "lokasi": nama(),
       "luas": Number(area.toFixed(2)),
-      // "latitude": longlatKoor().latitude + '(' + longlat().latitude + ')',
-      // "longitude": longlatKoor().longitude + '(' + longlat().longitude + ')',
       "markers": polygon_data,
-      // "polyline": polylinePath
     }
     console.log("event DATA ALL -> ", data);
-    
+
     console.log("event DATA ALL -> ", JSON.stringify(data));
 
-    if(nama() !== null ) { 
+    if(nama() !== null ) {
       fetchDataPolygonAdd(data).then((data: any) => {
         console.log("data add -> ", data);
         if(data.status === 'ok'){
         setAlertStatusOk(true)
         setTimeout(() => {
     setAlertStatusOk(false)
-        },1000) 
-        setNama(null); 
-        props.detect(true);   
-        onClose()  
+        },1000)
+        setNama(null);
+        props.detect(true);
+        onClose()
       }
-      }) 
-   
+      })
+
     }else{
       setAlertStatusError(true)
       setTimeout(() => {
   setAlertStatusError(false)
-      },1000) 
-   
+      },1000)
+
     }
-    //     const dataGisLocal : any = JSON.parse(localStorage.getItem('dataGis')); 
-    // console.log("before add -> ", dataGisLocal);
-    // dataGisLocal.push(data)
-    //     localStorage.setItem('dataGis', JSON.stringify(dataGisLocal));  
-    // onClose()
   };
 
   return (
     <>
-
       <div style="border: 1px solid #c295d0c2;
       background: #817f86;
     border-radius: 20px;">
-        <div style="   
+        <div style="
     padding: 2.4vh;">
-
           <div style="width:100%" class="dvp">
             <Flex>
               <div style="width:80%">
@@ -418,15 +389,11 @@ const GisPopUpDataPolygon: Component<GisPopUpDataPolygonProps> = (props) => {
     margin-top: 5px;">Tambah Data Polygon</span>
                 </Flex>
               </div>
-
               <div class="w20">
                 <AiFillCloseSquare onClick={() => props.closeSend} class="cp" style="cursor:pointer" />
-
               </div>
             </Flex>
           </div>
-
-
           <div id="map-container-add-data-gis-polygon-point">
             <div ref={el => mapRef = el} id="map-add-data-gis-polygon" ></div>
             <Show
@@ -438,8 +405,6 @@ const GisPopUpDataPolygon: Component<GisPopUpDataPolygonProps> = (props) => {
    Menambah Data Polygon Berhasil !
   </Alert>
 </Show>
-
-
 <Show
   when={alertStatusError()}
   fallback={''}
@@ -455,7 +420,6 @@ const GisPopUpDataPolygon: Component<GisPopUpDataPolygonProps> = (props) => {
     padding: 20px;
     padding-left: 30px;">
                 <Flex>
-                  {/* <div class="fngis">Garis Terpilih : {longlatKoor().latitude} ({longlat().latitude}) , {longlatKoor().longitude} ({longlat().longitude})</div> */}
                   <div class="fngis">Area Terpilih : titik longlat 1 , titik longlat 2 , titik longlat 3</div>
                   <div>
                     <Button id="myButton" class="btgis" leftIcon={<AiOutlinePlus boxSize={18} style="color:black;    font-size: 13px !important;" />}>
@@ -471,8 +435,6 @@ const GisPopUpDataPolygon: Component<GisPopUpDataPolygonProps> = (props) => {
           <Modal size={'xs'} opened={isOpenKoor()} onClose={onClose} centered="true">
             <ModalOverlay />
             <ModalContent>
-              {/* <ModalCloseButton /> */}
-              {/* <ModalHeader>Modal Title</ModalHeader> */}
               <ModalBody>
                 <div style="    text-align: end;
     justify-content: end;
@@ -501,16 +463,10 @@ const GisPopUpDataPolygon: Component<GisPopUpDataPolygonProps> = (props) => {
                   </div>
                 </div>
               </ModalBody>
-              {/* <ModalFooter>
-            <Button onClick={onClose}>Close</Button>
-          </ModalFooter> */}
             </ModalContent>
           </Modal>
-
-
         </div>
       </div>
-
     </>
   );
 };

@@ -8,7 +8,7 @@ type HistorySimulasiNavBarProps = {};
 
 const HistorySimulasiNavBar: Component<HistorySimulasiNavBarProps> = (props) =>  {
   const [index, setIndex] = createSignal(0);
-  const [year] = createSignal(2024); 
+  const [year] = createSignal(2024);
   let carousel : any , track : any;
 
   const updateWidth = () => {
@@ -51,18 +51,9 @@ const HistorySimulasiNavBar: Component<HistorySimulasiNavBarProps> = (props) => 
 
   onMount(() => {
     const currentDateIndex = findCurrentDateIndex();
-    // console.log(currentDateIndex)
-    // if (currentDateIndex !== -1) {
-    //   setIndex(currentDateIndex);
-    //   updateWidth();
-    //   track.style.transform = `translateX(${currentDateIndex * -carousel.offsetWidth}px)`;
-    //   prevButton.classList.add("show");
-    // }
-    // console.log("DATE -> ",getAllDates(year()));
-    // console.log("formatTanggalSekarang -> ", formatTanggalSekarang());
   })
 
-  
+
 
   return (
     <div class="carousel-container" ref={carousel}>
@@ -73,22 +64,22 @@ const HistorySimulasiNavBar: Component<HistorySimulasiNavBarProps> = (props) => 
             <Show
             when={formatTanggalSekarang() == date.tanggal}
             fallback={
-              <div class="card-container"> 
+              <div class="card-container">
               <div class='card'>
               <div>{date.hari}</div>
               <div>{date.tanggal}</div>
-              </div> 
+              </div>
             </div>
             }
           >
-             <div class="card-container"> 
+             <div class="card-container">
               <div class='card cdfnt'>
               <div>{date.hari}</div>
               <div>{date.tanggal}</div>
-              </div> 
+              </div>
             </div>
           </Show>
-          
+
             </>
           ))}
         </div>
@@ -112,7 +103,7 @@ function getAllDates(year : any) {
   const dates = [];
   const startDate = new Date(year, 0, 1);
   const endDate = new Date(year, 11, 31);
-  
+
   const hariDict : any = {
     0: "Minggu",
     1: "Senin",

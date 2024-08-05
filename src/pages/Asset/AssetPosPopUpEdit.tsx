@@ -87,8 +87,6 @@ const AssetPosPopUpEdit: Component<AssetPosPopUpEditProps> = (props) => {
     console.log("onClose")
     setisOpenKoor(false)
   };
-  
-
 
   onMount(() => {
 
@@ -196,7 +194,7 @@ const AssetPosPopUpEdit: Component<AssetPosPopUpEditProps> = (props) => {
           },
         ]
       });
-      setMap(gmaps); 
+      setMap(gmaps);
 
     setTimeout(() => {
       loadEditMap(gmaps);
@@ -205,7 +203,7 @@ const AssetPosPopUpEdit: Component<AssetPosPopUpEditProps> = (props) => {
       const infoWindow = new google.maps.InfoWindow();
       setInfoWindow(infoWindow);
 
-      gmaps.addListener("click", (event: any) => { 
+      gmaps.addListener("click", (event: any) => {
         console.log("event.latLng -> ", event.latLng)
         const lat = event.latLng.lat();
         const lng = event.latLng.lng();
@@ -397,7 +395,7 @@ const AssetPosPopUpEdit: Component<AssetPosPopUpEditProps> = (props) => {
   };
 
   const loadEditMap = (param : any) => {
-  
+
 
     const newMarker = new google.maps.Marker({
       position:{ lat: Number(latitude()), lng: Number(longitude()) },
@@ -428,22 +426,22 @@ const AssetPosPopUpEdit: Component<AssetPosPopUpEditProps> = (props) => {
   const [longitude, setLongitude] : any = createSignal(null);
   const [idLokasi, setIdLokasi] : any = createSignal(null);
 
- 
+
   const handleChangeAssetGrup = (event: Event) => {
-    const input = event.target as HTMLInputElement; 
-    setAssetGrup(input.value); 
+    const input = event.target as HTMLInputElement;
+    setAssetGrup(input.value);
   };
   const handleChangeLokasi = (event: Event) => {
-    const input = event.target as HTMLInputElement; 
-    setLokasi(input.value); 
+    const input = event.target as HTMLInputElement;
+    setLokasi(input.value);
   };
   const handleChangeLatitude = (event: Event) => {
-    const input = event.target as HTMLInputElement; 
-    setLatitude(input.value); 
+    const input = event.target as HTMLInputElement;
+    setLatitude(input.value);
   };
   const handleChangeLongitude = (event: Event) => {
-    const input = event.target as HTMLInputElement; 
-    setLongitude(input.value); 
+    const input = event.target as HTMLInputElement;
+    setLongitude(input.value);
   };
 
 
@@ -469,7 +467,7 @@ const AssetPosPopUpEdit: Component<AssetPosPopUpEditProps> = (props) => {
           setAlertStatusOk(true)
           setTimeout(() => {
             setAlertStatusOk(false)
-          }, 1000) 
+          }, 1000)
           props.detect(true);
           onClose()
         }
@@ -481,18 +479,18 @@ const AssetPosPopUpEdit: Component<AssetPosPopUpEditProps> = (props) => {
         setAlertStatusError(false)
       }, 1000)
 
-    } 
+    }
 
   };
-  
- 
+
+
   return (
     <>
 
       <div style="border: 1px solid #c295d0c2;
       background: #817f86;
     border-radius: 20px;">
-        <div style="   
+        <div style="
     padding: 2.4vh;">
 
           <div style="width:100%" class="dvp">
@@ -584,7 +582,7 @@ const AssetPosPopUpEdit: Component<AssetPosPopUpEditProps> = (props) => {
                     <div style="width:5%; color: white;">:</div>
                     <div style="width:65%"><Input  onChange={handleChangeLatitude} value={latitude()}  style="color: white; font-family: 'jaldiBold'; " placeholder="Latitude" size="sm" /></div>
                   </Flex>
-                  
+
                   <div style="    text-align: center;
     margin-top: 20px;">
                   <Button onClick={editLocation} style="background: rgb(136 19 198);box-shadow: 0px 4px 4px 0px #00000040;
@@ -642,7 +640,7 @@ const AssetPosPopUpEdit: Component<AssetPosPopUpEditProps> = (props) => {
 
           </div>
 
-       
+
 
         </div>
       </div>

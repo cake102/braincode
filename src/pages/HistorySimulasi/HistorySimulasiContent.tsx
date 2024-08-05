@@ -40,7 +40,6 @@ const HistorySimulasiContent: Component<HistorySimulasiContentProps> = (props) =
     }
   ])
 
-
   const completeStep = (index: number) => {
     setSteps((steps) =>
       steps.map((step, i) =>
@@ -51,8 +50,6 @@ const HistorySimulasiContent: Component<HistorySimulasiContentProps> = (props) =
 
   return (
     <>
-
-
       <div class="fl">
         <div style="height: 100px;
     align-items: center;
@@ -102,10 +99,8 @@ const HistorySimulasiContent: Component<HistorySimulasiContentProps> = (props) =
     height: 10px;
     border-radius: 10px;
     width: 65%;">
-
                 </div>
               </div>
-
               <div>
                 <Flex>
                   <div style="width:33%" class="dct">
@@ -119,8 +114,6 @@ const HistorySimulasiContent: Component<HistorySimulasiContentProps> = (props) =
                   </div>
                 </Flex>
               </div>
-
-
             </div>
             <div style="width:32%;justify-content: end;
     align-items: end;
@@ -132,27 +125,20 @@ const HistorySimulasiContent: Component<HistorySimulasiContentProps> = (props) =
             </div>
           </Flex>
         </div>
-
-
-
         <div>
           <Flex >
             <div style="width:35%" >
-
-
               <div style="box-shadow: 0px 4px 4px 0px #00000040;
-    text-align: center; 
+    text-align: center;
     display: grid;padding-bottom: 20px;
     align-items: center;
     margin: 10px;" class="flc">
-
                 <div style="margin: 2vh;
     font-size: 1em;
     font-family: 'jaldiBold';
     text-align: left;
     margin-bottom: 5vh;
 ">Tracking Kapal Ly Thai To</div>
-
                 <div style="    font-family: 'jaldiReg';
     color: #bbbbbb;
     font-size: 0.9em;
@@ -167,7 +153,7 @@ const HistorySimulasiContent: Component<HistorySimulasiContentProps> = (props) =
 
                               <Flex >
                                 <div style="    font-size: 1em; width:40%;
-    font-family: 'jaldiReg'; 
+    font-family: 'jaldiReg';
 ">{step.tanggal}</div>
                                 <div style="width:10%;">
                                   <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -187,10 +173,9 @@ const HistorySimulasiContent: Component<HistorySimulasiContentProps> = (props) =
                             </>
                           }
                         >
-
                           <Flex >
                             <div style="    font-size: 1em; width:40%;
-    font-family: 'jaldiReg'; 
+    font-family: 'jaldiReg';
 ">{step.tanggal}</div>
                             <div style=" width:10%;">
                               <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -212,7 +197,7 @@ const HistorySimulasiContent: Component<HistorySimulasiContentProps> = (props) =
                           <Flex>
                             <div style="width:40%"></div>
                           <div style="      height: 150px;
-    border-left: 1px dashed #a5a5a5; 
+    border-left: 1px dashed #a5a5a5;
     padding-top: 95px;width:10%;
         justify-content: center;
     display: inline-grid;
@@ -234,7 +219,7 @@ const HistorySimulasiContent: Component<HistorySimulasiContentProps> = (props) =
               </div>
 
               <div style="box-shadow: 0px 4px 4px 0px #00000040;
-    text-align: center; 
+    text-align: center;
     display: grid;padding-bottom: 20px;
     align-items: center;
     margin: 10px;" class="flc">
@@ -297,12 +282,8 @@ const HistorySimulasiContent: Component<HistorySimulasiContentProps> = (props) =
         <span>SSM, SAM, AK-176, AK-630, AO-18KD, ESM/ECM, Radar Air Surface, Sonars</span>
         </div>
       </div>
-
-
       </div>
-
             </div>
-
             <div style="width:65%;margin-top: 1.7vh;
     margin-right: 1.7vh;" >
               {/* <MapView /> */}
@@ -313,20 +294,6 @@ const HistorySimulasiContent: Component<HistorySimulasiContentProps> = (props) =
 
 
       </div>
-
-
-
-
-      {/* <div class="stepper-container">
-        {steps().map((step, index) => (
-          <div class="step-container" >
-            <div class="step-icon" onClick={() => completeStep(index)}>
-              {step.completed ? "✓" : index + 1}
-            </div>
-            <div class={`step-line ${step.completed ? "completed" : ""}`} />
-          </div>
-        ))}
-      </div> */}
     </>
   );
 };
