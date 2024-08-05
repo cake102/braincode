@@ -72,7 +72,6 @@ const LogSimulasiContent: Component<LogSimulasiContentProps> = (props) => {
 
   const ImageRenderer = ({ data }: { data: any }) => { 
     onMount(() => {
-// console.log(data)
     })
     return (
      <>
@@ -97,7 +96,6 @@ const LogSimulasiContent: Component<LogSimulasiContentProps> = (props) => {
       headerName: "Nama Asset", 
       field: "nama",
       width: 95,
-      // flex: 1,
       cellStyle: {
         display: "flex",
         justifyContent: "center",
@@ -108,7 +106,6 @@ const LogSimulasiContent: Component<LogSimulasiContentProps> = (props) => {
       field: "image",
       headerName: "Gambar Asset",
       width: 110,
-      // flex: 1,
       cellStyle: {
         display: "flex",
         justifyContent: "center",
@@ -120,7 +117,6 @@ const LogSimulasiContent: Component<LogSimulasiContentProps> = (props) => {
       headerName: "Dimensi", 
       field: "dimensi",
       width: 80,
-      // flex: 1,
       cellStyle: {
         display: "flex",
         justifyContent: "center",
@@ -131,7 +127,6 @@ const LogSimulasiContent: Component<LogSimulasiContentProps> = (props) => {
       headerName: "Kecepatan", 
       field: "kecepatan",
       width: 90,
-      // flex: 1,
       cellStyle: {
         display: "flex",
         justifyContent: "center",
@@ -141,12 +136,10 @@ const LogSimulasiContent: Component<LogSimulasiContentProps> = (props) => {
     {
       headerName: "Jarak", 
       field: "jarak",
-      width: 80,
-      // flex: 1, 
+      width: 80, 
       headerClass: 'ag-header-cell',
       cellStyle: {
         display: "flex",
-        // textAlign: "center",
         justifyContent: "center",
         alignItems: "center",
       }, cellClass: "center-cell",
@@ -169,9 +162,7 @@ const LogSimulasiContent: Component<LogSimulasiContentProps> = (props) => {
       headerName: "Lokasi", 
       field: "lokasi",
       width: 110,
-      // flex: 1,
       cellStyle: {
-        // display: "flex",
         justifyContent: "center",
         alignItems: "center",
       }, cellClass: "center-cell",
@@ -180,7 +171,6 @@ const LogSimulasiContent: Component<LogSimulasiContentProps> = (props) => {
       field: "luas",
       headerName: "Luas",
       width: 100,
-      // flex: 1,
       cellStyle: {
         display: "flex",
         justifyContent: "center",
@@ -216,7 +206,6 @@ const LogSimulasiContent: Component<LogSimulasiContentProps> = (props) => {
       field: "detail",
       headerName: "",
       width: 50,
-      // flex: 1,
       cellStyle: {
         display: "flex",
         justifyContent: "center",
@@ -228,7 +217,6 @@ const LogSimulasiContent: Component<LogSimulasiContentProps> = (props) => {
       headerName: "Pos Mulai", 
       field: "start_pos",
       width: 90,
-      // flex: 1,
       cellStyle: {
         display: "flex",
         justifyContent: "center",
@@ -238,7 +226,6 @@ const LogSimulasiContent: Component<LogSimulasiContentProps> = (props) => {
       headerName: "Pos Stop", 
       field: "end_pos",
       width: 90,
-      // flex: 1,
       cellStyle: {
         display: "flex",
         justifyContent: "center",
@@ -248,7 +235,6 @@ const LogSimulasiContent: Component<LogSimulasiContentProps> = (props) => {
       headerName: "Mulai", 
       field: "start_date",
       width: 80,
-      // flex: 1,
       cellStyle: {
         display: "flex",
         justifyContent: "center",
@@ -259,7 +245,6 @@ const LogSimulasiContent: Component<LogSimulasiContentProps> = (props) => {
       headerName: "Stop", 
       field: "end_date",
       width: 80,
-      // flex: 1,
       cellStyle: {
         display: "flex",
         justifyContent: "center",
@@ -270,7 +255,6 @@ const LogSimulasiContent: Component<LogSimulasiContentProps> = (props) => {
       headerName: "Kapal", 
       field: "start_kapal.nama",
       width: 100,
-      // flex: 1,
       cellStyle: {
         display: "flex",
         justifyContent: "center",
@@ -281,7 +265,6 @@ const LogSimulasiContent: Component<LogSimulasiContentProps> = (props) => {
       headerName: "Jarak Titik", 
       field: "jarak_marker",
       width: 100,
-      // flex: 1,
       cellStyle: {
         display: "flex",
         justifyContent: "center",
@@ -295,7 +278,6 @@ const LogSimulasiContent: Component<LogSimulasiContentProps> = (props) => {
       headerName: "Jarak Garis", 
       field: "jarak_polyline",
       width: 100,
-      // flex: 1,
       cellStyle: {
         display: "flex",
         justifyContent: "center",
@@ -329,7 +311,6 @@ const LogSimulasiContent: Component<LogSimulasiContentProps> = (props) => {
     dataAssetLocal.push(data)
     console.log("after add",dataAssetLocal)
   localStorage.setItem('dataAsset', JSON.stringify(dataAssetLocal)); 
-//  const dataAssetLocal : any = JSON.parse(localStorage.getItem('dataAsset'));
   }
   const fetchDataAsset = async () => {
       try {
@@ -418,66 +399,11 @@ const LogSimulasiContent: Component<LogSimulasiContentProps> = (props) => {
   onMount(() => {
     fetchDataAsset()
     fetchDataGis()
-    // fetchDataEditorSimulator()
- 
     fetchDataRuteKapal().then((data: any) => {
       console.log("data add -> ", data);
       setDataEditorSimulator(data.filter); 
       setRowDataEditorSimulator(data.data);
-      
     })
-
-
-    // setEditorSimulatorSend([ {
-    //     "hari": "22 Juni 2024",
-    //     "aset": "HQ 20",
-    //     "lat": -3.30578,
-    //     "lng": 117.89121,
-    //     "latkoor": "3° 18' 20.8\" S",
-    //     "lngkoor": "117° 53' 28.4\" E",
-    //     "markers": [
-    //       {
-    //         "lat": 0.7533054748951525,
-    //         "lng": 107.21034192825111
-    //       },
-    //       {
-    //         "lat": -6.998264917318715,
-    //         "lng": 118.76303251121074
-    //       }
-    //     ],
-    //     "polyline": [
-    //       {
-    //         "lat": 0.7533054748951525,
-    //         "lng": 107.21034192825111
-    //       },
-    //       {
-    //         "lat": -0.7346159307168078,
-    //         "lng": 105.91395613775582
-    //       },
-    //       {
-    //         "lat": -3.735347101714719,
-    //         "lng": 108.95791821844597
-    //       },
-    //       {
-    //         "lat": -5.70114345958807,
-    //         "lng": 111.92775553138705
-    //       },
-    //       {
-    //         "lat": -4.597002902082299,
-    //         "lng": 115.24523117763819
-    //       },
-    //       {
-    //         "lat": -6.305438814341642,
-    //         "lng": 116.24441441368486
-    //       },
-    //       {
-    //         "lat": -6.998264917318715,
-    //         "lng": 118.76303251121074
-    //       }
-    //     ]
-    //   }
-    // ]);
-
   })
 
   const dataSelectAsset = createOptions(
@@ -524,10 +450,6 @@ const onFilterEditor = (event: any) => {
   }
 }
 
-  
-
-
-
 const [scrollBehavior, setScrollBehavior] = createSignal("inside");
 const [isOpenAsset, setIsOpenAsset] = createSignal(false); 
 const [isOpenDataGis, setIsOpenDataGis] = createSignal(false); 
@@ -551,10 +473,6 @@ const onCloseDataGis = () => {
 };
 
 const onCloseDataEditorSimulator = () => {
-  // console.log("close head")
-  // const dataEditorSimulatorLocal : any = JSON.parse(localStorage.getItem('dataEditorSimulator')); 
-  // setDataEditorSimulator(dataEditorSimulatorLocal); 
-  // setRowDataEditorSimulator(dataEditorSimulator())  
 
   fetchDataRuteKapal().then((data: any) => {
     console.log("data add -> ", data);
@@ -572,121 +490,6 @@ const selectionChangedCallback = (params: any) => {
 
   return (
     <>
-
-{/* <div class="search-container">
-        <input type="text" placeholder="Search" />
-    </div> */}
-
-    
-{/* <div>
-  <Flex>
-<div style="width:50%;margin: 5px;">
-  <div style="border: 1px solid #c295d0c2;
-      background: #251c3d;
-    border-radius: 20px;">
-    <div style="    border-bottom: 1px solid #c295d0c2;
-    padding: 2.4vh;">
-      <Flex>
-        <div style="width:50%">
-          <Flex>
-<span>
-<svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M2.5 26.8675C4.11875 26.9875 5.48 25.625 6.66625 25.625C7.8525 25.625 9.78125 26.8812 10.8337 26.8675C12.0962 26.8787 13.575 25.625 15 25.625C16.425 25.625 17.9038 26.8787 19.1663 26.8675C20.785 26.9875 22.1462 25.625 23.3337 25.625C24.5212 25.625 26.4475 26.8812 27.5 26.8675M7.5 25.625C5.7275 23.4175 4.47875 20.5912 3.94625 19.0937C3.7775 18.6187 3.69375 18.3812 3.79125 18.1537C3.89 17.9275 4.12875 17.8212 4.61 17.6087L13.9725 13.4613C14.4775 13.2363 14.7312 13.125 15 13.125C15.2688 13.125 15.5225 13.2375 16.0287 13.4625L25.39 17.6087C25.87 17.8212 26.11 17.9275 26.2087 18.1537C26.3062 18.3812 26.2213 18.6187 26.0538 19.0937C25.5213 20.5912 24.2725 23.4175 22.5 25.625" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M7.5 16.25L7.77 12.7412C7.93875 10.5512 8.0225 9.45625 8.74125 8.79125C9.46 8.125 10.5588 8.125 12.755 8.125H17.245C19.4412 8.125 20.54 8.125 21.2575 8.79125C21.9775 9.45625 22.0613 10.5512 22.23 12.7412L22.5 16.25" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M10.625 8.125L10.84 6.41C11.035 4.84625 11.1325 4.06375 11.665 3.59375C12.1962 3.125 12.9837 3.125 14.56 3.125H15.44C17.015 3.125 17.8038 3.125 18.335 3.59375C18.8675 4.06375 18.965 4.84625 19.16 6.41L19.375 8.125" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
-</span>
-<span style="font-family: 'jaldiBold';
-    color: white;
-    margin-left: 10px;
-    margin-top: 5px;">Data Asset</span>
-</Flex>
-        </div>
-        <div style="width:50%">
-          <Flex>
-        <BiRegularSearchAlt class="icsearchls" />
-        <Select placeholder='Search' class="custom-ls" {...dataSelectAsset} onChange={(e : any) => onFilterAsset(e)}  /> 
-              <Button  onClick={onOpenAsset} class="btstatyls"   leftIcon={<AiOutlinePlus boxSize={18} style="color:black"  />}>
-                                <span class="fntls">Tambah</span>
-                            </Button>
-                            </Flex>
-          </div>
-      </Flex>
-    </div>
-<div class="ag-theme-balham" style="width:100%;height:285px;border: none;    padding: 2vh;">
-        <AgGridSolid
-          columnDefs={columnDefsDataAsset()}
-          rowData={rowDataAsset()}
-          rowSelection="single"
-          defaultColDef={defaultColdefAsset} 
-          gridOptions={gridOptionsAsset}
-          // pagination={true}
-          ref={gridRefAsset!}
-          // paginationPageSize={100}
-          // onGridReady={onGridReady}
-        /> 
-        </div>
-      </div>
-</div>
-<div style="width:50%;margin: 5px;">
-  <div style="border: 1px solid #c295d0c2;
-      background: #251c3d;
-    border-radius: 20px;">
-    <div style="    border-bottom: 1px solid #c295d0c2;
-    padding: 2.4vh;">
-      <Flex>
-        <div style="width:50%">
-          <Flex>
-<span>
-<svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g clip-path="url(#clip0_705_176)">
-<path d="M27.2008 22.3968L29.3533 23.4703L15.0002 30.0946L0.49707 23.4009L2.83145 22.4109L5.13113 23.4721L5.12832 23.474L15.0002 28.0303L25.0221 23.4046L25.0193 23.4037L27.2008 22.3968ZM22.5396 15.3824L29.3533 18.7828L15.0002 25.4071L0.49707 18.7134L7.68582 15.6646C8.0527 16.1203 8.47145 16.6215 8.94207 17.1684L5.12832 18.7865L15.0002 23.3428L25.0221 18.7171L21.3152 16.8674C21.7777 16.3237 22.1858 15.8287 22.5396 15.3824Z" fill="#F8F8F8"/>
-<path d="M16.875 8.4375C16.875 7.94022 16.6775 7.46331 16.3258 7.11168C15.9742 6.76004 15.4973 6.5625 15 6.5625C14.5027 6.5625 14.0258 6.76004 13.6742 7.11168C13.3225 7.46331 13.125 7.94022 13.125 8.4375C13.125 8.93478 13.3225 9.41169 13.6742 9.76333C14.0258 10.115 14.5027 10.3125 15 10.3125C15.4973 10.3125 15.9742 10.115 16.3258 9.76333C16.6775 9.41169 16.875 8.93478 16.875 8.4375ZM18.75 8.4375C18.75 9.43206 18.3549 10.3859 17.6517 11.0892C16.9484 11.7924 15.9946 12.1875 15 12.1875C14.0054 12.1875 13.0516 11.7924 12.3484 11.0892C11.6451 10.3859 11.25 9.43206 11.25 8.4375C11.25 7.44294 11.6451 6.48911 12.3484 5.78585C13.0516 5.08259 14.0054 4.6875 15 4.6875C15.9946 4.6875 16.9484 5.08259 17.6517 5.78585C18.3549 6.48911 18.75 7.44294 18.75 8.4375ZM15.6863 20.3259L15 21.0638L14.3138 20.3259C10.9791 16.7409 8.86032 14.2678 7.92938 12.8634C7.03622 11.5168 6.5607 9.93626 6.56251 8.32031C6.56251 3.72187 10.3434 0 15 0C19.6566 0 23.4375 3.72187 23.4375 8.32031C23.439 9.93636 22.9632 11.5169 22.0697 12.8634C21.1397 14.2678 19.0209 16.7409 15.6863 20.3259ZM20.5069 11.8284C21.197 10.7887 21.5642 9.56819 21.5625 8.32031C21.5625 4.76344 18.6281 1.875 15 1.875C11.3719 1.875 8.43751 4.76344 8.43751 8.32031C8.43751 9.585 8.80688 10.7916 9.49313 11.8284C10.2863 13.0256 12.1294 15.1969 15 18.3084C17.8706 15.1959 19.7138 13.0256 20.5069 11.8284Z" fill="#F8F8F8"/>
-</g>
-<defs>
-<clipPath id="clip0_705_176">
-<rect width="30" height="30" fill="white"/>
-</clipPath>
-</defs>
-</svg>
-
-</span>
-<span style="font-family: 'jaldiBold';
-    color: white;
-    margin-left: 10px;
-    margin-top: 5px;">Data GIS</span>
-</Flex>
-        </div>
-        <div style="width:50%;">
-          <Flex>
-        <BiRegularSearchAlt class="icsearchls" />
-        <Select placeholder='Search' class="custom-ls" {...dataSelectGis}  onChange={(e : any) => onFilterGis(e)}/> 
-              <Button  onClick={onOpenDataGis}  class="btstatyls"   leftIcon={<AiOutlinePlus boxSize={18} style="color:black"  />}>
-                                <span class="fntls">Tambah</span>
-                            </Button>
-                            </Flex>
-          </div>
-      </Flex>
-    </div>
-<div class="ag-theme-balham" style="width:100%;height:285px;border: none;    padding: 2vh;">
-        <AgGridSolid
-          columnDefs={columnDefsDataGis()}
-          rowData={rowDataGis()}
-          rowSelection="single"
-          defaultColDef={defaultColdefGis} 
-          gridOptions={gridOptionsGis}
-          // pagination={true}
-          ref={gridRefGis!}
-          // paginationPageSize={100}
-          // onGridReady={onGridReady}
-        /> 
-        </div>
-      </div>
-</div>
-  </Flex>
-</div> */}
-
-
 <div style="width:100%;margin: 5px;">
   <div style="border: 1px solid #c295d0c2;
       background: #251c3d;
@@ -740,10 +543,8 @@ const selectionChangedCallback = (params: any) => {
           defaultColDef={defaultColdefEditorSimulator} 
           gridOptions={gridOptionsEditorSimulator}
           onSelectionChanged={selectionChangedCallback}
-          // pagination={true}
+          
           ref={gridRefEditorSimulator!}
-          // paginationPageSize={100}
-          // onGridReady={onGridReady}
         /> 
         </div>
         </div>
