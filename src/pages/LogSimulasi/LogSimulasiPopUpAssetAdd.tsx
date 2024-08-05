@@ -39,25 +39,7 @@ type LogSimulasiPopUpAssetAddProps = {
 
 const LogSimulasiPopUpAssetAdd: Component<LogSimulasiPopUpAssetAddProps> = (props) => {
 
-
-    // const fetchData = async () => {
-    //   try {
-    //     const response = await fetch('/public/json/data-editor-simulator.json');
-    //     if (!response.ok) {
-    //       throw new Error("Gagal");
-    //     }
-    //     const data = await response.json(); 
-    //     if (data) { 
-    //     } else { 
-    //     }
-    //   } catch (error) { 
-    //   }
-    // };
-
-
-
     onMount(() => {
-        // fetchData()
     })
 
     const [isOpen, setIsOpen] = createSignal(false);
@@ -73,14 +55,14 @@ const LogSimulasiPopUpAssetAdd: Component<LogSimulasiPopUpAssetAddProps> = (prop
     const [dimensi, setDimensi] = createSignal("");
     const [kecepatan, setKecepatan] = createSignal("");
     const [jarak, setJarak] = createSignal("");
-    const [unit, setUnit] = createSignal(""); 
+    const [unit, setUnit] = createSignal("");
      const handleChangeNama = (event: Event) => {
-        const input = event.target as HTMLInputElement; 
+        const input = event.target as HTMLInputElement;
         setNama(input.value);
       };
       const handleChangeGambar  = async (event: Event) => {
         console.log('gambar',event)
-        const input = event.target as HTMLInputElement; 
+        const input = event.target as HTMLInputElement;
         setGambar(input.value);
         if (input.files && input.files.length > 0) {
             const file = input.files[0];
@@ -89,24 +71,22 @@ const LogSimulasiPopUpAssetAdd: Component<LogSimulasiPopUpAssetAddProps> = (prop
           }
       };
       const handleChangeDimensi  = (event: Event) => {
-        const input = event.target as HTMLInputElement; 
+        const input = event.target as HTMLInputElement;
         setDimensi(input.value);
       };
       const handleChangeKecepatan  = (event: Event) => {
-        const input = event.target as HTMLInputElement; 
+        const input = event.target as HTMLInputElement;
         setKecepatan(input.value);
       };
       const handleChangeJarak  = (event: Event) => {
-        const input = event.target as HTMLInputElement; 
+        const input = event.target as HTMLInputElement;
         setJarak(input.value);
       };
       const handleChangeUnit  = (event: Event) => {
-        const input = event.target as HTMLInputElement; 
+        const input = event.target as HTMLInputElement;
         setUnit(input.value);
       };
 
-     
-    
       // Function to convert file to base64 string
       const convertToBase64 = (file: File): Promise<string> => {
         return new Promise((resolve, reject) => {
@@ -126,23 +106,21 @@ const LogSimulasiPopUpAssetAdd: Component<LogSimulasiPopUpAssetAddProps> = (prop
             "kecepatan":  kecepatan(),
             "jarak": jarak(),
             "unit": unit()
-        } 
+        }
         console.log("event DATA ALL -> ", data);
-        const dataAssetLocal : any = JSON.parse(localStorage.getItem('dataAsset')); 
+        const dataAssetLocal : any = JSON.parse(localStorage.getItem('dataAsset'));
   console.log("before add -> ", dataAssetLocal);
     dataAssetLocal.push(data)
-        localStorage.setItem('dataAsset', JSON.stringify(dataAssetLocal));  
+        localStorage.setItem('dataAsset', JSON.stringify(dataAssetLocal));
     props.closeSend
       };
-    
 
     return (
         <>
-
             <div style="border: 1px solid #c295d0c2;
       background: #817f86;
     border-radius: 20px;">
-                <div style="   
+                <div style="
     padding: 2.4vh;">
 
                     <div style="width:100%" class="dvp">
@@ -214,19 +192,12 @@ const LogSimulasiPopUpAssetAdd: Component<LogSimulasiPopUpAssetAddProps> = (prop
                             <Input class="inp" type="text" placeholder="" variant="filled" onChange={handleChangeUnit} />
                         </InputGroup>
                     </div>
-                     
+
                     <div style="    text-align: center;">
                     <Button class="bt" onClick={handleClick} >Simpan</Button>
-                        {/* <Button class="bt" onClick={() => props.closeSend}>Simpan</Button> */}
                     </div>
-
-
-
                 </div>
             </div>
-
-            {/* <img src={base64()} alt="Selected" style={{ width: "300px", height: "auto" }} /> */}
-
         </>
     );
 };

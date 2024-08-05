@@ -51,8 +51,6 @@ const RekamMomenContent: Component<RekamMomenContentProps> = (props) => {
 
   return (
     <>
-
-
       <div class="fl">
         <div style="height: 100px;
     align-items: center;
@@ -64,14 +62,12 @@ const RekamMomenContent: Component<RekamMomenContentProps> = (props) => {
     display: flex;
     font-family: 'jaldiBold';">
               <span style="margin-left: 30px;">Live Report Ly Thai To - 06 June 2024 - Kep. Bangka Belitung</span>
-            </div> 
+            </div>
           </Flex>
         </div>
         <div>
           <Flex >
-           
-
-            <div style="width:100%;    margin: 25px;" > 
+            <div style="width:100%;    margin: 25px;" >
               {/* <MapSet /> */}
               <video style="    width: 100%;
     height:720px;"  controls
@@ -82,8 +78,6 @@ const RekamMomenContent: Component<RekamMomenContentProps> = (props) => {
             </div>
           </Flex>
         </div>
-
-
       </div>
     </>
   );

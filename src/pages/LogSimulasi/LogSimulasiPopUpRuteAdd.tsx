@@ -41,8 +41,6 @@ import {
     AlertIcon,
     AlertTitle,
   } from "@hope-ui/solid"
-// import '@rnwonder/solid-date-picker/dist/style.css' 
-// import DatePicker, { PickerValue } from '@rnwonder/solid-date-picker';
 
 type LogSimulasiPopUpRuteAddProps = {
     closeSend?: any,
@@ -56,7 +54,7 @@ const mapLoader = new Loader({
 });
 const LogSimulasiPopUpRuteAdd: Component<LogSimulasiPopUpRuteAddProps> = (props) => {
 
-    
+
   const [alertStatusOk, setAlertStatusOk] = createSignal(false);
   const [alertStatusError, setAlertStatusError] = createSignal(false);
     let mapRef: HTMLDivElement | undefined;
@@ -96,7 +94,6 @@ const LogSimulasiPopUpRuteAdd: Component<LogSimulasiPopUpRuteAddProps> = (props)
         };
 
         console.log("data -> ", data);
-        // localStorage.setItem('mapData', JSON.stringify(data));
     };
 
     const loadData = () => {
@@ -176,12 +173,14 @@ const LogSimulasiPopUpRuteAdd: Component<LogSimulasiPopUpRuteAddProps> = (props)
                 });
 
                 marker.addListener("drag", () => {
+
                     // Update the path of the polyline when marker is dragged
                     const markerIndex = markers().indexOf(marker);
                     polyline().getPath().setAt(markerIndex, marker.getPosition());
                 });
 
                 marker.addListener("click", () => {
+
                     // Remove marker and update polyline
                     marker.setMap(null);
                     const markerIndex = markers().indexOf(marker);
@@ -201,7 +200,6 @@ const LogSimulasiPopUpRuteAdd: Component<LogSimulasiPopUpRuteAddProps> = (props)
                 strokeColor: "#ffc746",
                 strokeOpacity: 1.0,
                 strokeWeight: 0.4,
-                // editable: true,
                 icons: [{
                     icon: {
                         path: 'M 0,-1 0,1',
@@ -224,7 +222,6 @@ const LogSimulasiPopUpRuteAdd: Component<LogSimulasiPopUpRuteAddProps> = (props)
         bounds.extend(secondMarkerPos);
         return bounds.contains(point);
     };
-
 
     onMount(() => {
         mapLoader.load().then(() => {
@@ -319,31 +316,6 @@ const LogSimulasiPopUpRuteAdd: Component<LogSimulasiPopUpRuteAddProps> = (props)
             });
             setMap(gmaps);
 
-            //   const mapMarkers = pointsState().map((user: any) => {
-            //     const marker = new google.maps.Marker({
-            //       position: { lat: user.latitude, lng: user.longitude },
-            //       icon: {
-            //         url: '/rb.png',
-            //         scaledSize: new google.maps.Size(30, 30),
-            //       },
-            //     });
-
-            //     const contentString = `
-            //       <div class="custom-popup">
-            //         <h3 class="flex justify-center">${user.province}</h3>
-            //       </div>
-            //     `;
-            //     const infoWindow = new google.maps.InfoWindow({
-            //       content: contentString,
-            //     });
-            //     marker.addListener("click", () => {
-            //       infoWindow.open(gmaps, marker);
-            //     });
-
-            //     return marker;
-            //   });
-            //   setMarkers(mapMarkers);
-
             const newPolyline = new google.maps.Polyline({
                 path: [],
                 geodesic: true,
@@ -368,13 +340,13 @@ const LogSimulasiPopUpRuteAdd: Component<LogSimulasiPopUpRuteAddProps> = (props)
                 const lat = event.latLng.lat();
                 const lng = event.latLng.lng();
                 if (markers().length >= 2) {
-                    
+
                     console.log( "marker -> ", markers())
-                   
+
                     // Get positions of the first and second markers
                     const firstMarkerPos = markers()[0].getPosition();
                     const secondMarkerPos = markers()[1].getPosition();
-            
+
                     // Restrict clicks outside the bounds of the markers
                     if (!isPointWithinBounds(event.latLng, firstMarkerPos, secondMarkerPos)) {
                       return;
@@ -383,10 +355,6 @@ const LogSimulasiPopUpRuteAdd: Component<LogSimulasiPopUpRuteAddProps> = (props)
 
                 console.log("Latitude: ", lat, "Longitude: ", lng);
                 const path = newPolyline.getPath();
-                // setHistory([...history(), {
-                //     markers: [...markers()],
-                //     path: [...path.getArray()],
-                //   }]);
                 path.push(event.latLng);
                 if (markers().length < 2) {
                     const newMarker = new google.maps.Marker({
@@ -396,7 +364,7 @@ const LogSimulasiPopUpRuteAdd: Component<LogSimulasiPopUpRuteAddProps> = (props)
                             scaledSize: new google.maps.Size(30, 30),
                         },
                         map: gmaps,
-                        draggable: true, 
+                        draggable: true,
                     });
 
                     setMarkersNew(newMarker);
@@ -416,8 +384,6 @@ const LogSimulasiPopUpRuteAdd: Component<LogSimulasiPopUpRuteAddProps> = (props)
                     setMarkers([...markers(), newMarker]);
                 }
             });
-
-            // loadData();
 
             const updatePolyline = () => {
                 if (polyline()) {
@@ -480,7 +446,6 @@ const LogSimulasiPopUpRuteAdd: Component<LogSimulasiPopUpRuteAddProps> = (props)
                     fillOpacity: 0.35,
                 },
             });
-            //   drawingManager.setMap(gmaps);
 
             google.maps.event.addListener(drawingManager, 'overlaycomplete', (event: google.maps.drawing.OverlayCompleteEvent) => {
                 if (event.type === google.maps.drawing.OverlayType.POLYLINE) {
@@ -530,17 +495,10 @@ const LogSimulasiPopUpRuteAdd: Component<LogSimulasiPopUpRuteAddProps> = (props)
             });
         });
 
-
-        // const dataAssetLocal: any = JSON.parse(localStorage.getItem('dataAsset'));
-        // setDataAsset(dataAssetLocal);
-
         fetchDataAssetKapal().then((data: any) => {
-            // setRowDataAssetKapal(data.data)
-            // setDataAssetKapal(data.filter);
             setDataAsset(data.data);
-            // console.log("DATA ASSET -> ", dataAsset())
           })
-          
+
         const dataGisLocal: any = JSON.parse(localStorage.getItem('dataGis'));
         setDataGis(dataGisLocal);
     });
@@ -565,7 +523,6 @@ const LogSimulasiPopUpRuteAdd: Component<LogSimulasiPopUpRuteAddProps> = (props)
                         marker.setMap(gmap);
                     });
                 } else {
-                    // cluster.addMarkers(markers());
                 }
             });
         }
@@ -639,54 +596,27 @@ const LogSimulasiPopUpRuteAdd: Component<LogSimulasiPopUpRuteAddProps> = (props)
     };
 
     const addSelect = () => {
-        // console.log("selectedValueDateFrom",selectedValueDateFrom());
-        // console.log("selectedValueDateTo",selectedValueDateTo());
-        // console.log("selectedValueAsetFrom",JSON.parse(selectedValueAsetFrom()).tb+':'+JSON.parse(selectedValueAsetFrom()).id.String); 
-        // console.log("selectedValuePosisiFrom",selectedValuePosisiFrom());
-        // console.log("selectedValuePosisiTo",selectedValuePosisiTo());
-        // const markerPositions = markers().map((marker: any) => ({
-        //     lat: marker.getPosition().lat(),
-        //     lng: marker.getPosition().lng()
-        // }));
-
-        // const polylinePath = polyline().getPath().getArray().map((latLng: any) => ({
-        //     lat: latLng.lat(),
-        //     lng: latLng.lng()
-        // }));
-
-        // const { coordinate, decimal } = extractValues();
-
-        // const data = {
-        //     markers: markerPositions,
-        //     polyline: polylinePath
-        // };
-        // console.log("m" , extractValues(JSON.parse(selectedValuePosisiFrom()).latitude).decimal)
-
         const markerPositions = markers().map((marker: any) => ({
             lat: marker.getPosition().lat(),
             lng: marker.getPosition().lng()
         }));
-      
+
         const polylinePath = polyline().getPath().getArray().map((latLng: any) => ({
             lat: latLng.lat(),
             lng: latLng.lng()
         }));
 
-        if(selectedValueDateFrom() !== null && selectedValueDateTo() !== null && 
-        selectedValueAsetFrom() !== null && selectedValuePosisiFrom() !== null && 
-        selectedValuePosisiTo() !== null && markerPositions.length !== 0 && 
+        if(selectedValueDateFrom() !== null && selectedValueDateTo() !== null &&
+        selectedValueAsetFrom() !== null && selectedValuePosisiFrom() !== null &&
+        selectedValuePosisiTo() !== null && markerPositions.length !== 0 &&
         polylinePath.length !== 0  ) {
             const path : any = polylinePath.map((point : any) => new google.maps.LatLng(point.lat, point.lng));
             const polylines  : any = new google.maps.Polyline({ path });
             const length = google.maps.geometry.spherical.computeLength(polylines.getPath());
-          
-            // console.log(`Jarak  polyline: ${length} meter`);
-          
             const latLng1 = new google.maps.LatLng(markerPositions[0].lat, markerPositions[0].lng);
             const latLng2 = new google.maps.LatLng(markerPositions[1].lat, markerPositions[1].lng);
             const distance = google.maps.geometry.spherical.computeDistanceBetween(latLng1, latLng2);
-            // console.log(`Jarak markers: ${distance} meter`);
-    
+
             let all_data = {
                 "start_date": convertDateFormat(selectedValueDateFrom()),
                 "end_date":convertDateFormat(selectedValueDateTo()),
@@ -699,10 +629,8 @@ const LogSimulasiPopUpRuteAdd: Component<LogSimulasiPopUpRuteAddProps> = (props)
                  "markers": markerPositions,
                 "polylines": polylinePath
               }
-    
-    
               console.log("AL - DATA -> ", all_data);
- 
+
                 fetchDataRuteKapalAdd(all_data).then((data: any) => {
                   console.log("data add -> ", data);
                   if (data.status === 'ok') {
@@ -710,57 +638,20 @@ const LogSimulasiPopUpRuteAdd: Component<LogSimulasiPopUpRuteAddProps> = (props)
                     setTimeout(() => {
                       setAlertStatusOk(false)
                     }, 1000)
-
                     setSelectedValueAsetFrom(null);
                     setSelectedValueDateFrom(null);
                     setSelectedValueDateTo(null);
                     setSelectedValuePosisiFrom(null);
-                    setSelectedValuePosisiTo(null); 
-                    // props.detect(true);   
+                    setSelectedValuePosisiTo(null);
                   }
                 })
-          
-         
+
         }else{
             setAlertStatusError(true)
             setTimeout(() => {
               setAlertStatusError(false)
             }, 1000)
         }
-
-       
-      
-      
-        // let all_from =
-        // {
-        //     "hari": convertDateFormat(selectedValueDateFrom()),
-        //     "aset": JSON.parse(selectedValueAsetFrom()).nama,
-        //     "lat": extractValues(JSON.parse(selectedValuePosisiFrom()).latitude).decimal,
-        //     "lng": extractValues(JSON.parse(selectedValuePosisiFrom()).longitude).decimal,
-        //     "latkoor": extractValues(JSON.parse(selectedValuePosisiFrom()).latitude).coordinate,
-        //     "lngkoor": extractValues(JSON.parse(selectedValuePosisiFrom()).longitude).coordinate,
-        //     "markers": markerPositions,
-        //     "polyline": polylinePath
-        // }
-        // let all_to = {
-        //     "hari": convertDateFormat(selectedValueDateTo()),
-        //     "aset": JSON.parse(selectedValueAsetTo()).nama,
-        //     "lat": extractValues(JSON.parse(selectedValuePosisiTo()).latitude).decimal,
-        //     "lng": extractValues(JSON.parse(selectedValuePosisiTo()).longitude).decimal,
-        //     "latkoor": extractValues(JSON.parse(selectedValuePosisiTo()).latitude).coordinate,
-        //     "lngkoor": extractValues(JSON.parse(selectedValuePosisiTo()).longitude).coordinate,
-        //     "markers": markerPositions,
-        //     "polyline": polylinePath
-        // }
-
-        // console.log("ALL -> " , all)
-
-        // const dataEditorSimulatorLocal: any = JSON.parse(localStorage.getItem('dataEditorSimulator'));
-        // dataEditorSimulatorLocal.push(all_from)
-        // dataEditorSimulatorLocal.push(all_to)
-        // localStorage.setItem('dataEditorSimulator', JSON.stringify(dataEditorSimulatorLocal));
-
-
     };
     const [dateStr, setDateStr] = createSignal("");
     const convertDateFormat = (date: any) => {
@@ -790,12 +681,12 @@ const LogSimulasiPopUpRuteAdd: Component<LogSimulasiPopUpRuteAddProps> = (props)
     };
 
     const handleChangePosisiFrom  = (event: Event) => {
-        const input = event.target as HTMLInputElement; 
+        const input = event.target as HTMLInputElement;
         setSelectedValuePosisiFrom(input.value);
       };
 
       const handleChangePosisiTo  = (event: Event) => {
-        const input = event.target as HTMLInputElement; 
+        const input = event.target as HTMLInputElement;
         setSelectedValuePosisiTo(input.value);
       };
 
@@ -805,7 +696,7 @@ const LogSimulasiPopUpRuteAdd: Component<LogSimulasiPopUpRuteAddProps> = (props)
             <div style="border: 1px solid #c295d0c2;
       background: #817f86;
     border-radius: 20px;">
-                <div style="   
+                <div style="
     padding: 2.4vh;">
 
                     <div style="width:100%" class="dvp">
@@ -943,24 +834,9 @@ const LogSimulasiPopUpRuteAdd: Component<LogSimulasiPopUpRuteAddProps> = (props)
                                         </div>
                                         <div style="width:30%">
                                             <div style="    margin-top: 10px;">
-                                                
-                                                {/* <select name="aset" id="aset" class="slcp" value={selectedValuePosisiFrom()} onInput={handleSelectChangePosisiFrom}>
-                                                    <option value="" selected disabled hidden>Pilih Posisi</option>
-                                                    <option value="1" >Tentukan Titik di Peta</option>
-                                                    <For each={dataGis()}>{(e: any, i) =>
-                                                        <option value={JSON.stringify(e)}>{e.lokasi}</option>
-                                                    }</For>
-                                                </select> */}
                                                   <input class="ipt" type="text" placeholder="input nama" onChange={handleChangePosisiFrom} />
                                             </div>
                                             <div style="    margin-top: 10px;">
-                                                {/* <select name="aset" id="aset" class="slcp" value={selectedValuePosisiTo()} onInput={handleSelectChangePosisiTo}>
-                                                    <option value="" selected disabled hidden>Pilih Posisi</option>
-                                                    <option value="1" >Tentukan Titik di Peta</option>
-                                                    <For each={dataGis()}>{(e: any, i) =>
-                                                        <option value={JSON.stringify(e)}>{e.lokasi}</option>
-                                                    }</For>
-                                                </select> */}
                                                  <input class="ipt" type="text" placeholder="input nama" onChange={handleChangePosisiTo} />
                                             </div>
                                         </div>
@@ -1008,27 +884,6 @@ const LogSimulasiPopUpRuteAdd: Component<LogSimulasiPopUpRuteAddProps> = (props)
 
                 </div>
             </div>
-
-            {/* <input type="date" id="birthday" name="birthday" /> */}
-
-            {/* <DatePicker
-             type="single"
-             placeholder="Date range"
-      onChange={(data) => {
-        
-        if (data.type === "range") {
-          console.log(data.startDate, data.endDate);
-        }
-        if (data.type === "single") {
-          console.log(data.selectedDate);
-        }
-        if (data.type === "multiple") {
-          console.log(data.multipleDates);
-        }
-      }}/> */}
-
-            {/* <button onClick={saveData}>Save</button> */}
-
         </>
     );
 };
