@@ -1,21 +1,17 @@
 import { Component, onMount, Show } from "solid-js";
 import { createSignal } from "solid-js";
-import './AssetContent.css'
-import { Flex, Spacer } from "@hope-ui/solid"
+import './AssetContent.css'; // Impor file CSS di sini
+import { Flex, Spacer, Button, IconButton } from "@hope-ui/solid";
 import MapView from "../MapView";
-import { Button } from "@hope-ui/solid";
-
 import { Select, createOptions } from "@thisbeyond/solid-select";
 import "@thisbeyond/solid-select/style.css";
 import AgGridSolid, { AgGridSolidRef } from "ag-grid-solid";
 import { ColDef } from "ag-grid-community";
 import "ag-grid-enterprise";
 import { BiRegularSearchAlt } from "solid-icons/bi";
-import { AiFillCloseSquare, AiOutlinePlus } from 'solid-icons/ai'
+import { AiFillCloseSquare, AiOutlinePlus } from "solid-icons/ai";
 import AssetMapEditorSimulator from "./AssetMapEditorSimulator";
-import { BsChevronDown } from 'solid-icons/bs'
-import { BsChevronUp } from 'solid-icons/bs'
-import { IconButton } from "@hope-ui/solid"
+import { BsChevronDown, BsChevronUp } from "solid-icons/bs";
 import {
   Modal,
   ModalBody,
@@ -24,80 +20,99 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
-} from "@hope-ui/solid"
+} from "@hope-ui/solid";
 import AssetPopUpAssetAdd from "./AssetPopUpAssetAdd";
 import AssetPosPopUpAdd from "./AssetPosPopUpAdd";
 import { fetchDataAssetKapal, fetchDataAssetPos, fetchDataAssetPosDelete } from "../../service/service";
-import { RiSystemDeleteBin2Line } from 'solid-icons/ri'
-import { FiEdit } from 'solid-icons/fi'
+import { RiSystemDeleteBin2Line } from "solid-icons/ri";
+import { FiEdit } from "solid-icons/fi";
 import AssetPosPopUpEdit from "./AssetPosPopUpEdit";
 
+// Define props interface
+type AssetContentProps = {};
 
-type AssetContentProps = {
-};
-
+// Define component
 const AssetContent: Component<AssetContentProps> = (props) => {
   let gridRefAssetPos: AgGridSolidRef;
   let gridRefAssetKapal: AgGridSolidRef;
   const [rowDataAssetPos, setRowDataAssetPos] = createSignal([]);
   const [rowDataAssetKapal, setRowDataAssetKapal] = createSignal([]);
+  
   const defaultColdefAssetPos = {
     filter: true,
     resizable: true,
     sortable: true,
   };
+
   const gridOptionsAssetPos = {
     rowHeight: 40,
     headerHeight: 50,
     rowStyle: { textAlign: "center" },
   };
+
   const defaultColdefAssetKapal = {
     filter: true,
     resizable: true,
     sortable: true,
   };
+
   const gridOptionsAssetKapal = {
     rowHeight: 70,
     headerHeight: 50,
     rowStyle: { textAlign: "center" },
   };
 
+  // Image renderer for grid
   const ImageRenderer = ({ data }: { data: any }) => {
-    onMount(() => {
-      
-    })
+    onMount(() => {});
     return (
       <>
-        <img class="imgs-lssb" style="    width: 70px;  height: 60px; " src={`${data.gambar}`} />
+        <img class="imgs-lssb" style="width: 70px; height: 60px;" src={`${data.gambar}`} />
       </>
     );
   };
 
+  // Button renderer for grid
   const ButtonRenderer = ({ data }: { data: any }) => {
-    onMount(() => {
-      
-    })
+    onMount(() => {});
     return (
       <>
-     <Flex>
-     <span style="    margin-right: 10px;"> <IconButton onClick={() => onOpenAssetPosEdit(data)} style="background: #8321b5;" size="xs" aria-label="Edit" icon={<FiEdit />} /></span>
-      <span> <IconButton  onClick={onOpenAssetPosDelete} style="background: #ef0000;" size="xs" aria-label="Delete" icon={<RiSystemDeleteBin2Line />} /></span>
-     </Flex>
+        <Flex>
+          <span style="margin-right: 10px;">
+            <IconButton
+              onClick={() => onOpenAssetPosEdit(data)}
+              style="background: #8321b5;"
+              size="xs"
+              aria-label="Edit"
+              icon={<FiEdit />}
+            />
+          </span>
+          <span>
+            <IconButton
+              onClick={onOpenAssetPosDelete}
+              style="background: #ef0000;"
+              size="xs"
+              aria-label="Delete"
+              icon={<RiSystemDeleteBin2Line />}
+            />
+          </span>
+        </Flex>
       </>
     );
   };
 
+  // Column definitions for kapal data
   const [columnDefsDataAssetKapal, setColumnDefsDataAssetKapal]: any = createSignal([
     {
       headerName: "Nama Asset",
       field: "nama",
       width: 300,
-      // flex: 1,
       cellStyle: {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-      }, cellClass: "center-cell",
+      },
+      cellClass: "center-cell",
     },
     {
       field: "image",
@@ -118,7 +133,8 @@ const AssetContent: Component<AssetContentProps> = (props) => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-      }, cellClass: "center-cell",
+      },
+      cellClass: "center-cell",
     },
     {
       headerName: "Kecepatan",
@@ -128,18 +144,20 @@ const AssetContent: Component<AssetContentProps> = (props) => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-      }, cellClass: "center-cell",
+      },
+      cellClass: "center-cell",
     },
     {
       headerName: "Jarak",
       field: "jarak",
-      width: 180, 
-      headerClass: 'ag-header-cell',
+      width: 180,
+      headerClass: "ag-header-cell",
       cellStyle: {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-      }, cellClass: "center-cell",
+      },
+      cellClass: "center-cell",
     },
     {
       headerName: "Unit",
@@ -150,20 +168,12 @@ const AssetContent: Component<AssetContentProps> = (props) => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-      }, cellClass: "center-cell",
+      },
+      cellClass: "center-cell",
     },
-    // {
-    //   headerName: "Position",
-    //   field: "position",
-    //   width: 90,
-    //   flex: 1,
-    //   cellStyle: {
-    //     display: "flex",
-    //     justifyContent: "center",
-    //     alignItems: "center",
-    //   }, cellClass: "center-cell",
-    // },
   ]);
+
+  // Column definitions for POS data
   const [columnDefsDataAssetPos, setColumnDefsDataAssetPos]: any = createSignal([
     {
       headerName: "Asset Grup",
@@ -174,7 +184,8 @@ const AssetContent: Component<AssetContentProps> = (props) => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-      }, cellClass: "center-cell",
+      },
+      cellClass: "center-cell",
     },
     {
       field: "lokasi",
@@ -187,7 +198,6 @@ const AssetContent: Component<AssetContentProps> = (props) => {
         alignItems: "center",
       },
     },
-
     {
       headerName: "Longitude",
       field: "lng",
@@ -197,7 +207,8 @@ const AssetContent: Component<AssetContentProps> = (props) => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-      }, cellClass: "center-cell",
+      },
+      cellClass: "center-cell",
     },
     {
       headerName: "Latitude",
@@ -208,13 +219,13 @@ const AssetContent: Component<AssetContentProps> = (props) => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-      }, cellClass: "center-cell",
+      },
+      cellClass: "center-cell",
     },
     {
       field: "",
       headerName: "Aksi",
       width: 130,
-      // flex: 1,
       cellStyle: {
         display: "flex",
         justifyContent: "center",
@@ -223,534 +234,222 @@ const AssetContent: Component<AssetContentProps> = (props) => {
       cellRenderer: ButtonRenderer,
     },
   ]);
-  // const [columnDefsDataAsset, setColumnDefsDataAsset]: any = createSignal([
-  //   {
-  //     headerName: "Titik", 
-  //     field: "titik",
-  //     width: 120,
-  //     flex: 1,
-  //     cellStyle: {
-  //       display: "flex",
-  //       justifyContent: "center",
-  //       alignItems: "center",
-  //     }, cellClass: "center-cell",
-  //   }, 
-  //   {
-  //     field: "lokasi",
-  //     headerName: "Lokasi",
-  //     width: 110,
-  //     flex: 1,
-  //     cellStyle: {
-  //       display: "flex",
-  //       justifyContent: "center",
-  //       alignItems: "center",
-  //     },
-  //   },
-  //   {
-  //     headerName: "Latitude", 
-  //     field: "latitude",
-  //     width: 100,
-  //     flex: 1,
-  //     cellStyle: {
-  //       display: "flex",
-  //       justifyContent: "center",
-  //       alignItems: "center",
-  //     }, cellClass: "center-cell",
-  //   }, 
-  //   {
-  //     headerName: "Longitude", 
-  //     field: "longitude",
-  //     width: 120,
-  //     flex: 1,
-  //     cellStyle: {
-  //       display: "flex",
-  //       justifyContent: "center",
-  //       alignItems: "center",
-  //     }, cellClass: "center-cell",
-  //   }, 
-  //   {
-  //     headerName: "Jenis", 
-  //     field: "jenis",
-  //     width: 120,
-  //     flex: 1, 
-  //     headerClass: 'ag-header-cell',
-  //     cellStyle: {
-  //       display: "flex",
-  //       // textAlign: "center",
-  //       justifyContent: "center",
-  //       alignItems: "center",
-  //     }, cellClass: "center-cell",
-  //   }, 
-  //   {
-  //     headerName: "Batas", 
-  //     field: "batas",
-  //     width: 90,
-  //     flex: 1,
-  //     cellStyle: {
-  //       display: "flex",
-  //       justifyContent: "center",
-  //       alignItems: "center",
-  //     }, cellClass: "center-cell",
-  //   } 
-  // ]);
-
 
   const [dataAssetPos, setDataAssetPos]: any = createSignal([]);
   const [dataAssetKapal, setDataAssetKapal]: any = createSignal([]);
 
-
-
-
+  // Fetch data on mount
   onMount(() => {
-
     fetchDataAssetKapal().then((data: any) => {
-      setRowDataAssetKapal(data.data)
+      setRowDataAssetKapal(data.data);
       setDataAssetKapal(data.filter);
+    });
 
-    })
     fetchDataAssetPos().then((data: any) => {
-      setRowDataAssetPos(data.data)
+      setRowDataAssetPos(data.data);
       setDataAssetPos(data.filter);
-    })
+    });
+  });
 
+  // Create options for select components
+  const dataSelectAssetPos = createOptions(dataAssetPos, { key: "lokasi" });
+  const dataSelectAssetKapal = createOptions(dataAssetKapal, { key: "nama" });
 
-
-  })
-
-  const dataSelectAssetPos = createOptions(
-    dataAssetPos,
-    { key: "lokasi" }
-  )
-
-  const dataSelectAssetKapal = createOptions(
-    dataAssetKapal,
-    { key: "nama" }
-  )
-
-
-
+  // Filter handlers
   const onFilterAssetPos = (event: any) => {
     if (event == null) {
-      gridRefAssetPos.api.setQuickFilter('')
+      gridRefAssetPos.api.setQuickFilter('');
     } else {
-      gridRefAssetPos.api.setQuickFilter(event.lokasi)
+      gridRefAssetPos.api.setQuickFilter(event.lokasi);
     }
-
-  }
-
+  };
 
   const onFilterAssetKapal = (event: any) => {
     if (event == null) {
-      gridRefAssetKapal.api.setQuickFilter('')
+      gridRefAssetKapal.api.setQuickFilter('');
     } else {
-      gridRefAssetKapal.api.setQuickFilter(event.nama)
+      gridRefAssetKapal.api.setQuickFilter(event.nama);
     }
+  };
 
-  }
-
-
-
+  // Modal and state handling
   const [scrollBehavior, setScrollBehavior] = createSignal("inside");
   const [isOpenAssetKapal, setIsOpenAssetKapal] = createSignal(false);
-  const [AssetPosSelection, setAssetPosSelection] : any = createSignal(null);
+  const [AssetPosSelection, setAssetPosSelection]: any = createSignal(null);
   const [isOpenAssetPos, setIsOpenAssetPos] = createSignal(false);
   const [isOpenAssetPosDelete, setIsOpenAssetPosDelete] = createSignal(false);
   const [isOpenAssetPosEdit, setIsOpenAssetPosEdit] = createSignal(false);
 
   const [posDetect, setPosDetect] = createSignal(false);
+
   const handlePosDetect = (res: any) => {
-    console.log("RES -> ", res)
-    if (res) {
-      fetchDataAssetPos().then((data: any) => {
-        setRowDataAssetPos(data.data)
-        setDataAssetPos(data.filter);
-      })
-    } else { }
-    // setPosDetect(res);
+    setPosDetect(!posDetect());
   };
-
-  const handleKapalDetect = (res: any) => {
-    console.log("RES -> ", res)
-    if (res) {
-      fetchDataAssetKapal().then((data: any) => {
-        setRowDataAssetKapal(data.data)
-        setDataAssetKapal(data.filter);
-      })
-    } else { }
-    // setPosDetect(res);
-  };
-
-  const onOpenAssetPos = () => setIsOpenAssetPos(true);
-  const onCloseAssetPos = () => { 
-    console.log("posDetect => ", posDetect());
-    setIsOpenAssetPos(false);
-  };
-
-  const onOpenAssetPosDelete = () => setIsOpenAssetPosDelete(true);
-  const onCloseAssetPosDelete = () => {  
-    setIsOpenAssetPosDelete(false);
-  };
-  const onOpenAssetPosEdit = (data : any) => {
-console.log("data masuk -> ",data);
-setAssetPosSelection(data);
-    setIsOpenAssetPosEdit(true)
-  };
-  const onCloseAssetPosEdit = () => {  
-    setIsOpenAssetPosEdit(false);
-  };
-
-
 
   const onOpenAssetKapal = () => setIsOpenAssetKapal(true);
-  const onCloseAssetKapal = () => {
-    const dataAssetLocal: any = JSON.parse(localStorage.getItem('dataAssetKapal'));
-    // setDataAsset(dataAssetLocal); 
-    // setRowDataAsset(dataAsset()) 
-    setIsOpenAssetKapal(false)
-
+  const onCloseAssetKapal = () => setIsOpenAssetKapal(false);
+  const onOpenAssetPos = () => setIsOpenAssetPos(true);
+  const onCloseAssetPos = () => setIsOpenAssetPos(false);
+  const onOpenAssetPosDelete = () => setIsOpenAssetPosDelete(true);
+  const onCloseAssetPosDelete = () => setIsOpenAssetPosDelete(false);
+  const onOpenAssetPosEdit = (data: any) => {
+    setAssetPosSelection(data);
+    setIsOpenAssetPosEdit(true);
   };
+  const onCloseAssetPosEdit = () => setIsOpenAssetPosEdit(false);
 
-
-  
-  const onSelectionChange = (event: any) => {
-    const selectedData = event.api.getSelectedNodes()[0]?.data;
-    if (selectedData) {
-  //  console.log("event -> ", selectedData);
-  //  setAssetPosSelection(selectedData)
-    }
-
-  }
-
-  
-  const DeleteAssetPos = () => { 
-   console.log("event -> delete " , AssetPosSelection()); 
-   fetchDataAssetPosDelete(AssetPosSelection().id.id.String).then((data: any) => {
-if(data.status === 'ok'){
-    fetchDataAssetPos().then((data: any) => {
-      setRowDataAssetPos(data.data)
-      setDataAssetPos(data.filter);
-      setIsOpenAssetPosDelete(false);
-    })
-  }
-     
-  })
-  }
-
-  const [isDataKapal, setIsDataKapal] = createSignal(true); // State untuk menentukan tabel yang ditampilkan
-  const [selectedData, setSelectedData] = createSignal('kapal'); // Default selection
-  const [isDropdownOpen, setIsDropdownOpen] = createSignal(false);
- 
-  const onChangeDataSelection = (value: string) => {
-    setIsDataKapal(value === 'kapal');
-    setSelectedData(value); // Update selected data
-    setIsDropdownOpen(false);
+  // Asset POS delete handler
+  const handleAssetPosDelete = () => {
+    fetchDataAssetPosDelete(AssetPosSelection().id).then(() => {
+      fetchDataAssetPos().then((data: any) => {
+        setRowDataAssetPos(data.data);
+        setDataAssetPos(data.filter);
+        onCloseAssetPosDelete();
+      });
+    });
   };
-
 
   return (
     <>
-
-    
-      {/* Dropdown untuk memilih tabel */}
-      
-
-
-      {/* Tampilkan tabel berdasarkan pilihan */}
-      {isDataKapal() ? (
-        <div>
-          <Flex>
-            <div style="width:100%;margin: 5px;">
-              <div style="border: 1px solid #c295d0c2; background: #251c3d; border-radius: 20px;">
-                <div style="border-bottom: 1px solid #c295d0c2; padding: 2.4vh;">
-                  <Flex>
-                    <div style="width:100%">
-                      <Flex>
-                        <span>
-                          <img src='/kapal.png' style="width:30px;height:30px" />
-                        </span>
-                        <span style="font-family: 'jaldiBold'; color: white; margin-left: 10px; margin-top: 5px;">Data Kapal</span>
-                      </Flex>
-                    </div>
-                    <div style="justify-content: end; align-items: end; display: flex;">
-                      <Flex>
-                      <div style="position: relative; margin: 0px 0; display: flex; justify-content: flex-end;">
-  <div 
-    onClick={() => setIsDropdownOpen(!isDropdownOpen())} 
-    style="padding: 8px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    background-color: #666077;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    color: white;
-    font-family: 'jaldiBold';
-    width: 133px;
-    font-size: 0.9em;
-    height: 35px;"
-  >
-    {selectedData() === 'kapal' ? (
-      <>
-        <img src='/kapal.png' style="width:17px;height:17px; margin-right: 5px;" />
-        <span style="margin-right:10px">Data Kapal</span>
-        <BsChevronDown />
-      </>
-    ) : (
-      <>
-        <img src='/asset_pos.png' style="width:15px;height:15px; margin-right: 5px;" />
-        <span style="    margin-right: 10px;">Data POS</span>
-        <BsChevronDown />
-      </>
-    )}
-  </div>
-  {isDropdownOpen() && (
-    <ul style="position: absolute;
-    background: #666077;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    z-index: 100;
-    color: white;
-    font-family: 'jaldiBold';
-    width: 133px;
-    font-size: 0.9em;
-">
-      <li onClick={() => onChangeDataSelection('kapal')} style="padding: 8px; cursor: pointer; display: flex; align-items: center;    border-bottom: 1px solid #f3f3f3;">
-        <img src='/kapal.png' style="width:17px;height:17px; margin-right: 5px;" />
-        <span style="    margin-right: 10px;">Data Kapal</span>
-        <BsChevronDown />
-      </li>
-      <li onClick={() => onChangeDataSelection('pos')} style="padding: 8px; cursor: pointer; display: flex; align-items: center;">
-        <img src='/asset_pos.png' style="width:15px;height:15px; margin-right: 5px;" />
-        <span style="    margin-right: 20px;">Data POS</span>
-        <BsChevronDown />
-      </li>
-    </ul>
-  )}
-</div>
-                        <BiRegularSearchAlt class="icsearchls" />
-                        <Select placeholder='Search' class="custom-ls" {...dataSelectAssetKapal} onChange={(e: any) => onFilterAssetKapal(e)} />
-                        <Button onClick={onOpenAssetKapal} class="btstatyls" leftIcon={<AiOutlinePlus boxSize={18} style="color:black" />}>
-                          <span class="fntls">Tambah</span>
-                        </Button>
-                      </Flex>
-                    </div>
-                  </Flex>
-                </div>
-                <div class="ag-theme-balham" style="width:100%;height:600px;border: none; padding: 2vh;">
-                  <AgGridSolid
-                    columnDefs={columnDefsDataAssetKapal()}
-                    rowData={rowDataAssetKapal()}
-                    rowSelection="single"
-                    defaultColDef={defaultColdefAssetKapal}
-                    gridOptions={gridOptionsAssetKapal}
-                    ref={gridRefAssetKapal!}
-                  />
-                </div>
-              </div>
-            </div>
-          </Flex>
+      <div class="flex-container">
+        <div class="grid-item map-view">
+          <MapView posDetect={posDetect} />
         </div>
-      ) : (
-        <div>
-          <Flex>
-            <div style="width:100%;margin: 5px;">
-              <div style="border: 1px solid #c295d0c2; background: #251c3d; border-radius: 20px;">
-                <div style="border-bottom: 1px solid #c295d0c2; padding: 2.4vh;">
-                  <Flex>
-                    <div style="width:100%">
-                      <Flex>
-                        <span>
-                          <img src='/asset_pos.png' style="width:30px;height:30px" />
-                        </span>
-                        <span style="font-family: 'jaldiBold'; color: white; margin-left: 10px; margin-top: 5px;">Data POS</span>
-                      </Flex>
-                    </div>
-                    <div style="justify-content: end; align-items: end; display: flex;">
-                      <Flex>
-                      <div style="position: relative; margin: 0px 0; display: flex; justify-content: flex-end;">
-  <div 
-    onClick={() => setIsDropdownOpen(!isDropdownOpen())} 
-    style="padding: 8px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    background-color: #666077;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    color: white;
-    font-family: 'jaldiBold';
-    width: 133px;
-    font-size: 0.9em;
-    height: 35px;"
-  >
-    {selectedData() === 'kapal' ? (
-      <>
-        <img src='/kapal.png' style="width:17px;height:17px; margin-right: 5px;" />
-        <span style="    margin-right: 10px;">Data Kapal</span>
-        <BsChevronDown />
-      </>
-    ) : (
-      <>
-        <img src='/asset_pos.png' style="width:15px;height:15px; margin-right: 5px;" />
-        <span style="    margin-right: 20px;">Data POS</span>
-        <BsChevronDown />
-      </>
-    )}
-  </div>
-  {isDropdownOpen() && (
-    <ul style="position: absolute;
-    background: #666077;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    z-index: 100;
-    color: white;
-    font-family: 'jaldiBold';
-    width: 133px;
-    font-size: 0.9em;
-">
-      <li onClick={() => onChangeDataSelection('kapal')} style="padding: 8px; cursor: pointer; display: flex; align-items: center;    border-bottom: 1px solid #f3f3f3;">
-        <img src='/kapal.png' style="width:17px;height:17px; margin-right: 5px;" />
-        <span style="    margin-right: 10px;">Data Kapal</span>
-        <BsChevronDown />
-      </li>
-      <li onClick={() => onChangeDataSelection('pos')} style="padding: 8px; cursor: pointer; display: flex; align-items: center;">
-        <img src='/asset_pos.png' style="width:15px;height:15px; margin-right: 5px;" />
-        <span style="    margin-right: 20px;">Data POS</span>
-        <BsChevronDown />
-      </li>
-    </ul>
-  )}
-</div>
-                        <BiRegularSearchAlt class="icsearchls" />
-                        <Select placeholder='Cari Lokasi' class="custom-ls" {...dataSelectAssetPos} onChange={(e: any) => onFilterAssetPos(e)} />
-                        <Button onClick={onOpenAssetPos} class="btstatyls" leftIcon={<AiOutlinePlus boxSize={18} style="color:black" />}>
-                          <span class="fntls">Tambah</span>
-                        </Button>
-                      </Flex>
-                    </div>
-                  </Flex>
-                </div>
-                <div class="ag-theme-balham" style="width:100%;height:600px;border: none; padding: 2vh;">
-                  <AgGridSolid
-                    columnDefs={columnDefsDataAssetPos()}
-                    rowData={rowDataAssetPos()}
-                    rowSelection="single"
-                    defaultColDef={defaultColdefAssetPos}
-                    gridOptions={gridOptionsAssetPos}
-                    onSelectionChanged={onSelectionChange}
-                    ref={gridRefAssetPos!}
-                  />
-                </div>
-              </div>
-            </div>
-          </Flex>
+
+        <div class="grid-item map-editor">
+          <AssetMapEditorSimulator posDetect={handlePosDetect} />
         </div>
-      )}
 
-      {/* ----------------------- */}
-
-      <Modal centered size={'xl'}
-        scrollBehavior={scrollBehavior()}
-        opened={isOpenAssetKapal()}
-        onCloseAsset={onCloseAssetKapal}
-      >
-        <ModalOverlay />
-        <ModalContent>
-          <ModalBody>
-            <AssetPopUpAssetAdd closeSend={onCloseAssetKapal()} detect={handleKapalDetect} />
-          </ModalBody>
-        </ModalContent>
-      </Modal>
-
-
-
-      {/* -----------ASSET POS ADD------------ */}
-
-      <Modal centered size={'6xl'}
-        scrollBehavior={scrollBehavior()}
-        opened={isOpenAssetPos()}
-        onCloseAsset={onCloseAssetPos}
-      >
-        <ModalOverlay />
-        <ModalContent>
-          <ModalBody>
-            <AssetPosPopUpAdd closeSend={onCloseAssetPos()} detect={handlePosDetect} />
-          </ModalBody>
-        </ModalContent>
-      </Modal>
-
-        {/* -----------ASSET POS DELETE------------ */}
-
-        <Modal centered size={'sm'}
-        scrollBehavior={scrollBehavior()}
-        opened={isOpenAssetPosDelete()}
-        onCloseAsset={onCloseAssetPosDelete}
-      >
-        <ModalOverlay />
-        <ModalContent>
-          <ModalBody>
-          <div style="border: 1px solid #c295d0c2;
-      background: #817f86;
-    border-radius: 20px;">
-        <div style="   
-    padding: 2.4vh;">  <div style="width:100%" class="dvp">
-            <Flex>
-              <div style="width:80%">
-                <Flex>
-                <span>
-                        <img src='/asset_pos.png' style="width:30px;height:30px"></img>
-                      </span>
-                  <span style="font-family: 'jaldiBold';
-    color: white;
-    margin-left: 10px;
-    margin-top: 5px;">Hapus Data POS</span>
-                </Flex>
-              </div>
-
-              <div class="w20">
-                <AiFillCloseSquare onClick={() => onCloseAssetPosDelete()} class="cp" style="cursor:pointer" />
-
-              </div>
-            </Flex>
-          </div>
+        <div class="grid-item asset-kapal">
+          <div class="card-header">
+            <div style="width: 100%; padding: 10px; border: 1px solid; border-color: #ededed; border-radius: 10px; background-color: #e0e0e0;">
+              <Flex alignItems="center" justifyContent="space-between">
+                <span style="font-size: 14px; font-weight: 500;">Asset Kapal</span>
+                <Spacer />
+                <span style="display: flex; justify-content: right;">
+                  <span style="margin-right: 5px;">
+                    <Select {...dataSelectAssetKapal} placeholder="Filter Kapal" onChange={onFilterAssetKapal} />
+                  </span>
+                  <Button leftIcon={<BiRegularSearchAlt />} colorScheme="info" size="sm" variant="solid">
+                    Search
+                  </Button>
+                  <span style="margin-left: 5px;">
+                    <Button leftIcon={<AiOutlinePlus />} colorScheme="accent" size="sm" variant="solid" onClick={onOpenAssetKapal}>
+                      Add
+                    </Button>
+                  </span>
+                </span>
+              </Flex>
+            </div>
           </div>
 
-          <div style="font-family: 'jaldiBold';
-    color: #ffffff;
-    text-align: center;
-    margin-bottom: 20px;">Apakah Anda Ingin Menghapus Data POS ?</div>
-          <div style="    text-align: center;
-    margin-bottom: 15px;"> <Button onClick={DeleteAssetPos} style="background: #ff1e1e;" size="sm"  leftIcon={<RiSystemDeleteBin2Line boxSize={20} />}>Hapus</Button></div>
+          <div class="ag-theme-alpine" style="width: 100%; height: 280px; border-radius: 10px; border: 1px solid #e0e0e0;">
+            <AgGridSolid
+              ref={gridRefAssetKapal}
+              gridOptions={gridOptionsAssetKapal}
+              defaultColDef={defaultColdefAssetKapal}
+              rowData={rowDataAssetKapal()}
+              columnDefs={columnDefsDataAssetKapal()}
+            ></AgGridSolid>
+          </div>
+        </div>
+
+        <div class="grid-item asset-pos">
+          <div class="card-header">
+            <div style="width: 100%; padding: 10px; border: 1px solid; border-color: #ededed; border-radius: 10px; background-color: #e0e0e0;">
+              <Flex alignItems="center" justifyContent="space-between">
+                <span style="font-size: 14px; font-weight: 500;">Asset Pos</span>
+                <Spacer />
+                <span style="display: flex; justify-content: right;">
+                  <span style="margin-right: 5px;">
+                    <Select {...dataSelectAssetPos} placeholder="Filter Pos" onChange={onFilterAssetPos} />
+                  </span>
+                  <Button leftIcon={<BiRegularSearchAlt />} colorScheme="info" size="sm" variant="solid">
+                    Search
+                  </Button>
+                  <span style="margin-left: 5px;">
+                    <Button leftIcon={<AiOutlinePlus />} colorScheme="accent" size="sm" variant="solid" onClick={onOpenAssetPos}>
+                      Add
+                    </Button>
+                  </span>
+                </span>
+              </Flex>
+            </div>
           </div>
 
-          </ModalBody>
-        </ModalContent>
-      </Modal>
+          <div class="ag-theme-alpine" style="width: 100%; height: 280px; border-radius: 10px; border: 1px solid #e0e0e0;">
+            <AgGridSolid
+              ref={gridRefAssetPos}
+              gridOptions={gridOptionsAssetPos}
+              defaultColDef={defaultColdefAssetPos}
+              rowData={rowDataAssetPos()}
+              columnDefs={columnDefsDataAssetPos()}
+            ></AgGridSolid>
+          </div>
+        </div>
+      </div>
 
+      <Show when={isOpenAssetKapal()}>
+        <Modal isOpen={isOpenAssetKapal()} onClose={onCloseAssetKapal} scrollBehavior={scrollBehavior()}>
+          <ModalOverlay />
+          <ModalContent>
+            <ModalCloseButton />
+            <ModalHeader>Add Asset</ModalHeader>
+            <ModalBody>
+              <AssetPopUpAssetAdd />
+            </ModalBody>
+          </ModalContent>
+        </Modal>
+      </Show>
 
-      {/* -----------ASSET POS EDIT------------ */}
+      <Show when={isOpenAssetPos()}>
+        <Modal isOpen={isOpenAssetPos()} onClose={onCloseAssetPos} scrollBehavior={scrollBehavior()}>
+          <ModalOverlay />
+          <ModalContent>
+            <ModalCloseButton />
+            <ModalHeader>Add Asset POS</ModalHeader>
+            <ModalBody>
+              <AssetPosPopUpAdd />
+            </ModalBody>
+          </ModalContent>
+        </Modal>
+      </Show>
 
-      <Modal centered size={'6xl'}
-        scrollBehavior={scrollBehavior()}
-        opened={isOpenAssetPosEdit()}
-        onCloseAsset={onCloseAssetPosEdit}
-      >
-        <ModalOverlay />
-        <ModalContent>
-          <ModalBody>
-            <AssetPosPopUpEdit closeSend={onCloseAssetPosEdit()} detect={handlePosDetect} dataPos={AssetPosSelection()} />
-          </ModalBody>
-        </ModalContent>
-      </Modal>
+      <Show when={isOpenAssetPosEdit()}>
+        <Modal isOpen={isOpenAssetPosEdit()} onClose={onCloseAssetPosEdit} scrollBehavior={scrollBehavior()}>
+          <ModalOverlay />
+          <ModalContent>
+            <ModalCloseButton />
+            <ModalHeader>Edit Asset POS</ModalHeader>
+            <ModalBody>
+              <AssetPosPopUpEdit assetPosSelection={AssetPosSelection()} />
+            </ModalBody>
+          </ModalContent>
+        </Modal>
+      </Show>
 
-
+      <Show when={isOpenAssetPosDelete()}>
+        <Modal isOpen={isOpenAssetPosDelete()} onClose={onCloseAssetPosDelete} scrollBehavior={scrollBehavior()}>
+          <ModalOverlay />
+          <ModalContent>
+            <ModalCloseButton />
+            <ModalHeader>Delete Asset POS</ModalHeader>
+            <ModalBody>
+              <span>Yakin hapus data Asset POS {AssetPosSelection().lokasi}?</span>
+            </ModalBody>
+            <ModalFooter>
+              <Button onClick={handleAssetPosDelete} style="margin-right: 10px;" colorScheme="danger" size="sm">
+                Delete
+              </Button>
+              <Button onClick={onCloseAssetPosDelete} size="sm">
+                Cancel
+              </Button>
+            </ModalFooter>
+          </ModalContent>
+        </Modal>
+      </Show>
     </>
   );
 };
+
 export default AssetContent;
