@@ -247,3 +247,89 @@
   overflow-x: scroll;
   scrollbar-width: none !important;
 }
+
+.imgs-lssb{
+  width: 70px;  
+  height: 60px;
+}
+
+.tb-kapal{
+  width:100%;margin: 5px;
+  border: 1px solid #c295d0c2; 
+  background: #251c3d; 
+  border-radius: 20px;
+  border-bottom: 1px solid #c295d0c2; padding: 2.4vh;
+}
+
+.dropdown-1{
+  padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background-color: #666077;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    color: white;
+    font-family: 'jaldiBold';
+    width: 133px;
+    font-size: 0.9em;
+    height: 35px;
+}
+
+.img-kapal{
+  width:17px;
+  height:17px; 
+  margin-right: 5px;
+}
+
+.img-pos{
+  width:15px;
+  height:15px; 
+  margin-right: 5px;
+}
+
+.img-dt-select-kp{
+  padding: 8px; 
+  cursor: pointer; 
+  display: flex; 
+  align-items: center;    
+  border-bottom: 1px 
+  solid #f3f3f3;
+}
+
+.img-dt-select-ps{
+  padding: 8px; 
+  cursor: pointer; 
+  display: flex; 
+  align-items: center;
+}
+
+.dropdown-op{
+  position: absolute;
+    background: #666077;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    z-index: 100;
+    color: white;
+    font-family: 'jaldiBold';
+    width: 133px;
+    font-size: 0.9em;
+}
+
+.onclick-drop{
+  padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background-color: #666077;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    color: white;
+    font-family: 'jaldiBold';
+    width: 133px;
+    font-size: 0.9em;
+    height: 35px;
+}

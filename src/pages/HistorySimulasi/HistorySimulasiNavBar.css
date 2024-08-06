@@ -8,16 +8,12 @@
   }
   .carousel-container {
     width: 100%;
-    /* margin: 50px auto; */
     padding: 3vh;
     position: relative;
     height: -webkit-fill-available;
     border: 1px solid #9b76ab;
     border-radius: 20.17px;
     background: #251c3d;
-    /* border-left-width: 4px;
-    border-left-style: solid;
-    border-left-color: #aaa; */
   }
   @media (max-width: 768px) {
     .carousel-container {
@@ -28,7 +24,6 @@
     width: 100%;
     width: 95%;
     margin-left: 2vw;
-    /* height: 400px; */
     overflow: hidden;
   }
   .track {
@@ -50,10 +45,6 @@
   .card {
     width: 100%;
     height: 100%;
-    /*display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;*/
     background-position: center bottom;
     background-size: center;
     background-repeat: no-repeat;
@@ -104,16 +95,11 @@
     position: absolute;
     top: 50%;
     transform: translatey(-50%);
-    /* width: 60px;
-    height: 60px; */
-    /* border-radius: 50%; */
     outline: none;
-    /* border: 1px solid #000; */
     cursor: pointer;
   }
   .nav .prev {
     left: 10px;
-    /* display: none; */
   }
   .nav .prev.show {
     display: block;

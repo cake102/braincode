@@ -289,19 +289,7 @@ function MapView() {
 
   return (
     <div id="map-container">
-      {/* <div>
-        <h1>Home Page</h1>
-        <h2>{titleState()}</h2>
-        <input
-          type="text"
-          value={newTitle()}
-          onInput={(e) => setNewTitle(e.currentTarget.value)}
-        />
-        <button onClick={updateTitle}>Update Title</button>
-        <button onClick={removeDrawing}>Remove Drawing</button>
-      </div> */}
       <div id="map" ref={el => mapRef = el}></div>
-      {/* <button class="custom-button" onClick={() => setIsModalOpen(true)}>Show Modal</button> */}
 
       {isModalOpen() && (
         <div class="modal">

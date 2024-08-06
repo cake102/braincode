@@ -91,7 +91,6 @@ const GisMap : Component<GisMapProps> = (props) =>  {
 
       setMarkers(newMarkers);
 
-      // Load polyline
       const newPolyline = new google.maps.Polyline({
           path: data.polyline,
           geodesic: true,
@@ -149,7 +148,6 @@ const GisMap : Component<GisMapProps> = (props) =>  {
     if (data) {
       const gmaps = map();
 
-      // Load markers
       const newMarkers = data.map(position => {
         const marker = new google.maps.Marker({
           position,
@@ -163,7 +161,6 @@ const GisMap : Component<GisMapProps> = (props) =>  {
 
 
         marker.addListener("drag", () => {
-          // Update the path of the polyline when marker is dragged
           const markerIndex = markers().indexOf(marker);
         });
 
@@ -459,18 +456,13 @@ const onCloseDataRute = () => {
 
       </div>
       <div id="popup-container-gis-simulator" style={{ display: 'none' }}>
-              <div style="      margin-top: 10px;
-    background: #85319C80;
-    padding: 20px;
-    padding-left: 30px;">
-                <Flex>
+=                <Flex>
                   <div class="fngis">Area Terpilih : {longlatKoor().latitude} ({longlat().latitude}) , {longlatKoor().longitude} ({longlat().longitude})</div>
                   <div>
                   </div>
 
                 </Flex>
               </div>
-            </div>
     </div>
     </>
   );

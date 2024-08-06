@@ -201,3 +201,71 @@
     max-height: none;
     background-color: #a2a0a0 !important;
 }
+
+.point-container{
+    border: 1px solid #c295d0c2;
+    background: #817f86;
+    border-radius: 20px;
+    padding: 2.4vh;
+}
+
+.point-img{
+    width:30px;
+    height:30px
+}
+
+.point-text{
+    font-family: 'jaldiBold';
+    color: white;
+    margin-left: 10px;
+    margin-top: 5px;
+}
+
+.popup-container{
+    margin-top: 10px;
+    background: #85319C80;
+    padding: 20px;
+    padding-left: 30px;
+}
+
+.bttn-tmbh{
+    color:black;
+    font-size: 13px !important;
+}
+
+.bttn-close{
+    text-align: end;
+    justify-content: end;
+    display: flex;
+    margin-top: 10px;cursor:pointer
+}
+
+.container-text{
+    text-align: center;
+    margin-top: 10px;
+}
+
+.container-clmn{
+    padding: 35px;
+    padding-top: 10px;
+    padding-bottom: 0px;
+}
+
+.clmn-text{
+    text-align: center !important;
+    font-family: jaldiBold;
+    border: 1px solid #626262 !important;
+    color: #404040 !important;
+}
+
+.clmn-batas{
+    padding: 35px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+
+.btn-simpan{
+    text-align: center;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}

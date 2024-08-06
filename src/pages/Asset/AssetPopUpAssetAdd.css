@@ -1,4 +1,3 @@
-/* Gabungan dari CSS sebelumnya */
 
 .hope-c-jJyNvw-fuVnmB-size-xl {
     max-width: var(--hope-sizes-xl);
@@ -36,7 +35,7 @@
 }
 
 .inputfile + label {
-    cursor: pointer; /* "hand" cursor */
+    cursor: pointer; 
 }
 
 .dvp {

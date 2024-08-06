@@ -89,13 +89,11 @@ const GisContent: Component<GisContentProps> = (props) => {
           fallback={<span><svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="5" cy="5" r="5" fill="#FFC746" />
           </svg>
-            {/* {data.latitude} */}
           </span>}
         >
           <span><svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="5" cy="5" r="5" fill="#F44336" />
           </svg>
-            {/* {data.latitude} */}
           </span>
         </Show>
 
@@ -502,22 +500,16 @@ const handlePolygonDetect = (res: any) => {
     <>
       <div>
         <Flex>
-          <div style="width:50%;margin: 5px;">
-            <div style="border: 1px solid #c295d0c2;
-      background: #251c3d;
-    border-radius: 20px;">
-              <div style="    border-bottom: 1px solid #c295d0c2;
-    padding: 2.4vh;">
+          <div class="point-home">
+            <div style="">
+              <div style="">
                 <Flex>
                   <div style="width:50%">
                     <Flex>
                       <span>
-                        <img src='/point.png' style="width:30px;height:30px"></img>
+                        <img src='/point.png' class="point-img"></img>
                       </span>
-                      <span style="font-family: 'jaldiBold';
-    color: white;
-    margin-left: 10px;
-    margin-top: 5px;">Data Point</span>
+                      <span class="point-text">Data Point</span>
                     </Flex>
                   </div>
                   <div style="width:50%">
@@ -543,12 +535,9 @@ const handlePolygonDetect = (res: any) => {
               </div>
             </div>
           </div>
-          <div style="width:50%;margin: 5px;">
-            <div style="border: 1px solid #c295d0c2;
-      background: #251c3d;
-    border-radius: 20px;">
-              <div style="    border-bottom: 1px solid #c295d0c2;
-    padding: 2.4vh;">
+          <div class="data-home">
+            <div style="">
+              <div style="border-bottom: 1px solid #c295d0c2;padding: 2.4vh;">
                 <Flex>
                   <div style="width:50%">
                     <Flex>
@@ -556,9 +545,9 @@ const handlePolygonDetect = (res: any) => {
                         <img src='/polyline.png' style="width:30px;height:30px"></img>
                       </span>
                       <span style="font-family: 'jaldiBold';
-    color: white;
-    margin-left: 10px;
-    margin-top: 5px;">Data Line</span>
+                                    color: white;
+                                    margin-left: 10px;
+                                    margin-top: 5px;">Data Line</span>
                     </Flex>
                   </div>
                   <div style="width:50%;">
@@ -595,20 +584,17 @@ const handlePolygonDetect = (res: any) => {
         <Flex>
           <div style="width:50%;margin: 5px;">
             <div style="border: 1px solid #c295d0c2;
-      background: #251c3d;
-    border-radius: 20px;">
-              <div style="    border-bottom: 1px solid #c295d0c2;
-    padding: 2.4vh;">
+                        background: #251c3d;
+                        border-radius: 20px;">
+              <div style="border-bottom: 1px solid #c295d0c2;
+                          padding: 2.4vh;">
                 <Flex>
                   <div style="width:50%">
                     <Flex>
                       <span>
                         <img src='/polygon.png' style="width:30px;height:30px"></img>
                       </span>
-                      <span style="font-family: 'jaldiBold';
-    color: white;
-    margin-left: 10px;
-    margin-top: 5px;">Data Polygon</span>
+                      <span style="font-family: 'jaldiBold';color: white;margin-left: 10px;margin-top: 5px;">Data Polygon</span>
                     </Flex>
                   </div>
                   <div style="width:50%">
@@ -622,7 +608,7 @@ const handlePolygonDetect = (res: any) => {
                   </div>
                 </Flex>
               </div>
-              <div class="ag-theme-balham" style="width:100%;height:330px;border: none;    padding: 2vh;">
+              <div class="ag-theme-balham">
                 <AgGridSolid
                   columnDefs={columnDefsDataPolygon()}
                   rowData={rowDataPolygon()}
@@ -639,10 +625,9 @@ const handlePolygonDetect = (res: any) => {
           </div>
           <div style="width:50%;margin: 5px;">
             <div style="border: 1px solid #c295d0c2;
-      background: #251c3d;
-    border-radius: 20px;">
-              <div style="    border-bottom: 1px solid #c295d0c2;
-    padding: 2.7vh;">
+                        background: #251c3d;
+                        border-radius: 20px;">
+              <div style="border-bottom: 1px solid #c295d0c2;padding: 2.7vh;">
                 <Flex>
                   <div style="width:100%">
                     <Flex>
@@ -650,9 +635,9 @@ const handlePolygonDetect = (res: any) => {
                         <img src='/gis.png' style="width:30px;height:30px"></img>
                       </span>
                       <span style="font-family: 'jaldiBold';
-    color: white;
-    margin-left: 10px;
-    margin-top: 5px;">Map</span>
+                                    color: white;
+                                    margin-left: 10px;
+                                    margin-top: 5px;">Map</span>
                     </Flex>
                   </div>
                 </Flex>

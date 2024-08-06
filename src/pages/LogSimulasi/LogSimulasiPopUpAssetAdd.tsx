@@ -117,11 +117,8 @@ const LogSimulasiPopUpAssetAdd: Component<LogSimulasiPopUpAssetAddProps> = (prop
 
     return (
         <>
-            <div style="border: 1px solid #c295d0c2;
-      background: #817f86;
-    border-radius: 20px;">
-                <div style="
-    padding: 2.4vh;">
+            <div style="border: 1px solid #c295d0c2;background: #817f86;border-radius: 20px;">
+                <div style="padding: 2.4vh;">
 
                     <div style="width:100%" class="dvp">
                         <Flex>
@@ -134,13 +131,9 @@ const LogSimulasiPopUpAssetAdd: Component<LogSimulasiPopUpAssetAddProps> = (prop
                                         <path d="M10.625 8.125L10.84 6.41C11.035 4.84625 11.1325 4.06375 11.665 3.59375C12.1962 3.125 12.9837 3.125 14.56 3.125H15.44C17.015 3.125 17.8038 3.125 18.335 3.59375C18.8675 4.06375 18.965 4.84625 19.16 6.41L19.375 8.125" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                                     </svg>
                                 </span>
-                                <span style="font-family: 'jaldiBold';
-    color: white;
-    margin-left: 10px;
-    margin-top: 5px;">Tambah Data Asset</span>
-    </Flex>
+                                <span style="font-family: 'jaldiBold';color: white;margin-left: 10px;margin-top: 5px;">Tambah Data Asset</span>
+                            </Flex>
                             </div>
-
                             <div class="w20">
                                 <AiTwotoneCloseCircle onClick={() => props.closeSend} class="cp" />
                             </div>
