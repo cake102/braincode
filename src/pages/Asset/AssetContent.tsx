@@ -64,7 +64,11 @@ const AssetContent: Component<AssetContentProps> = (props) => {
 
   const ImageRenderer = ({ data }: { data: any }) => {
     onMount(() => {
+<<<<<<< HEAD
 
+=======
+      
+>>>>>>> 63af83c73f0f2b0f1d0497d47d7e7bb05f076a24
     })
     return (
       <>
@@ -75,7 +79,11 @@ const AssetContent: Component<AssetContentProps> = (props) => {
 
   const ButtonRenderer = ({ data }: { data: any }) => {
     onMount(() => {
+<<<<<<< HEAD
 
+=======
+      
+>>>>>>> 63af83c73f0f2b0f1d0497d47d7e7bb05f076a24
     })
     return (
       <>
@@ -92,6 +100,7 @@ const AssetContent: Component<AssetContentProps> = (props) => {
       headerName: "Nama Asset",
       field: "nama",
       width: 300,
+      // flex: 1,
       cellStyle: {
         display: "flex",
         justifyContent: "center",
@@ -132,7 +141,11 @@ const AssetContent: Component<AssetContentProps> = (props) => {
     {
       headerName: "Jarak",
       field: "jarak",
+<<<<<<< HEAD
       width: 180,
+=======
+      width: 180, 
+>>>>>>> 63af83c73f0f2b0f1d0497d47d7e7bb05f076a24
       headerClass: 'ag-header-cell',
       cellStyle: {
         display: "flex",
@@ -151,6 +164,17 @@ const AssetContent: Component<AssetContentProps> = (props) => {
         alignItems: "center",
       }, cellClass: "center-cell",
     },
+    // {
+    //   headerName: "Position",
+    //   field: "position",
+    //   width: 90,
+    //   flex: 1,
+    //   cellStyle: {
+    //     display: "flex",
+    //     justifyContent: "center",
+    //     alignItems: "center",
+    //   }, cellClass: "center-cell",
+    // },
   ]);
   const [columnDefsDataAssetPos, setColumnDefsDataAssetPos]: any = createSignal([
     {
@@ -202,6 +226,7 @@ const AssetContent: Component<AssetContentProps> = (props) => {
       field: "",
       headerName: "Aksi",
       width: 130,
+      // flex: 1,
       cellStyle: {
         display: "flex",
         justifyContent: "center",
@@ -210,6 +235,77 @@ const AssetContent: Component<AssetContentProps> = (props) => {
       cellRenderer: ButtonRenderer,
     },
   ]);
+  // const [columnDefsDataAsset, setColumnDefsDataAsset]: any = createSignal([
+  //   {
+  //     headerName: "Titik", 
+  //     field: "titik",
+  //     width: 120,
+  //     flex: 1,
+  //     cellStyle: {
+  //       display: "flex",
+  //       justifyContent: "center",
+  //       alignItems: "center",
+  //     }, cellClass: "center-cell",
+  //   }, 
+  //   {
+  //     field: "lokasi",
+  //     headerName: "Lokasi",
+  //     width: 110,
+  //     flex: 1,
+  //     cellStyle: {
+  //       display: "flex",
+  //       justifyContent: "center",
+  //       alignItems: "center",
+  //     },
+  //   },
+  //   {
+  //     headerName: "Latitude", 
+  //     field: "latitude",
+  //     width: 100,
+  //     flex: 1,
+  //     cellStyle: {
+  //       display: "flex",
+  //       justifyContent: "center",
+  //       alignItems: "center",
+  //     }, cellClass: "center-cell",
+  //   }, 
+  //   {
+  //     headerName: "Longitude", 
+  //     field: "longitude",
+  //     width: 120,
+  //     flex: 1,
+  //     cellStyle: {
+  //       display: "flex",
+  //       justifyContent: "center",
+  //       alignItems: "center",
+  //     }, cellClass: "center-cell",
+  //   }, 
+  //   {
+  //     headerName: "Jenis", 
+  //     field: "jenis",
+  //     width: 120,
+  //     flex: 1, 
+  //     headerClass: 'ag-header-cell',
+  //     cellStyle: {
+  //       display: "flex",
+  //       // textAlign: "center",
+  //       justifyContent: "center",
+  //       alignItems: "center",
+  //     }, cellClass: "center-cell",
+  //   }, 
+  //   {
+  //     headerName: "Batas", 
+  //     field: "batas",
+  //     width: 90,
+  //     flex: 1,
+  //     cellStyle: {
+  //       display: "flex",
+  //       justifyContent: "center",
+  //       alignItems: "center",
+  //     }, cellClass: "center-cell",
+  //   } 
+  // ]);
+
 
   const [dataAssetPos, setDataAssetPos]: any = createSignal([]);
   const [dataAssetKapal, setDataAssetKapal]: any = createSignal([]);
@@ -229,6 +325,11 @@ const AssetContent: Component<AssetContentProps> = (props) => {
       setDataAssetPos(data.filter);
     })
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 63af83c73f0f2b0f1d0497d47d7e7bb05f076a24
   })
 
   const dataSelectAssetPos = createOptions(
@@ -240,6 +341,10 @@ const AssetContent: Component<AssetContentProps> = (props) => {
     dataAssetKapal,
     { key: "nama" }
   )
+<<<<<<< HEAD
+=======
+
+>>>>>>> 63af83c73f0f2b0f1d0497d47d7e7bb05f076a24
 
 
   const onFilterAssetPos = (event: any) => {
@@ -250,6 +355,10 @@ const AssetContent: Component<AssetContentProps> = (props) => {
     }
 
   }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 63af83c73f0f2b0f1d0497d47d7e7bb05f076a24
 
   const onFilterAssetKapal = (event: any) => {
     if (event == null) {
@@ -261,6 +370,10 @@ const AssetContent: Component<AssetContentProps> = (props) => {
   }
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 63af83c73f0f2b0f1d0497d47d7e7bb05f076a24
   const [scrollBehavior, setScrollBehavior] = createSignal("inside");
   const [isOpenAssetKapal, setIsOpenAssetKapal] = createSignal(false);
   const [AssetPosSelection, setAssetPosSelection] : any = createSignal(null);
@@ -277,6 +390,10 @@ const AssetContent: Component<AssetContentProps> = (props) => {
         setDataAssetPos(data.filter);
       })
     } else { }
+<<<<<<< HEAD
+=======
+    // setPosDetect(res);
+>>>>>>> 63af83c73f0f2b0f1d0497d47d7e7bb05f076a24
   };
 
   const handleKapalDetect = (res: any) => {
@@ -287,16 +404,28 @@ const AssetContent: Component<AssetContentProps> = (props) => {
         setDataAssetKapal(data.filter);
       })
     } else { }
+<<<<<<< HEAD
   };
 
   const onOpenAssetPos = () => setIsOpenAssetPos(true);
   const onCloseAssetPos = () => {
+=======
+    // setPosDetect(res);
+  };
+
+  const onOpenAssetPos = () => setIsOpenAssetPos(true);
+  const onCloseAssetPos = () => { 
+>>>>>>> 63af83c73f0f2b0f1d0497d47d7e7bb05f076a24
     console.log("posDetect => ", posDetect());
     setIsOpenAssetPos(false);
   };
 
   const onOpenAssetPosDelete = () => setIsOpenAssetPosDelete(true);
+<<<<<<< HEAD
   const onCloseAssetPosDelete = () => {
+=======
+  const onCloseAssetPosDelete = () => {  
+>>>>>>> 63af83c73f0f2b0f1d0497d47d7e7bb05f076a24
     setIsOpenAssetPosDelete(false);
   };
   const onOpenAssetPosEdit = (data : any) => {
@@ -304,31 +433,59 @@ console.log("data masuk -> ",data);
 setAssetPosSelection(data);
     setIsOpenAssetPosEdit(true)
   };
+<<<<<<< HEAD
   const onCloseAssetPosEdit = () => {
+=======
+  const onCloseAssetPosEdit = () => {  
+>>>>>>> 63af83c73f0f2b0f1d0497d47d7e7bb05f076a24
     setIsOpenAssetPosEdit(false);
   };
 
 
+<<<<<<< HEAD
   const onOpenAssetKapal = () => setIsOpenAssetKapal(true);
   const onCloseAssetKapal = () => {
     const dataAssetLocal: any = JSON.parse(localStorage.getItem('dataAssetKapal'));
+=======
+
+  const onOpenAssetKapal = () => setIsOpenAssetKapal(true);
+  const onCloseAssetKapal = () => {
+    const dataAssetLocal: any = JSON.parse(localStorage.getItem('dataAssetKapal'));
+    // setDataAsset(dataAssetLocal); 
+    // setRowDataAsset(dataAsset()) 
+>>>>>>> 63af83c73f0f2b0f1d0497d47d7e7bb05f076a24
     setIsOpenAssetKapal(false)
 
   };
 
 
+<<<<<<< HEAD
 
   const onSelectionChange = (event: any) => {
     const selectedData = event.api.getSelectedNodes()[0]?.data;
     if (selectedData) {
 
+=======
+  
+  const onSelectionChange = (event: any) => {
+    const selectedData = event.api.getSelectedNodes()[0]?.data;
+    if (selectedData) {
+  //  console.log("event -> ", selectedData);
+  //  setAssetPosSelection(selectedData)
+>>>>>>> 63af83c73f0f2b0f1d0497d47d7e7bb05f076a24
     }
 
   }
 
+<<<<<<< HEAD
 
   const DeleteAssetPos = () => {
    console.log("event -> delete " , AssetPosSelection());
+=======
+  
+  const DeleteAssetPos = () => { 
+   console.log("event -> delete " , AssetPosSelection()); 
+>>>>>>> 63af83c73f0f2b0f1d0497d47d7e7bb05f076a24
    fetchDataAssetPosDelete(AssetPosSelection().id.id.String).then((data: any) => {
 if(data.status === 'ok'){
     fetchDataAssetPos().then((data: any) => {
@@ -337,14 +494,22 @@ if(data.status === 'ok'){
       setIsOpenAssetPosDelete(false);
     })
   }
+<<<<<<< HEAD
 
+=======
+     
+>>>>>>> 63af83c73f0f2b0f1d0497d47d7e7bb05f076a24
   })
   }
 
   const [isDataKapal, setIsDataKapal] = createSignal(true); // State untuk menentukan tabel yang ditampilkan
   const [selectedData, setSelectedData] = createSignal('kapal'); // Default selection
   const [isDropdownOpen, setIsDropdownOpen] = createSignal(false);
+<<<<<<< HEAD
 
+=======
+ 
+>>>>>>> 63af83c73f0f2b0f1d0497d47d7e7bb05f076a24
   const onChangeDataSelection = (value: string) => {
     setIsDataKapal(value === 'kapal');
     setSelectedData(value); // Update selected data
@@ -355,10 +520,17 @@ if(data.status === 'ok'){
   return (
     <>
 
+<<<<<<< HEAD
 
       {/* Dropdown untuk memilih tabel */}
 
 
+=======
+    
+      {/* Dropdown untuk memilih tabel */}
+      
+
+>>>>>>> 63af83c73f0f2b0f1d0497d47d7e7bb05f076a24
 
       {/* Tampilkan tabel berdasarkan pilihan */}
       {isDataKapal() ? (
@@ -379,8 +551,13 @@ if(data.status === 'ok'){
                     <div style="justify-content: end; align-items: end; display: flex;">
                       <Flex>
                       <div style="position: relative; margin: 0px 0; display: flex; justify-content: flex-end;">
+<<<<<<< HEAD
   <div
     onClick={() => setIsDropdownOpen(!isDropdownOpen())}
+=======
+  <div 
+    onClick={() => setIsDropdownOpen(!isDropdownOpen())} 
+>>>>>>> 63af83c73f0f2b0f1d0497d47d7e7bb05f076a24
     style="padding: 8px;
     border-radius: 4px;
     border: 1px solid #ccc;
@@ -476,8 +653,13 @@ if(data.status === 'ok'){
                     <div style="justify-content: end; align-items: end; display: flex;">
                       <Flex>
                       <div style="position: relative; margin: 0px 0; display: flex; justify-content: flex-end;">
+<<<<<<< HEAD
   <div
     onClick={() => setIsDropdownOpen(!isDropdownOpen())}
+=======
+  <div 
+    onClick={() => setIsDropdownOpen(!isDropdownOpen())} 
+>>>>>>> 63af83c73f0f2b0f1d0497d47d7e7bb05f076a24
     style="padding: 8px;
     border-radius: 4px;
     border: 1px solid #ccc;
@@ -603,7 +785,11 @@ if(data.status === 'ok'){
           <div style="border: 1px solid #c295d0c2;
       background: #817f86;
     border-radius: 20px;">
+<<<<<<< HEAD
         <div style="
+=======
+        <div style="   
+>>>>>>> 63af83c73f0f2b0f1d0497d47d7e7bb05f076a24
     padding: 2.4vh;">  <div style="width:100%" class="dvp">
             <Flex>
               <div style="width:80%">
