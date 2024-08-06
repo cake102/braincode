@@ -385,15 +385,11 @@ dataGisLocal.push(data)
 
   return (
     <>
-      <div style="border: 1px solid #c295d0c2;
-      background: #817f86;
-    border-radius: 20px;">
-        <div style="
-    padding: 2.4vh;">
-
-          <div style="width:100%" class="dvp">
+      <div class="bd-142">
+        <div class="pas-142">
+          <div class="dvp style-142 ">
             <Flex>
-              <div style="width:80%">
+              <div class="style-1421 ">
                 <Flex>
                   <span>
                     <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -408,10 +404,7 @@ dataGisLocal.push(data)
                     </svg>
 
                   </span>
-                  <span style="font-family: 'jaldiBold';
-    color: white;
-    margin-left: 10px;
-    margin-top: 5px;">Tambah Data GIS</span>
+                  <span class="style-font-142 ">Tambah Data GIS</span>
                 </Flex>
               </div>
 
@@ -424,10 +417,7 @@ dataGisLocal.push(data)
           <div id="map-container-add-data-gis ">
             <div id="map-add-data-gis" ref={el => mapRef = el}></div>
             <div id="popup-container-gis-add" style={{ display: 'none' }}>
-              <div style="      margin-top: 10px;
-    background: #85319C80;
-    padding: 20px;
-    padding-left: 30px;">
+              <div class="style-marg-142">
                 <Flex>
                   <div class="fngis">Area Terpilih : {longlatKoor().latitude} ({longlat().latitude}) , {longlatKoor().longitude} ({longlat().longitude})</div>
                   <div>
@@ -445,27 +435,15 @@ dataGisLocal.push(data)
         <ModalOverlay />
         <ModalContent>
           <ModalBody>
-            <div style="    text-align: end;
-    justify-content: end;
-    display: flex;
-    margin-top: 10px;cursor:pointer">
+            <div class="style-mdbd-142 ">
             <AiFillCloseSquare onClick={onClose} class="w20i" />
             </div>
-            <div style="    text-align: center;
-    margin-top: 10px;">
+            <div class="  style-fnt-144">
           <span class="fngisadd">Apakah Anda ingin mengubah nama Area ini?</span>
-           <div style="padding: 35px;
-    padding-top: 10px;
-    padding-bottom: 20px;">
-             <Input onChange={handleChangeNama} style="text-align: center !important;
-    font-family: jaldiBold;
-    border: 1px solid #626262 !important;
-    color: #404040 !important;" placeholder="Ubah Nama" size="sm" />
+           <div class="pad-1583">
+             <Input onChange={handleChangeNama} class="style-hndchgname" placeholder="Ubah Nama" size="sm" />
              </div>
-
-          <div style="text-align: center;
-    margin-bottom: 10px;
-    margin-top: 10px;">
+          <div class="style-btgisadd-1423 ">
             <Button class="btgisadd">
              <span class="fntlsgisadd" onClick={addLocation}>Simpan</span>
               </Button>

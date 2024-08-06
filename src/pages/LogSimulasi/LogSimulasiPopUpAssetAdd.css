@@ -3,7 +3,7 @@
     border-radius: 22px;
 }
 
-.inp{
+.inp {
     background-color: #a7a5aa !important;
     font-family: 'jaldiBold';
     color: white !important;
@@ -12,14 +12,15 @@
 }
 
 .inputfile {
-	width: 0.1px;
-	height: 0.1px;
-	opacity: 0;
-	overflow: hidden;
-	position: absolute;
-	z-index: -1;
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
 }
-.inputfile + label {
+
+.inputfile+label {
     font-size: 1.25em;
     font-weight: 700;
     color: white;
@@ -27,32 +28,36 @@
     display: inline-block;
 }
 
-.inputfile:focus + label,
-.inputfile + label:hover {
+.inputfile:focus+label,
+.inputfile+label:hover {
     background-color: rgba(255, 0, 0, 0);
 }
-.inputfile + label {
-	cursor: pointer; /* "hand" cursor */
+
+.inputfile+label {
+    cursor: pointer;
+    /* "hand" cursor */
 }
 
-.dvp{
+.dvp {
     width: 100% !important;
     border-bottom: 1px solid #979797 !important;
     padding: 20px !important;
     margin-top: -17px;
 }
-.dv{
+
+.dv {
     margin: 10px !important;
 }
-.bt{
+
+.bt {
     background: #9bec00 !important;
     color: #393939 !important;
-    font-family: 'jaldiBold' !important ;
+    font-family: 'jaldiBold' !important;
     width: 125px !important;
     height: 33px !important;
 }
 
-.sp{
+.sp {
     font-family: 'jaldiBold';
     margin-left: 10px;
     margin-top: 3px;
@@ -60,7 +65,7 @@
     color: #24ff47;
 }
 
-.w20{
+.w20 {
     width: 20%;
     text-align: end;
     justify-content: end;
@@ -70,14 +75,13 @@
     color: whitesmoke;
 }
 
-.fp{
+.fp {
     text-align: left;
     justify-content: left;
     display: flex;
-
 }
 
-.cp{
+.cp {
     cursor: pointer;
 }
 
@@ -101,6 +105,31 @@
 .hope-c-jJyNvw {
     justify-content: center;
     margin-top: 3.75rem;
-    margin-bottom: 3.75rem; 
+    margin-bottom: 3.75rem;
     border-radius: 20px !important;
+}
+
+.bd-1234 {
+    border: 1px solid #c295d0c2;
+    background: #817f86;
+    border-radius: 20px;
+}
+
+.pad-1234 {
+    padding: 2.4vh;
+}
+
+.wdt-1234 {
+    padding: 2.4vh;
+}
+
+.style-134 {
+    width: 80%
+}
+
+.font-edt124 {
+    font-family: 'jaldiBold';
+    color: white;
+    margin-left: 10px;
+    margin-top: 5px;
 }

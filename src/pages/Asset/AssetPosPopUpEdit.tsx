@@ -639,9 +639,6 @@ const AssetPosPopUpEdit: Component<AssetPosPopUpEditProps> = (props) => {
             </div>
 
           </div>
-
-
-
         </div>
       </div>
 

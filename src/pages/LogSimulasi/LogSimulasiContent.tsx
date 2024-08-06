@@ -489,13 +489,10 @@ const selectionChangedCallback = (params: any) => {
   return (
     <>
 <div style="width:100%;margin: 5px;">
-  <div style="border: 1px solid #c295d0c2;
-      background: #251c3d;
-    border-radius: 20px;">
-    <div style="    border-bottom: 1px solid #c295d0c2;
-    padding: 2.4vh;">
+  <div class="border-map-tabel">
+    <div class="border-map">
       <Flex>
-        <div style="width:50%">
+        <div class="search-bar">
           <Flex>
 <span>
 <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -511,15 +508,10 @@ const selectionChangedCallback = (params: any) => {
 
 
 </span>
-<span style="font-family: 'jaldiBold';
-    color: white;
-    margin-left: 10px;
-    margin-top: 5px;">Editor Simulator</span>
+<span class="text-editorSimulator">Editor Simulator</span>
 </Flex>
         </div>
-        <div style="width:50%;    width: 50%;
-    justify-content: end;
-    display: flex;">
+        <div class="search-bar1">
           <Flex>
         <BiRegularSearchAlt class="icsearchls" />
         <Select placeholder='Search' class="custom-ls" {...dataSelectEditorSimulator} onChange={(e : any) => onFilterEditor(e)}/>
@@ -529,11 +521,11 @@ const selectionChangedCallback = (params: any) => {
       </Flex>
     </div>
     <Flex>
-    <div style="width:65%">
+    <div class="width-table">
       <LogSimulasiMapEditorSimulator closeSend={onCloseDataEditorSimulator()} sendData={editorSimulatorSend()} />
     </div>
-    <div style="width:35%">
-<div class="ag-theme-balham" style="width:100%;height:400px;border: none;    padding: 2vh;">
+    <div class="width-table1">
+<div class="ag-theme-balham ag-theme-balham-width">
         <AgGridSolid
           columnDefs={columnDefsDataEditorSimulator()}
           rowData={rowDataEditorSimulator()}

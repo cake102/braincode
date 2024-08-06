@@ -1,121 +1,122 @@
-#map-container-rute  {
-    /* position: relative; */
-   
+#map-container-rute {
     padding-top: 15px;
+}
 
-  }
-  
-  #map-rute {
+#map-rute {
     height: 400px;
     width: 100%;
-  }
-  
+}
 
-  .btry{
+.btry {
     background: #9bec00 !important;
     color: #ffffff !important;
     font-family: 'jaldiBold' !important;
     width: 100px !important;
     height: 29px !important;
     font-size: 0.9em !important;
-  }
+}
 
-  .btrn{ 
+.btrn {
     background: #EC1C00 !important;
     color: #ffffff !important;
     font-family: 'jaldiBold' !important;
     width: 100px !important;
     height: 29px !important;
     font-size: 0.9em !important;
-  }
+}
 
-  option[value=""][disabled] {
+option[value=""][disabled] {
     display: none;
-  }
+}
 
-  .dropdown{
+.dropdown {
     position: relative;
     display: inline-block;
     width: 80%;
-
 }
-.dropdown::before{
+
+.dropdown::before {
     color: #9bec00;
     position: absolute;
     content: "\25be";
     top: -7px;
     right: -8px;
-    /* height: 63px; */
-    /* width: 20px; */
     font-size: 24px;
 }
 
 .input-container {
-  position: relative;
-  width: 100%;
+    position: relative;
+    width: 100%;
 }
+
 
 /* Custom styles for the date input */
+
 .custom-date-input {
-  font-family: 'jaldiReg';
-  color: transparent; /* Make text transparent */
-  width: 100%;
-  padding: 0;
-  font-size: 0.8em;
-  border: none;
-  background: none; /* Remove default background */
-  -webkit-appearance: none; /* Remove default styling */
-  -moz-appearance: none;
-  appearance: none;
-  position: relative;
-  z-index: 2;
+    font-family: 'jaldiReg';
+    color: transparent;
+    width: 100%;
+    padding: 0;
+    font-size: 0.8em;
+    border: none;
+    background: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    position: relative;
+    z-index: 2;
 }
+
 
 /* Placeholder styling */
+
 .placeholder {
-  font-family: 'jaldiReg';
-  position: absolute;
-  top: 50%;
-  left: 10px;
-  transform: translateY(-50%);
-  color: #9bec00;
-  pointer-events: none;
-  font-size: 0.8em;
+    font-family: 'jaldiReg';
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    color: #9bec00;
+    pointer-events: none;
+    font-size: 0.8em;
 }
+
 
 /* When the input has a value, make the text visible */
+
 .custom-date-input:not(.empty) {
-  color: #9bec00;
+    color: #9bec00;
 }
+
 
 /* Remove calendar icon */
+
 .custom-date-input::-webkit-calendar-picker-indicator {
-  position: absolute;
-  right: 10px;
-  color: transparent;
-  background: none;
-  z-index: 1;
+    position: absolute;
+    right: 10px;
+    color: transparent;
+    background: none;
+    z-index: 1;
 }
 
-  .slc{
+.slc {
     font-family: 'jaldiReg';
     font-size: 0.9em;
     width: 85%;
     color: #9bec00;
     background: none;
-  }
+}
 
-  .slcp{
+.slcp {
     font-family: 'jaldiReg';
     font-size: 0.9em;
     width: 85%;
     color: #699BF7;
     background: none;
-  }
- 
+}
 
-
-  .ipt{width: 90%;
+.ipt {
+    width: 90%;
     height: 25px;
     background: none !important;
     border: 1px solid white !important;
@@ -125,7 +126,125 @@
     padding-left: 5px;
 }
 
-::placeholder{
-  color: rgb(168, 167, 167) !important;
-  
+ ::placeholder {
+    color: rgb(168, 167, 167) !important;
+}
+
+.style-9836 {
+    border: 1px solid #c295d0c2;
+    background: #817f86;
+    border-radius: 20px;
+}
+
+.pad-9836 {
+    padding: 2.4vh;
+}
+
+.style-wdt-9836 {
+    width: 100%
+}
+
+.style1-9836 {
+    width: 80%
+}
+
+.font-head1-rute-9836 {
+    font-family: 'jaldiBold';
+    color: white;
+    margin-left: 10px;
+    margin-top: 5px;
+}
+
+.contain-9836 {
+    right: 10px;
+    top: 13px;
+    margin-bottom: -192px;
+    z-index: 10;
+    float: inline-end;
+    background: none !important;
+    position: relative !important;
+    width: 400px;
+}
+
+.style-font-9836 {
+    text-align: center;
+    font-family: 'jaldiBold';
+    font-size: 0.9em;
+    height: 45px;
+    backdrop-filter: blur(3px);
+    padding-top: 11px;
+    background: #ffffff8a;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    color: white;
+}
+
+.class-wdt-waktu-9836 {
+    width: 40%
+}
+
+.class-wdt-asset-9836 {
+    width: 20%
+}
+
+.class-wdt-posisi-9836 {
+    width: 40%
+}
+
+.style-bg-9836 {
+    background: #ffffff45;
+    backdrop-filter: blur(1px);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.wdt-9836-flex1 {
+    width: 40%
+}
+
+.style-9348 {
+    width: 30%;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: grid;
+}
+
+.marg-style-7635 {
+    margin-top: 11px;
+}
+
+.marg-top-00012 {
+    margin-top: 11px;
+}
+
+.div-class-wdt {
+    width: 70%
+}
+
+.div-margtop {
+    margin-top: 11px;
+}
+
+.div-margtop-0238 {
+    margin-top: 11px;
+}
+
+.div-syrgt {
+    width: 30%
+}
+
+.margTop-1325 {
+    margin-top: 10px;
+}
+
+.marg-top-435 {
+    margin-top: 10px;
+}
+
+.flex-style06482 {
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    margin-top: 10px;
 }

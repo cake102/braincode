@@ -11,9 +11,6 @@ import { BiRegularSearchAlt } from 'solid-icons/bi'
 import { Button } from "@hope-ui/solid"
 import { OcDotfill2 } from 'solid-icons/oc'
 
-
-
-
 type RekamMomenSideBarProps = {};
 
 const RekamMomenSideBar: Component<RekamMomenSideBarProps> = (props) => {

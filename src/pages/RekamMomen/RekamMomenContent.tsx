@@ -40,7 +40,6 @@ const RekamMomenContent: Component<RekamMomenContentProps> = (props) => {
     }
   ])
 
-
   const completeStep = (index: number) => {
     setSteps((steps) =>
       steps.map((step, i) =>

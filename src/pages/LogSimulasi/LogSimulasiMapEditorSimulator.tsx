@@ -470,22 +470,14 @@ const handleRuteKapalDetect = (res: any) => {
 
     <>
     <div id="map-container">
-       <Button   onClick={onOpenDataRute} style="
-              margin-bottom: -10vh;
-    right: 10px;
-    top: 10px;
-    z-index: 10;
-    float: inline-end;" class="btstatyls"   leftIcon={<AiOutlinePlus boxSize={18} style="color:black"  />}>
+       <Button   onClick={onOpenDataRute} class="btstatyls bt-margin-simulasi"   leftIcon={<AiOutlinePlus boxSize={18} style="color:black"  />}>
                                 <span class="fntls">Tambah</span>
                             </Button>
       <div id="map-simulator" ref={el => mapRef = el}>
 
       </div>
       <div id="popup-container-gis-simulator" style={{ display: 'none' }}>
-              <div style="      margin-top: 10px;
-    background: #85319C80;
-    padding: 20px;
-    padding-left: 30px;">
+              <div class="margin-width-bg">
                 <Flex>
                   <div class="fngis">Area Terpilih : {longlatKoor().latitude} ({longlat().latitude}) , {longlatKoor().longitude} ({longlat().longitude})</div>
                   <div>

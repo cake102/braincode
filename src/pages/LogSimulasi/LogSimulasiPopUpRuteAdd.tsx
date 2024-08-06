@@ -692,16 +692,11 @@ const LogSimulasiPopUpRuteAdd: Component<LogSimulasiPopUpRuteAddProps> = (props)
 
     return (
         <>
-
-            <div style="border: 1px solid #c295d0c2;
-      background: #817f86;
-    border-radius: 20px;">
-                <div style="
-    padding: 2.4vh;">
-
-                    <div style="width:100%" class="dvp">
+            <div class="style-9836">
+                <div class="pad-9836">
+                    <div class="dvp style-wdt-9836 ">
                         <Flex>
-                            <div style="width:80%">
+                            <div class="style1-9836">
                                 <Flex>
                                     <span>
                                         <svg width="26" height="25" viewBox="0 0 26 25" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -710,68 +705,40 @@ const LogSimulasiPopUpRuteAdd: Component<LogSimulasiPopUpRuteAddProps> = (props)
 
 
                                     </span>
-                                    <span style="font-family: 'jaldiBold';
-    color: white;
-    margin-left: 10px;
-    margin-top: 5px;">Tambah Rute Kapal</span>
+                                    <span class="font-head1-rute-9836">Tambah Rute Kapal</span>
                                 </Flex>
                             </div>
 
                             <div class="w20">
-                                <AiFillCloseSquare onClick={() => props.closeSend} class="cp" style="cursor:pointer" />
+                                <AiFillCloseSquare onClick={() => props.closeSend} class="cp"/>
 
                             </div>
                         </Flex>
                     </div>
 
-
-
                     <div id="map-container-rute ">
-                        <div style="right: 10px;
-    top: 13px;
-    margin-bottom: -192px;
-    z-index: 10;
-    float: inline-end;
-    background: none !important;
-    position: relative !important;
-    width: 400px;" >
+                        <div class="contain-9836" >
                             <div>
-                                <div style="    text-align: center;
-    font-family: 'jaldiBold';
-    font-size: 0.9em;
-    height: 45px;
-    backdrop-filter: blur(3px);
-    padding-top: 11px;
-    background: #ffffff8a;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    color: white;">
+                                <div class="style-font-9836">
                                     <Flex>
-                                        <div style="width:40%">Waktu & Tanggal</div>
-                                        <div style="width:20%">Asset</div>
-                                        <div style="width:40%">Posisi</div>
+                                        <div class="class-wdt-waktu-9836">Waktu & Tanggal</div>
+                                        <div class="class-wdt-asset-9836">Asset</div>
+                                        <div class="class-wdt-posisi-9836">Posisi</div>
                                     </Flex>
                                 </div>
-                                <div style="    background: #ffffff45;
-    backdrop-filter: blur(1px);
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;">
+                                <div class="style-bg-9836 ">
                                     <Flex>
-                                        <div style="width:40%">
+                                        <div class="wdt-9836-flex1">
                                             <Flex>
-                                                <div style="    width: 30%;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    display: grid;">
-                                                    <div style="    margin-top: 11px;">
+                                                <div class="style-9348">
+                                                    <div class=" marg-style-7635 ">
                                                         <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <circle cx="7.5" cy="7.5" r="7.5" fill="#699BF7" fill-opacity="0.4" />
                                                             <circle cx="7.25" cy="7.25" r="3.75" fill="#699BF7" />
                                                         </svg>
 
                                                     </div>
-                                                    <div style="    margin-top: 11px;">
+                                                    <div class="  marg-top-00012">
                                                         <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <circle cx="7.5" cy="7.5" r="7.5" fill="#EC1C00" fill-opacity="0.2" />
                                                             <circle cx="7.25" cy="7.25" r="3.75" fill="#EC1C00" />
@@ -779,8 +746,8 @@ const LogSimulasiPopUpRuteAdd: Component<LogSimulasiPopUpRuteAddProps> = (props)
 
                                                     </div>
                                                 </div>
-                                                <div style="width:70%">
-                                                    <div style="    margin-top: 11px;">
+                                                <div class="div-class-wdt">
+                                                    <div class="div-margtop">
                                                         <div class="dropdown">
                                                             <div class="input-container">
                                                                 <input
@@ -796,7 +763,7 @@ const LogSimulasiPopUpRuteAdd: Component<LogSimulasiPopUpRuteAddProps> = (props)
 
                                                         </div>
                                                     </div>
-                                                    <div style="    margin-top: 11px;">
+                                                    <div class="div-margtop-0238 ">
                                                         <div class="dropdown">
                                                             <div class="input-container">
                                                                 <input
@@ -814,8 +781,8 @@ const LogSimulasiPopUpRuteAdd: Component<LogSimulasiPopUpRuteAddProps> = (props)
                                                 </div>
                                             </Flex>
                                         </div>
-                                        <div style="width:30%">
-                                            <div style="    margin-top: 10px;">
+                                        <div class="div-syrgt">
+                                            <div class="margTop-1325 ">
                                                 <select name="aset" id="aset" class="slc" value={selectedValueAsetFrom()} onInput={handleSelectChangeAsetFrom}>
                                                     <option value={null} selected disabled hidden>Pilih Aset</option>
                                                     <For each={dataAsset()}>{(e: any, i) =>
@@ -823,7 +790,7 @@ const LogSimulasiPopUpRuteAdd: Component<LogSimulasiPopUpRuteAddProps> = (props)
                                                     }</For>
                                                 </select>
                                             </div>
-                                            <div style="    margin-top: 10px;">
+                                            <div class="marg-top-435">
                                                 <select name="aset" id="asets" class="slc" value={selectedValueAsetFrom()} onInput={handleSelectChangeAsetFrom}>
                                                     <option value={null} selected disabled hidden>Pilih Aset</option>
                                                     <For each={dataAsset()}>{(e: any, i) =>
@@ -844,7 +811,7 @@ const LogSimulasiPopUpRuteAdd: Component<LogSimulasiPopUpRuteAddProps> = (props)
 
                                     <div>
 
-                                        <div style="text-align: center; justify-content: center;display: flex;    margin-top: 10px;">
+                                        <div class="flex-style06482 ">
                                             <Flex>
                                                 <div onClick={resetSelect} style="    margin: 7px;"><Button class="btrn" >Reset</Button></div>
                                                 <div onClick={addSelect} style="    margin: 7px;"><Button class="btry" >Simpan</Button></div>
