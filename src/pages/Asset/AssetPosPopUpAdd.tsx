@@ -423,10 +423,9 @@ const AssetPosPopUpAdd: Component<AssetPosPopUpAddProps> = (props) => {
     <>
 
       <div style="border: 1px solid #c295d0c2;
-      background: #817f86;
-    border-radius: 20px;">
-        <div style="   
-    padding: 2.4vh;">
+                    background: #817f86;
+                  border-radius: 20px;">
+        <div style="padding: 2.4vh;">
 
           <div style="width:100%" class="dvp">
             <Flex>
@@ -436,15 +435,14 @@ const AssetPosPopUpAdd: Component<AssetPosPopUpAddProps> = (props) => {
                     <img src='/asset_pos.png' style="width:30px;height:30px"></img>
                   </span>
                   <span style="font-family: 'jaldiBold';
-    color: white;
-    margin-left: 10px;
-    margin-top: 5px;">Tambah Data POS</span>
+                                color: white;
+                                margin-left: 10px;
+                                margin-top: 5px;">Tambah Data POS</span>
                 </Flex>
               </div>
 
               <div class="w20">
                 <AiFillCloseSquare onClick={() => props.closeSend} class="cp" style="cursor:pointer" />
-
               </div>
             </Flex>
           </div>
@@ -506,12 +504,9 @@ const AssetPosPopUpAdd: Component<AssetPosPopUpAddProps> = (props) => {
                             margin-top: 10px;cursor:pointer">
                   <AiFillCloseSquare onClick={onClose} class="w20i" />
                 </div>
-                <div style="text-align: center;
-                            margin-top: 10px;">
+                <div class="pop-up-123">
                   <span class="fngisadd">Tambah Data POS</span>
-                  <div style="padding: 35px;
-                              padding-top: 20px;
-                              padding-bottom: 0px;">
+                  <div class="ga-style">
                     <Input onChange={handleChangeNama} style="text-align: center !important;
                               font-family: jaldiBold;
                               border: 1px solid #626262 !important;

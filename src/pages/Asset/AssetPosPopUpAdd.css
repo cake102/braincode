@@ -1,4 +1,4 @@
-/* Map Container Styles */
+
 #map-container-asset-pos {
   padding-top: 15px;
 }
@@ -8,7 +8,7 @@
   width: 100%;
 }
 
-/* General Styles */
+
 .hope-c-jJyNvw-fuVnmB-size-xl {
   border-radius: 22px !important;
 }
@@ -41,7 +41,7 @@
   background-color: #a2a0a0 !important;
 }
 
-/* Input Styles */
+
 .inp {
   background-color: #a7a5aa !important;
   font-family: 'jaldiBold';
@@ -65,7 +65,7 @@
   color: white;
   background-color: rgba(0, 0, 0, 0);
   display: inline-block;
-  cursor: pointer; /* "hand" cursor */
+  cursor: pointer; 
 }
 
 .inputfile:focus + label,
@@ -73,7 +73,6 @@
   background-color: rgba(255, 0, 0, 0);
 }
 
-/* Button Styles */
 .dvp {
   width: 100% !important;
   border-bottom: 1px solid #979797 !important;
@@ -145,7 +144,6 @@
   color: #24ff47;
 }
 
-/* Layout and Display Styles */
 .fp {
   text-align: left;
   justify-content: left;
@@ -156,7 +154,6 @@
   cursor: pointer;
 }
 
-/* Google Maps Styles */
 .gm-style-iw-chr {
   display: -webkit-box;
   display: -webkit-flex;
@@ -177,4 +174,15 @@
 .gm-style .gm-style-iw-c {
   box-shadow: none !important;
   background-color: transparent !important;
+}
+
+.pop-up-123 {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.ga-style{
+    padding: 35px;
+    padding-top: 20px;
+    padding-bottom: 0px;
 }

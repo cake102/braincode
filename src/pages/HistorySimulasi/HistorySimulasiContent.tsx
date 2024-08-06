@@ -52,14 +52,14 @@ const HistorySimulasiContent: Component<HistorySimulasiContentProps> = (props) =
     <>
       <div class="fl">
         <div style="height: 100px;
-    align-items: center;
-    display: grid;
-    border-bottom: 1px solid #9b76ab;">
+                    align-items: center;
+                    display: grid;
+                    border-bottom: 1px solid #9b76ab;">
           <Flex>
             <div style="width:32%;justify-content: left;
-    align-items: center;
-    display: flex;
-    font-family: 'jaldiBold';">
+                        align-items: center;
+                        display: flex;
+                        font-family: 'jaldiBold';">
               <span style="margin-left: 30px;">Ly Thai To</span>
             </div>
             <div style="width:46%;font-family: 'jaldiReg'; font-size: 0.8em;color: lightgrey;">
@@ -87,18 +87,17 @@ const HistorySimulasiContent: Component<HistorySimulasiContentProps> = (props) =
                         </clipPath>
                       </defs>
                     </svg>
-
                   </div>
                 </Flex>
               </div>
 
-              <div style="    background: #d1d1d1;
-    height: 10px;
-    border-radius: 10px;">
-                <div style="    background: #85319c;
-    height: 10px;
-    border-radius: 10px;
-    width: 65%;">
+              <div style="background: #d1d1d1;
+                          height: 10px;
+                          border-radius: 10px;">
+                <div style="background: #85319c;
+                          height: 10px;
+                          border-radius: 10px;
+                          width: 65%;">
                 </div>
               </div>
               <div>
@@ -116,11 +115,10 @@ const HistorySimulasiContent: Component<HistorySimulasiContentProps> = (props) =
               </div>
             </div>
             <div style="width:32%;justify-content: end;
-    align-items: end;
-    display: flex;
-    font-family: 'jaldiBold';">
-              <Button class="btstaty-lsct" style="    margin-right: 20px;">
-                <span>On Track</span>
+                        align-items: end;
+                        display: flex;
+                        font-family: 'jaldiBold';">
+              <Button class="btstaty-lsct" style="margin-right: 20px;"><span>On Track</span>
               </Button>
             </div>
           </Flex>
@@ -129,19 +127,18 @@ const HistorySimulasiContent: Component<HistorySimulasiContentProps> = (props) =
           <Flex >
             <div style="width:35%" >
               <div style="box-shadow: 0px 4px 4px 0px #00000040;
-    text-align: center;
-    display: grid;padding-bottom: 20px;
-    align-items: center;
-    margin: 10px;" class="flc">
+                          text-align: center;
+                          display: grid;padding-bottom: 20px;
+                          align-items: center;
+                          margin: 10px;" class="flc">
                 <div style="margin: 2vh;
-    font-size: 1em;
-    font-family: 'jaldiBold';
-    text-align: left;
-    margin-bottom: 5vh;
-">Tracking Kapal Ly Thai To</div>
-                <div style="    font-family: 'jaldiReg';
-    color: #bbbbbb;
-    font-size: 0.9em;
+                            font-size: 1em;
+                            font-family: 'jaldiBold';
+                            text-align: left;
+                            margin-bottom: 5vh;">Tracking Kapal Ly Thai To</div>
+                <div style="font-family: 'jaldiReg';
+                            color: #bbbbbb;
+                            font-size: 0.9em;
 ">
                   {stepper().map((step, index) => (
                     <>
@@ -150,11 +147,8 @@ const HistorySimulasiContent: Component<HistorySimulasiContentProps> = (props) =
                           when={step.status !== 'no'}
                           fallback={
                             <>
-
                               <Flex >
-                                <div style="    font-size: 1em; width:40%;
-    font-family: 'jaldiReg';
-">{step.tanggal}</div>
+                                <div style="font-size: 1em; width:40%;font-family: 'jaldiReg';">{step.tanggal}</div>
                                 <div style="width:10%;">
                                   <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <circle cx="15" cy="15" r="15" fill="#928F8F" fill-opacity="0.3" />
@@ -162,21 +156,18 @@ const HistorySimulasiContent: Component<HistorySimulasiContentProps> = (props) =
                                   </svg>
                                 </div>
                                 <div style="font-size: 1em; width:50%;
-    font-family: 'jaldiReg';
-    margin-left: 10px;    text-align: left;">
-                                  <div style="      margin-top: -7px;
-    margin-bottom: -5px;">{step.waktu}</div>
+                                            font-family: 'jaldiReg';
+                                            margin-left: 10px;    
+                                            text-align: left;">
+                                  <div style="margin-top: -7px;margin-bottom: -5px;">{step.waktu}</div>
                                   <div>{step.tempat}</div>
-
                                 </div>
                               </Flex>
                             </>
                           }
                         >
                           <Flex >
-                            <div style="    font-size: 1em; width:40%;
-    font-family: 'jaldiReg';
-">{step.tanggal}</div>
+                            <div style="font-size: 1em; width:40%;font-family: 'jaldiReg';">{step.tanggal}</div>
                             <div style=" width:10%;">
                               <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <circle cx="15" cy="15" r="15" fill="#699BF7" fill-opacity="0.4" />
@@ -184,27 +175,25 @@ const HistorySimulasiContent: Component<HistorySimulasiContentProps> = (props) =
                               </svg>
                             </div>
                             <div style="font-size: 1em; width:50%;
-    font-family: 'jaldiReg';
-    margin-left: 10px;     text-align: left;
+                                        font-family: 'jaldiReg';
+                                        margin-left: 10px;     
+                                        text-align: left;
 ">
-                              <div style="      margin-top: -7px;
-    margin-bottom: -5px;">{step.waktu}</div>
+                              <div style="margin-top: -7px;margin-bottom: -5px;">{step.waktu}</div>
                               <div>{step.tempat}</div>
 
                             </div>
                           </Flex>
-
                           <Flex>
                             <div style="width:40%"></div>
-                          <div style="      height: 150px;
-    border-left: 1px dashed #a5a5a5;
-    padding-top: 95px;width:10%;
-        justify-content: center;
-    display: inline-grid;
-    margin-top: -30px;    margin-left: 1vw;
-
-">
-                            <svg style="    margin-left: -17px;" width="50" height="50" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <div style="height: 150px;
+                                      border-left: 1px dashed #a5a5a5;
+                                      padding-top: 95px;width:10%;
+                                      justify-content: center;
+                                      display: inline-grid;
+                                      margin-top: -30px;    
+                                      margin-left: 1vw;">
+                            <svg style="margin-left: -17px;" width="50" height="50" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                               <path d="M14.9998 11.3344V13.1251H26.8817C27.0266 13.1253 27.1695 13.1592 27.2991 13.2239C27.4287 13.2887 27.5416 13.3826 27.6288 13.4984C27.716 13.6141 27.7752 13.7485 27.8017 13.8909C27.8282 14.0334 27.8214 14.1801 27.7817 14.3194L25.5411 22.1701C25.2053 23.3456 24.4956 24.3797 23.5196 25.1159C22.5435 25.8521 21.3542 26.2502 20.1317 26.2501H9.86793C8.64538 26.2502 7.45607 25.8521 6.48002 25.1159C5.50398 24.3797 4.79435 23.3456 4.45855 22.1701L2.21605 14.3194C2.17635 14.1801 2.16949 14.0334 2.19602 13.8909C2.22255 13.7485 2.28174 13.6141 2.36895 13.4984C2.45616 13.3826 2.569 13.2887 2.69863 13.2239C2.82826 13.1592 2.97114 13.1253 3.11605 13.1251H13.1248V3.45381C13.1247 3.29101 13.167 3.13099 13.2475 2.98949C13.328 2.84799 13.444 2.7299 13.584 2.64683C13.724 2.56377 13.8832 2.5186 14.046 2.51577C14.2088 2.51294 14.3695 2.55254 14.5123 2.63069L14.9192 2.85381L14.9998 2.81256V2.89694L21.7873 6.60006C21.9402 6.68342 22.0669 6.80772 22.1531 6.95904C22.2393 7.11035 22.2817 7.28269 22.2755 7.45673C22.2693 7.63078 22.2147 7.79965 22.1178 7.94441C22.021 8.08917 21.8858 8.2041 21.7273 8.27631L14.9998 11.3344ZM14.9998 9.27569L19.2411 7.34819L14.9998 5.03444V9.27569ZM14.9998 15.0001H4.36105L4.89543 16.8751H25.1061L25.6404 15.0001H14.9998ZM5.43168 18.7501L6.2623 21.6563C6.48636 22.4397 6.95946 23.1287 7.61 23.6193C8.26055 24.1098 9.05317 24.3751 9.86793 24.3751H20.1317C20.9464 24.3751 21.7391 24.1098 22.3896 23.6193C23.0402 23.1287 23.5132 22.4397 23.7373 21.6563L24.5679 18.7501H5.43168Z" fill="#699BF7" />
                             </svg>
                           </div>
@@ -215,41 +204,35 @@ const HistorySimulasiContent: Component<HistorySimulasiContentProps> = (props) =
                     </>
                   ))}
                 </div>
-
               </div>
 
               <div style="box-shadow: 0px 4px 4px 0px #00000040;
-    text-align: center;
-    display: grid;padding-bottom: 20px;
-    align-items: center;
-    margin: 10px;" class="flc">
+                          text-align: center;
+                          display: grid;padding-bottom: 20px;
+                          align-items: center;
+                          margin: 10px;" class="flc">
 
       <div style="text-align: left;
-    font-size: 1.1em;
-    font-family: 'jaldiBold';
-    margin: 2vh;">Informasi Umum Kapal</div>
+                  font-size: 1.1em;
+                  font-family: 'jaldiBold';
+                  margin: 2vh;">Informasi Umum Kapal</div>
       <div>
         <Flex>
-          <div style="width:30%;    text-align: center;
-    margin-left: 1.1vw;">
+          <div style="width:30%;text-align: center;margin-left: 1.1vw;">
           <img src={`/public/pp.png`} />
           </div>
-          <div style="width:70%;text-align: left;
-    font-family: 'jaldiReg';
-    margin-top: 1vh;">
+          <div style="width:70%;text-align: left;font-family: 'jaldiReg';margin-top: 1vh;">
             <div><span>Kapten: Alex Turner</span></div>
             <div><span>628122278895647</span></div>
           </div>
         </Flex>
       </div>
-      <div style="    margin: 2vh;
-    margin-top: 0vh;
-    margin-bottom: -1vh;">
+      <div style="margin: 2vh;margin-top: 0vh; margin-bottom: -1vh;">
         <Flex style="margin: 1vh;
-    font-family: jaldiReg;
-    margin-top: 10px;
-    text-align: left;
-    font-size: 0.8em;">
+                    font-family: jaldiReg;
+                    margin-top: 10px;
+                    text-align: left;
+                    font-size: 0.8em;">
           <div style="width:50%">
           <span style=" font-family: jaldiBold;">Model : </span>
           <span>Ly Thai To</span>
@@ -260,10 +243,10 @@ const HistorySimulasiContent: Component<HistorySimulasiContentProps> = (props) =
           </div>
         </Flex>
         <Flex style="margin: 1vh;
-    font-family: jaldiReg;
-    margin-top: 10px;
-    text-align: left;
-    font-size: 0.8em;">
+                    font-family: jaldiReg;
+                    margin-top: 10px;
+                    text-align: left;
+                    font-size: 0.8em;">
           <div style="width:50%">
           <span style=" font-family: jaldiBold;">Kecepatan : </span>
           <span>26 Knot</span>
@@ -286,7 +269,6 @@ const HistorySimulasiContent: Component<HistorySimulasiContentProps> = (props) =
             </div>
             <div style="width:65%;margin-top: 1.7vh;
     margin-right: 1.7vh;" >
-              {/* <MapView /> */}
               <MapSet />
             </div>
           </Flex>

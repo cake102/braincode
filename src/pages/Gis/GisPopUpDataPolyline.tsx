@@ -269,12 +269,9 @@ const GisPopUpDataPolyline: Component<GisPopUpDataPolylineProps> = (props) => {
         if (markers().length >= 2) {
 
           console.log( "marker -> ", markers())
-
-          // Get positions of the first and second markers
           const firstMarkerPos = markers()[0].getPosition();
           const secondMarkerPos = markers()[1].getPosition();
 
-          // Restrict clicks outside the bounds of the markers
           if (!isPointWithinBounds(event.latLng, firstMarkerPos, secondMarkerPos)) {
             return;
           }
@@ -566,23 +563,15 @@ const GisPopUpDataPolyline: Component<GisPopUpDataPolylineProps> = (props) => {
 
   return (
     <>
-      <div style="border: 1px solid #c295d0c2;
-      background: #817f86;
-    border-radius: 20px;">
-        <div style="
-    padding: 2.4vh;">
-
+      <div class="container-polyline">
           <div style="width:100%" class="dvp">
             <Flex>
               <div style="width:80%">
                 <Flex>
                 <span>
-                        <img src='/polyline.png' style="width:30px;height:30px"></img>
+                        <img src='/polyline.png' class="img-polyline"></img>
                       </span>
-                  <span style="font-family: 'jaldiBold';
-    color: white;
-    margin-left: 10px;
-    margin-top: 5px;">Tambah Data Line</span>
+                  <span class="text-polyline">Tambah Data Line</span>
                 </Flex>
               </div>
 
@@ -613,14 +602,11 @@ const GisPopUpDataPolyline: Component<GisPopUpDataPolylineProps> = (props) => {
   </Alert>
 </Show>
             <div id="popup-container-gis-add" style={{ display: 'none' }}>
-              <div style="      margin-top: 10px;
-    background: #85319C80;
-    padding: 20px;
-    padding-left: 30px;">
+              <div class="popup-container-polyline">
                 <Flex>
                   <div class="fngis">Garis Terpilih : titik longlat 1 , titik longlat 2</div>
                   <div>
-                    <Button id="myButton" class="btgis" leftIcon={<AiOutlinePlus boxSize={18} style="color:black;    font-size: 13px !important;" />}>
+                    <Button id="myButton" class="btgis" leftIcon={<AiOutlinePlus boxSize={18} class="button-add" />}>
                       <span class="fntlsgis">Tambah</span>
                     </Button>
                   </div>
@@ -633,27 +619,16 @@ const GisPopUpDataPolyline: Component<GisPopUpDataPolylineProps> = (props) => {
         <ModalOverlay />
         <ModalContent>
           <ModalBody>
-            <div style="    text-align: end;
-    justify-content: end;
-    display: flex;
-    margin-top: 10px;cursor:pointer">
+            <div class="button-close">
             <AiFillCloseSquare onClick={onClose} class="w20i" />
             </div>
-            <div style="    text-align: center;
-    margin-top: 10px;">
+            <div class="container-text">
           <span class="fngisadd">Apakah Anda ingin mengubah nama Garis ini?</span>
-           <div style="padding: 35px;
-    padding-top: 10px;
-    padding-bottom: 20px;">
-             <Input onChange={handleChangeNama} style="text-align: center !important;
-    font-family: jaldiBold;
-    border: 1px solid #626262 !important;
-    color: #404040 !important;" placeholder="Ubah Nama" size="sm" />
+           <div class="container-column">
+             <Input onChange={handleChangeNama} class="text-column" placeholder="Ubah Nama" size="sm" />
              </div>
 
-          <div style="text-align: center;
-    margin-bottom: 10px;
-    margin-top: 10px;">
+          <div class="container-text">
             <Button class="btgisadd">
              <span class="fntlsgisadd" onClick={addLocation}>Simpan</span>
               </Button>
@@ -662,7 +637,7 @@ const GisPopUpDataPolyline: Component<GisPopUpDataPolylineProps> = (props) => {
           </ModalBody>
         </ModalContent>
       </Modal>
-        </div>
+        
       </div>
     </>
   );

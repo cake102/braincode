@@ -16,14 +16,12 @@ const Gis: Component<GisProps> = (props) =>  {
 
   const navigate = useNavigate();
   onMount(() => {
-    //  navigate(`/ops-al/log-simulasi`);
   })
   return (
     <>
     <div class="ls1"> 
     <GisContent />
     </div> 
-    {/* <div><MapSet /></div> */}
     </>
   );
 }

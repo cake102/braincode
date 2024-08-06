@@ -1,8 +1,5 @@
-#map-container-asset-pos-edit  {
-    /* position: relative; */
-   
+#map-container-asset-pos-edit  {   
     padding-top: 0px;
-
   }
   
   #map-asset-pos-edit {
@@ -44,7 +41,7 @@
     background-color: rgba(255, 0, 0, 0);
 }
 .inputfile + label {
-	cursor: pointer; /* "hand" cursor */
+	cursor: pointer; 
 }
 
 .dvp{
@@ -106,7 +103,6 @@
 .hope-c-mWwdD-dWksIc-scrollBehavior-inside {
     overflow: auto;
     background: #817f86 !important;
-    /* border-radius: 30px; */
 }
 
 .hope-c-mWwdD {
@@ -156,18 +152,15 @@
 
 .fntlsgis {
     font-family: 'jaldiBold' !important;
-    /* font-size: 1em !important; */
     color: #6a6a6a !important;
     font-size: 14px;
 }
 
 .fngisadd{    font-family: 'jaldiBold';
-    /* padding-top: 4px; */
     color: rgb(76, 76, 76);
 }
 .fntlsgisadd {
     font-family: 'jaldiBold' !important;
-    /* font-size: 1em !important; */
     color: #6a6a6a !important;
     font-size: 16px;
 }

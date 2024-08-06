@@ -1,6 +1,9 @@
 #map-container {
-    /* position: relative; */
     padding: 2vh;
+    margin-top: 10px;
+    background:  #85319C80;
+    padding: 20px;
+    padding-left: 30px;
   }
   
   #map-gis {

@@ -157,10 +157,9 @@ const LogSimulasiPopUpRuteAdd: Component<LogSimulasiPopUpRuteAddProps> = (props)
         }
         localStorage.setItem('mapData', JSON.stringify(dataDefault));
         const data = JSON.parse(localStorage.getItem('mapData'));
+
         if (data) {
             const gmaps = map();
-
-            // Load markers
             const newMarkers = data.markers.map(position => {
                 const marker = new google.maps.Marker({
                     position,
@@ -173,15 +172,11 @@ const LogSimulasiPopUpRuteAdd: Component<LogSimulasiPopUpRuteAddProps> = (props)
                 });
 
                 marker.addListener("drag", () => {
-
-                    // Update the path of the polyline when marker is dragged
                     const markerIndex = markers().indexOf(marker);
                     polyline().getPath().setAt(markerIndex, marker.getPosition());
                 });
 
                 marker.addListener("click", () => {
-
-                    // Remove marker and update polyline
                     marker.setMap(null);
                     const markerIndex = markers().indexOf(marker);
                     polyline().getPath().removeAt(markerIndex);
@@ -193,7 +188,6 @@ const LogSimulasiPopUpRuteAdd: Component<LogSimulasiPopUpRuteAddProps> = (props)
 
             setMarkers(newMarkers);
 
-            // Load polyline
             const newPolyline = new google.maps.Polyline({
                 path: data.polyline,
                 geodesic: true,
@@ -224,6 +218,7 @@ const LogSimulasiPopUpRuteAdd: Component<LogSimulasiPopUpRuteAddProps> = (props)
     };
 
     onMount(() => {
+
         mapLoader.load().then(() => {
             const gmaps = new google.maps.Map(mapRef as HTMLElement, {
                 center: { lat: -2.5, lng: 118.0 },
@@ -343,11 +338,9 @@ const LogSimulasiPopUpRuteAdd: Component<LogSimulasiPopUpRuteAddProps> = (props)
 
                     console.log( "marker -> ", markers())
 
-                    // Get positions of the first and second markers
                     const firstMarkerPos = markers()[0].getPosition();
                     const secondMarkerPos = markers()[1].getPosition();
 
-                    // Restrict clicks outside the bounds of the markers
                     if (!isPointWithinBounds(event.latLng, firstMarkerPos, secondMarkerPos)) {
                       return;
                     }
@@ -693,12 +686,8 @@ const LogSimulasiPopUpRuteAdd: Component<LogSimulasiPopUpRuteAddProps> = (props)
     return (
         <>
 
-            <div style="border: 1px solid #c295d0c2;
-      background: #817f86;
-    border-radius: 20px;">
-                <div style="
-    padding: 2.4vh;">
-
+            <div style="border: 1px solid #c295d0c2;background: #817f86;border-radius: 20px;">
+                <div style="padding: 2.4vh;">
                     <div style="width:100%" class="dvp">
                         <Flex>
                             <div style="width:80%">
@@ -707,63 +696,46 @@ const LogSimulasiPopUpRuteAdd: Component<LogSimulasiPopUpRuteAddProps> = (props)
                                         <svg width="26" height="25" viewBox="0 0 26 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M12.9998 9.33444V11.1251H24.8817C25.0266 11.1253 25.1695 11.1592 25.2991 11.2239C25.4287 11.2887 25.5416 11.3826 25.6288 11.4984C25.716 11.6141 25.7752 11.7485 25.8017 11.8909C25.8282 12.0334 25.8214 12.1801 25.7817 12.3194L23.5411 20.1701C23.2053 21.3456 22.4956 22.3797 21.5196 23.1159C20.5435 23.8521 19.3542 24.2502 18.1317 24.2501H7.86793C6.64538 24.2502 5.45607 23.8521 4.48002 23.1159C3.50398 22.3797 2.79435 21.3456 2.45855 20.1701L0.216055 12.3194C0.176349 12.1801 0.169491 12.0334 0.196019 11.8909C0.222547 11.7485 0.281739 11.6141 0.368947 11.4984C0.456155 11.3826 0.569005 11.2887 0.698634 11.2239C0.828264 11.1592 0.971144 11.1253 1.11605 11.1251H11.1248V1.45381C11.1247 1.29101 11.167 1.13099 11.2475 0.989487C11.328 0.847989 11.444 0.729896 11.584 0.646832C11.724 0.563769 11.8832 0.518598 12.046 0.515767C12.2088 0.512936 12.3695 0.552542 12.5123 0.630686L12.9192 0.853811L12.9998 0.812561V0.896936L19.7873 4.60006C19.9402 4.68342 20.0669 4.80772 20.1531 4.95904C20.2393 5.11035 20.2817 5.28269 20.2755 5.45673C20.2693 5.63078 20.2147 5.79965 20.1178 5.94441C20.021 6.08917 19.8858 6.2041 19.7273 6.27631L12.9998 9.33444ZM12.9998 7.27569L17.2411 5.34819L12.9998 3.03444V7.27569ZM12.9998 13.0001H2.36105L2.89543 14.8751H23.1061L23.6404 13.0001H12.9998ZM3.43168 16.7501L4.2623 19.6563C4.48636 20.4397 4.95946 21.1287 5.61 21.6193C6.26055 22.1098 7.05317 22.3751 7.86793 22.3751H18.1317C18.9464 22.3751 19.7391 22.1098 20.3896 21.6193C21.0402 21.1287 21.5132 20.4397 21.7373 19.6563L22.5679 16.7501H3.43168Z" fill="white" />
                                         </svg>
-
-
                                     </span>
-                                    <span style="font-family: 'jaldiBold';
-    color: white;
-    margin-left: 10px;
-    margin-top: 5px;">Tambah Rute Kapal</span>
+                                    <span style="font-family: 'jaldiBold';color: white;margin-left: 10px;margin-top: 5px;">Tambah Rute Kapal</span>
                                 </Flex>
                             </div>
-
                             <div class="w20">
                                 <AiFillCloseSquare onClick={() => props.closeSend} class="cp" style="cursor:pointer" />
-
                             </div>
                         </Flex>
                     </div>
-
-
-
                     <div id="map-container-rute ">
-                        <div style="right: 10px;
-    top: 13px;
-    margin-bottom: -192px;
-    z-index: 10;
-    float: inline-end;
-    background: none !important;
-    position: relative !important;
-    width: 400px;" >
+                        <div style="right: 10px;top: 13px;margin-bottom: -192px;z-index: 10;float: inline-end;background: none !important;position: relative !important; width: 400px;" >
                             <div>
-                                <div style="    text-align: center;
-    font-family: 'jaldiBold';
-    font-size: 0.9em;
-    height: 45px;
-    backdrop-filter: blur(3px);
-    padding-top: 11px;
-    background: #ffffff8a;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    color: white;">
+                                <div style="text-align: center;
+                                            font-family: 'jaldiBold';
+                                            font-size: 0.9em;
+                                            height: 45px;
+                                            backdrop-filter: blur(3px);
+                                            padding-top: 11px;
+                                            background: #ffffff8a;
+                                            border-top-left-radius: 10px;
+                                            border-top-right-radius: 10px;
+                                            color: white;">
                                     <Flex>
                                         <div style="width:40%">Waktu & Tanggal</div>
                                         <div style="width:20%">Asset</div>
                                         <div style="width:40%">Posisi</div>
                                     </Flex>
                                 </div>
-                                <div style="    background: #ffffff45;
-    backdrop-filter: blur(1px);
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;">
+                                <div style="background: #ffffff45;
+                                            backdrop-filter: blur(1px);
+                                            border-bottom-left-radius: 10px;
+                                            border-bottom-right-radius: 10px;">
                                     <Flex>
                                         <div style="width:40%">
                                             <Flex>
-                                                <div style="    width: 30%;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    display: grid;">
+                                                <div style="width: 30%;
+                                                            text-align: center;
+                                                            justify-content: center;
+                                                            align-items: center;
+                                                            display: grid;">
                                                     <div style="    margin-top: 11px;">
                                                         <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <circle cx="7.5" cy="7.5" r="7.5" fill="#699BF7" fill-opacity="0.4" />
@@ -815,7 +787,7 @@ const LogSimulasiPopUpRuteAdd: Component<LogSimulasiPopUpRuteAddProps> = (props)
                                             </Flex>
                                         </div>
                                         <div style="width:30%">
-                                            <div style="    margin-top: 10px;">
+                                            <div style="margin-top: 10px;">
                                                 <select name="aset" id="aset" class="slc" value={selectedValueAsetFrom()} onInput={handleSelectChangeAsetFrom}>
                                                     <option value={null} selected disabled hidden>Pilih Aset</option>
                                                     <For each={dataAsset()}>{(e: any, i) =>
@@ -823,7 +795,7 @@ const LogSimulasiPopUpRuteAdd: Component<LogSimulasiPopUpRuteAddProps> = (props)
                                                     }</For>
                                                 </select>
                                             </div>
-                                            <div style="    margin-top: 10px;">
+                                            <div style="margin-top: 10px;">
                                                 <select name="aset" id="asets" class="slc" value={selectedValueAsetFrom()} onInput={handleSelectChangeAsetFrom}>
                                                     <option value={null} selected disabled hidden>Pilih Aset</option>
                                                     <For each={dataAsset()}>{(e: any, i) =>
@@ -833,10 +805,10 @@ const LogSimulasiPopUpRuteAdd: Component<LogSimulasiPopUpRuteAddProps> = (props)
                                             </div>
                                         </div>
                                         <div style="width:30%">
-                                            <div style="    margin-top: 10px;">
+                                            <div style="margin-top: 10px;">
                                                   <input class="ipt" type="text" placeholder="input nama" onChange={handleChangePosisiFrom} />
                                             </div>
-                                            <div style="    margin-top: 10px;">
+                                            <div style="margin-top: 10px;">
                                                  <input class="ipt" type="text" placeholder="input nama" onChange={handleChangePosisiTo} />
                                             </div>
                                         </div>
@@ -844,7 +816,10 @@ const LogSimulasiPopUpRuteAdd: Component<LogSimulasiPopUpRuteAddProps> = (props)
 
                                     <div>
 
-                                        <div style="text-align: center; justify-content: center;display: flex;    margin-top: 10px;">
+                                        <div style="text-align: center; 
+                                                    justify-content: center;
+                                                    display: flex;    
+                                                    margin-top: 10px;">
                                             <Flex>
                                                 <div onClick={resetSelect} style="    margin: 7px;"><Button class="btrn" >Reset</Button></div>
                                                 <div onClick={addSelect} style="    margin: 7px;"><Button class="btry" >Simpan</Button></div>

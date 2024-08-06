@@ -15,7 +15,6 @@ const Asset: Component<AssetProps> = (props) =>  {
 
   const navigate = useNavigate();
   onMount(() => {
-    //  navigate(`/ops-al/log-simulasi`);
   })
   return (
     <>

@@ -1,10 +1,6 @@
-#map-container-add-data-gis-polygon  {
-    /* position: relative; */
-   
+#map-container-add-data-gis-polygon  {   
     padding-top: 15px;
-
   }
-  
   #map-add-data-gis-polygon {
     height: 400px;
     width: 100%;
@@ -44,7 +40,7 @@
     background-color: rgba(255, 0, 0, 0);
 }
 .inputfile + label {
-	cursor: pointer; /* "hand" cursor */
+	cursor: pointer; 
 }
 
 .dvp{
@@ -106,7 +102,6 @@
 .hope-c-mWwdD-dWksIc-scrollBehavior-inside {
     overflow: auto;
     background: #817f86 !important;
-    /* border-radius: 30px; */
 }
 
 .hope-c-mWwdD {
@@ -151,18 +146,15 @@
 
 .fntlsgis {
     font-family: 'jaldiBold' !important;
-    /* font-size: 1em !important; */
     color: #6a6a6a !important;
     font-size: 14px;
 }
 
 .fngisadd{    font-family: 'jaldiBold';
-    /* padding-top: 4px; */
     color: rgb(76, 76, 76);
 }
 .fntlsgisadd {
     font-family: 'jaldiBold' !important;
-    /* font-size: 1em !important; */
     color: #6a6a6a !important;
     font-size: 16px;
 }
@@ -200,4 +192,61 @@
 .hope-c-jJyNvw-juNrEW-scrollBehavior-outside {
     max-height: none;
     background-color: #a2a0a0 !important;
+}
+
+.polygon-container {
+    border: 1px solid #c295d0c2;
+    background: #817f86;
+    border-radius: 20px;
+    padding: 2.4vh;
+}
+
+.poly-img{
+    width:30px;
+    height:30px
+}
+
+.poly-text{
+    font-family: 'jaldiBold';
+    color: white;
+    margin-left: 10px;
+    margin-top: 5px;
+}
+
+.popup-style{
+    margin-top: 10px;
+    background: #85319C80;
+    padding: 20px;
+    padding-left: 30px;
+}
+
+.tmbh-style{
+    color:black;    
+    font-size: 13px !important;
+}
+
+.bttn-close{
+    text-align: end;
+    justify-content: end;
+    display: flex;margin-top: 
+    10px;cursor:pointer
+}
+
+.text-container{
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.add-clmn{
+    padding: 35px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+
+.text-clmn{
+    text-align: center !important;
+    font-family: jaldiBold; 
+    border: 1px solid #626262 !important;
+    color: #404040 !important;
 }

@@ -68,7 +68,7 @@ const AssetContent: Component<AssetContentProps> = (props) => {
     })
     return (
       <>
-        <img class="imgs-lssb" style="    width: 70px;  height: 60px; " src={`${data.gambar}`} />
+        <img class="imgs-lssb" src={`${data.gambar}`} />
       </>
     );
   };
@@ -80,7 +80,7 @@ const AssetContent: Component<AssetContentProps> = (props) => {
     return (
       <>
      <Flex>
-     <span style="    margin-right: 10px;"> <IconButton onClick={() => onOpenAssetPosEdit(data)} style="background: #8321b5;" size="xs" aria-label="Edit" icon={<FiEdit />} /></span>
+     <span style="margin-right: 10px;"> <IconButton onClick={() => onOpenAssetPosEdit(data)} style="background: #8321b5;" size="xs" aria-label="Edit" icon={<FiEdit />} /></span>
       <span> <IconButton  onClick={onOpenAssetPosDelete} style="background: #ef0000;" size="xs" aria-label="Delete" icon={<RiSystemDeleteBin2Line />} /></span>
      </Flex>
       </>
@@ -152,17 +152,6 @@ const AssetContent: Component<AssetContentProps> = (props) => {
         alignItems: "center",
       }, cellClass: "center-cell",
     },
-    // {
-    //   headerName: "Position",
-    //   field: "position",
-    //   width: 90,
-    //   flex: 1,
-    //   cellStyle: {
-    //     display: "flex",
-    //     justifyContent: "center",
-    //     alignItems: "center",
-    //   }, cellClass: "center-cell",
-    // },
   ]);
   const [columnDefsDataAssetPos, setColumnDefsDataAssetPos]: any = createSignal([
     {
@@ -214,7 +203,6 @@ const AssetContent: Component<AssetContentProps> = (props) => {
       field: "",
       headerName: "Aksi",
       width: 130,
-      // flex: 1,
       cellStyle: {
         display: "flex",
         justifyContent: "center",
@@ -223,83 +211,10 @@ const AssetContent: Component<AssetContentProps> = (props) => {
       cellRenderer: ButtonRenderer,
     },
   ]);
-  // const [columnDefsDataAsset, setColumnDefsDataAsset]: any = createSignal([
-  //   {
-  //     headerName: "Titik", 
-  //     field: "titik",
-  //     width: 120,
-  //     flex: 1,
-  //     cellStyle: {
-  //       display: "flex",
-  //       justifyContent: "center",
-  //       alignItems: "center",
-  //     }, cellClass: "center-cell",
-  //   }, 
-  //   {
-  //     field: "lokasi",
-  //     headerName: "Lokasi",
-  //     width: 110,
-  //     flex: 1,
-  //     cellStyle: {
-  //       display: "flex",
-  //       justifyContent: "center",
-  //       alignItems: "center",
-  //     },
-  //   },
-  //   {
-  //     headerName: "Latitude", 
-  //     field: "latitude",
-  //     width: 100,
-  //     flex: 1,
-  //     cellStyle: {
-  //       display: "flex",
-  //       justifyContent: "center",
-  //       alignItems: "center",
-  //     }, cellClass: "center-cell",
-  //   }, 
-  //   {
-  //     headerName: "Longitude", 
-  //     field: "longitude",
-  //     width: 120,
-  //     flex: 1,
-  //     cellStyle: {
-  //       display: "flex",
-  //       justifyContent: "center",
-  //       alignItems: "center",
-  //     }, cellClass: "center-cell",
-  //   }, 
-  //   {
-  //     headerName: "Jenis", 
-  //     field: "jenis",
-  //     width: 120,
-  //     flex: 1, 
-  //     headerClass: 'ag-header-cell',
-  //     cellStyle: {
-  //       display: "flex",
-  //       // textAlign: "center",
-  //       justifyContent: "center",
-  //       alignItems: "center",
-  //     }, cellClass: "center-cell",
-  //   }, 
-  //   {
-  //     headerName: "Batas", 
-  //     field: "batas",
-  //     width: 90,
-  //     flex: 1,
-  //     cellStyle: {
-  //       display: "flex",
-  //       justifyContent: "center",
-  //       alignItems: "center",
-  //     }, cellClass: "center-cell",
-  //   } 
-  // ]);
 
 
   const [dataAssetPos, setDataAssetPos]: any = createSignal([]);
   const [dataAssetKapal, setDataAssetKapal]: any = createSignal([]);
-
-
-
 
   onMount(() => {
 
@@ -366,7 +281,6 @@ const AssetContent: Component<AssetContentProps> = (props) => {
         setDataAssetPos(data.filter);
       })
     } else { }
-    // setPosDetect(res);
   };
 
   const handleKapalDetect = (res: any) => {
@@ -377,7 +291,6 @@ const AssetContent: Component<AssetContentProps> = (props) => {
         setDataAssetKapal(data.filter);
       })
     } else { }
-    // setPosDetect(res);
   };
 
   const onOpenAssetPos = () => setIsOpenAssetPos(true);
@@ -404,8 +317,6 @@ setAssetPosSelection(data);
   const onOpenAssetKapal = () => setIsOpenAssetKapal(true);
   const onCloseAssetKapal = () => {
     const dataAssetLocal: any = JSON.parse(localStorage.getItem('dataAssetKapal'));
-    // setDataAsset(dataAssetLocal); 
-    // setRowDataAsset(dataAsset()) 
     setIsOpenAssetKapal(false)
 
   };
@@ -415,8 +326,6 @@ setAssetPosSelection(data);
   const onSelectionChange = (event: any) => {
     const selectedData = event.api.getSelectedNodes()[0]?.data;
     if (selectedData) {
-  //  console.log("event -> ", selectedData);
-  //  setAssetPosSelection(selectedData)
     }
 
   }
@@ -436,13 +345,13 @@ if(data.status === 'ok'){
   })
   }
 
-  const [isDataKapal, setIsDataKapal] = createSignal(true); // State untuk menentukan tabel yang ditampilkan
-  const [selectedData, setSelectedData] = createSignal('kapal'); // Default selection
+  const [isDataKapal, setIsDataKapal] = createSignal(true); 
+  const [selectedData, setSelectedData] = createSignal('kapal'); 
   const [isDropdownOpen, setIsDropdownOpen] = createSignal(false);
  
   const onChangeDataSelection = (value: string) => {
     setIsDataKapal(value === 'kapal');
-    setSelectedData(value); // Update selected data
+    setSelectedData(value); 
     setIsDropdownOpen(false);
   };
 
@@ -450,18 +359,12 @@ if(data.status === 'ok'){
   return (
     <>
 
-    
-      {/* Dropdown untuk memilih tabel */}
-      
-
-
-      {/* Tampilkan tabel berdasarkan pilihan */}
       {isDataKapal() ? (
         <div>
           <Flex>
-            <div style="width:100%;margin: 5px;">
-              <div style="border: 1px solid #c295d0c2; background: #251c3d; border-radius: 20px;">
-                <div style="border-bottom: 1px solid #c295d0c2; padding: 2.4vh;">
+            <div class="tb-kapal">
+              <div style="">
+                <div style="">
                   <Flex>
                     <div style="width:100%">
                       <Flex>
@@ -475,29 +378,17 @@ if(data.status === 'ok'){
                       <Flex>
                       <div style="position: relative; margin: 0px 0; display: flex; justify-content: flex-end;">
   <div 
-    onClick={() => setIsDropdownOpen(!isDropdownOpen())} 
-    style="padding: 8px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    background-color: #666077;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    color: white;
-    font-family: 'jaldiBold';
-    width: 133px;
-    font-size: 0.9em;
-    height: 35px;"
+    onClick={() => setIsDropdownOpen(!isDropdownOpen())} class="dropdown-1"
   >
     {selectedData() === 'kapal' ? (
       <>
-        <img src='/kapal.png' style="width:17px;height:17px; margin-right: 5px;" />
+        <img src='/kapal.png' class="img-kapal" />
         <span style="margin-right:10px">Data Kapal</span>
         <BsChevronDown />
       </>
     ) : (
       <>
-        <img src='/asset_pos.png' style="width:15px;height:15px; margin-right: 5px;" />
+        <img src='/asset_pos.png' class="img-pos" />
         <span style="    margin-right: 10px;">Data POS</span>
         <BsChevronDown />
       </>
@@ -517,13 +408,13 @@ if(data.status === 'ok'){
     width: 133px;
     font-size: 0.9em;
 ">
-      <li onClick={() => onChangeDataSelection('kapal')} style="padding: 8px; cursor: pointer; display: flex; align-items: center;    border-bottom: 1px solid #f3f3f3;">
-        <img src='/kapal.png' style="width:17px;height:17px; margin-right: 5px;" />
+      <li onClick={() => onChangeDataSelection('kapal')} class="img-dt-select-kp">
+        <img src='/kapal.png' class="img-kapal" />
         <span style="    margin-right: 10px;">Data Kapal</span>
         <BsChevronDown />
       </li>
-      <li onClick={() => onChangeDataSelection('pos')} style="padding: 8px; cursor: pointer; display: flex; align-items: center;">
-        <img src='/asset_pos.png' style="width:15px;height:15px; margin-right: 5px;" />
+      <li onClick={() => onChangeDataSelection('pos')} class="img-dt-select-ps">
+        <img src='/asset_pos.png' class="img-pos" />
         <span style="    margin-right: 20px;">Data POS</span>
         <BsChevronDown />
       </li>
@@ -573,22 +464,11 @@ if(data.status === 'ok'){
                       <div style="position: relative; margin: 0px 0; display: flex; justify-content: flex-end;">
   <div 
     onClick={() => setIsDropdownOpen(!isDropdownOpen())} 
-    style="padding: 8px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    background-color: #666077;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    color: white;
-    font-family: 'jaldiBold';
-    width: 133px;
-    font-size: 0.9em;
-    height: 35px;"
+    class="onclick-drop"
   >
     {selectedData() === 'kapal' ? (
       <>
-        <img src='/kapal.png' style="width:17px;height:17px; margin-right: 5px;" />
+        <img src='/kapal.png' style="img-kapal" />
         <span style="    margin-right: 10px;">Data Kapal</span>
         <BsChevronDown />
       </>
@@ -601,18 +481,7 @@ if(data.status === 'ok'){
     )}
   </div>
   {isDropdownOpen() && (
-    <ul style="position: absolute;
-    background: #666077;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    z-index: 100;
-    color: white;
-    font-family: 'jaldiBold';
-    width: 133px;
-    font-size: 0.9em;
+    <ul class="dropdown-op
 ">
       <li onClick={() => onChangeDataSelection('kapal')} style="padding: 8px; cursor: pointer; display: flex; align-items: center;    border-bottom: 1px solid #f3f3f3;">
         <img src='/kapal.png' style="width:17px;height:17px; margin-right: 5px;" />

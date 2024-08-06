@@ -87,6 +87,8 @@ const AssetPosPopUpEdit: Component<AssetPosPopUpEditProps> = (props) => {
     console.log("onClose")
     setisOpenKoor(false)
   };
+  
+
 
   onMount(() => {
 
@@ -194,7 +196,7 @@ const AssetPosPopUpEdit: Component<AssetPosPopUpEditProps> = (props) => {
           },
         ]
       });
-      setMap(gmaps);
+      setMap(gmaps); 
 
     setTimeout(() => {
       loadEditMap(gmaps);
@@ -203,7 +205,7 @@ const AssetPosPopUpEdit: Component<AssetPosPopUpEditProps> = (props) => {
       const infoWindow = new google.maps.InfoWindow();
       setInfoWindow(infoWindow);
 
-      gmaps.addListener("click", (event: any) => {
+      gmaps.addListener("click", (event: any) => { 
         console.log("event.latLng -> ", event.latLng)
         const lat = event.latLng.lat();
         const lng = event.latLng.lng();
@@ -395,7 +397,7 @@ const AssetPosPopUpEdit: Component<AssetPosPopUpEditProps> = (props) => {
   };
 
   const loadEditMap = (param : any) => {
-
+  
 
     const newMarker = new google.maps.Marker({
       position:{ lat: Number(latitude()), lng: Number(longitude()) },
@@ -426,22 +428,22 @@ const AssetPosPopUpEdit: Component<AssetPosPopUpEditProps> = (props) => {
   const [longitude, setLongitude] : any = createSignal(null);
   const [idLokasi, setIdLokasi] : any = createSignal(null);
 
-
+ 
   const handleChangeAssetGrup = (event: Event) => {
-    const input = event.target as HTMLInputElement;
-    setAssetGrup(input.value);
+    const input = event.target as HTMLInputElement; 
+    setAssetGrup(input.value); 
   };
   const handleChangeLokasi = (event: Event) => {
-    const input = event.target as HTMLInputElement;
-    setLokasi(input.value);
+    const input = event.target as HTMLInputElement; 
+    setLokasi(input.value); 
   };
   const handleChangeLatitude = (event: Event) => {
-    const input = event.target as HTMLInputElement;
-    setLatitude(input.value);
+    const input = event.target as HTMLInputElement; 
+    setLatitude(input.value); 
   };
   const handleChangeLongitude = (event: Event) => {
-    const input = event.target as HTMLInputElement;
-    setLongitude(input.value);
+    const input = event.target as HTMLInputElement; 
+    setLongitude(input.value); 
   };
 
 
@@ -467,7 +469,7 @@ const AssetPosPopUpEdit: Component<AssetPosPopUpEditProps> = (props) => {
           setAlertStatusOk(true)
           setTimeout(() => {
             setAlertStatusOk(false)
-          }, 1000)
+          }, 1000) 
           props.detect(true);
           onClose()
         }
@@ -479,20 +481,18 @@ const AssetPosPopUpEdit: Component<AssetPosPopUpEditProps> = (props) => {
         setAlertStatusError(false)
       }, 1000)
 
-    }
+    } 
 
   };
-
-
+  
+ 
   return (
     <>
 
       <div style="border: 1px solid #c295d0c2;
-      background: #817f86;
-    border-radius: 20px;">
-        <div style="
-    padding: 2.4vh;">
-
+                  background: #817f86;
+                border-radius: 20px;">
+        <div style="padding: 2.4vh;">
           <div style="width:100%" class="dvp">
             <Flex>
               <div style="width:80%">
@@ -501,9 +501,9 @@ const AssetPosPopUpEdit: Component<AssetPosPopUpEditProps> = (props) => {
                     <img src='/asset_pos.png' style="width:30px;height:30px"></img>
                   </span>
                   <span style="font-family: 'jaldiBold';
-    color: white;
-    margin-left: 10px;
-    margin-top: 5px;">Edit Data POS</span>
+                              color: white;
+                              margin-left: 10px;
+                              margin-top: 5px;">Edit Data POS</span>
                 </Flex>
               </div>
 
@@ -513,80 +513,77 @@ const AssetPosPopUpEdit: Component<AssetPosPopUpEditProps> = (props) => {
               </div>
             </Flex>
           </div>
-
-
           <div id="map-container-asset-pos-edit">
             <div style="right: 10px;
-    top: 25px;
-    margin-bottom: -270px;
-    z-index: 10;
-    float: inline-end;
-    background: none !important;
-    position: relative !important;
-    width: 400px;" >
+                        top: 25px;
+                        margin-bottom: -270px;
+                        z-index: 10;
+                        float: inline-end;
+                        background: none !important;
+                        position: relative !important;
+                        width: 400px;" >
               <div>
-                <div style="    text-align: center;
-    font-family: 'jaldiBold';
-    font-size: 0.9em;
-    height: 45px;
-    backdrop-filter: blur(3px);
-    padding-top: 11px;
-    background: #ffffff8a;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    color: white;">
+                <div style="text-align: center;
+                            font-family: 'jaldiBold';
+                            font-size: 0.9em;
+                            height: 45px;
+                            backdrop-filter: blur(3px);
+                            padding-top: 11px;
+                            background: #ffffff8a;
+                            border-top-left-radius: 10px;
+                            border-top-right-radius: 10px;
+                            color: white;">
                   <Flex>
                     <div style="width:30%">Title</div>
                     <div style="width:5%"></div>
                     <div style="width:65%">Form</div>
                   </Flex>
                 </div>
-                <div style="    background: #ffffff45;
-    backdrop-filter: blur(1px);
-    border-bottom-left-radius: 10px;    padding-top: 8px;
-    border-bottom-right-radius: 10px;    padding-bottom: 15px;">
-
-                  <Flex style="    padding: 5px;">
+                <div style="background: #ffffff45;
+                            backdrop-filter: blur(1px);
+                            border-bottom-left-radius: 10px;    padding-top: 8px;
+                            border-bottom-right-radius: 10px;    padding-bottom: 15px;">
+                  <Flex style="padding: 5px;">
                   <div style="width:30%;font-family: 'jaldiReg';
-    color: white;
-    font-size: 0.9em;
-    margin-top: 5px;
-    text-align: center;">Asset Grup</div>
+                              color: white;
+                              font-size: 0.9em;
+                              margin-top: 5px;
+                              text-align: center;">Asset Grup</div>
                     <div style="width:5%; color: white;">:</div>
                     <div style="width:65%"><Input  onChange={handleChangeAssetGrup} value={assetGrup()} style="color: white; font-family: 'jaldiBold'; " placeholder="Asset Grup" size="sm" /></div>
                   </Flex>
-                  <Flex style="    padding: 5px;">
+                  <Flex style="padding: 5px;">
                   <div style="width:30%;font-family: 'jaldiReg';
-    color: white;
-    font-size: 0.9em;
-    margin-top: 5px;
-    text-align: center;">Lokasi</div>
+                              color: white;
+                              font-size: 0.9em;
+                              margin-top: 5px;
+                              text-align: center;">Lokasi</div>
                     <div style="width:5%; color: white;">:</div>
                     <div style="width:65%"><Input  onChange={handleChangeLokasi} value={lokasi()}  style="color: white; font-family: 'jaldiBold'; " placeholder="Lokasi" size="sm" /></div>
                   </Flex>
-                  <Flex style="    padding: 5px;">
+                  <Flex style="padding: 5px;">
                   <div style="width:30%;font-family: 'jaldiReg';
-    color: white;
-    font-size: 0.9em;
-    margin-top: 5px;
-    text-align: center;">Longitude</div>
+                              color: white;
+                              font-size: 0.9em;
+                              margin-top: 5px;
+                              text-align: center;">Longitude</div>
                     <div style="width:5%; color: white;">:</div>
                     <div style="width:65%"><Input  onChange={handleChangeLongitude} value={longitude()} style="color: white; font-family: 'jaldiBold'; " placeholder="Longitude" size="sm" /></div>
                   </Flex>
-                  <Flex style="    padding: 5px;">
+                  <Flex style="padding: 5px;">
                   <div style="width:30%;font-family: 'jaldiReg';
-    color: white;
-    font-size: 0.9em;
-    margin-top: 5px;
-    text-align: center;">Latitude</div>
+                              color: white;
+                              font-size: 0.9em;
+                              margin-top: 5px;
+                              text-align: center;">Latitude</div>
                     <div style="width:5%; color: white;">:</div>
                     <div style="width:65%"><Input  onChange={handleChangeLatitude} value={latitude()}  style="color: white; font-family: 'jaldiBold'; " placeholder="Latitude" size="sm" /></div>
                   </Flex>
-
+                  
                   <div style="    text-align: center;
-    margin-top: 20px;">
+                    margin-top: 20px;">
                   <Button onClick={editLocation} style="background: rgb(136 19 198);box-shadow: 0px 4px 4px 0px #00000040;
-    font-family: 'jaldiBold';" size="sm"  leftIcon={<FiEdit boxSize={17} />}>Edit</Button>
+                     font-family: 'jaldiBold';" size="sm"  leftIcon={<FiEdit boxSize={17} />}>Edit</Button>
                   </div>
 
                 </div>
@@ -618,20 +615,20 @@ const AssetPosPopUpEdit: Component<AssetPosPopUpEditProps> = (props) => {
 
 
             <div id="popup-container-gis-edit" style={{ display: 'none' }}>
-              <div style="      margin-top: 10px;
-    background: #85319C80;
-    padding: 20px;
-    padding-left: 30px;">
+              <div style="margin-top: 10px;
+                          background: #85319C80;
+                          padding: 20px;
+                          padding-left: 30px;">
                 <Flex>
                   <div class="fngis">Titik Terpilih : {longlatKoor().latitude} ({longlat().latitude}) , {longlatKoor().longitude} ({longlat().longitude})</div>
                   </Flex>
               </div>
             </div>
             <div id="popup-container-gis-edit-new" style={{ display: 'none' }}>
-              <div style="      margin-top: 10px;
-    background: #85319C80;
-    padding: 20px;
-    padding-left: 30px;">
+              <div style="margin-top: 10px;
+                          background: #85319C80;
+                          padding: 20px;
+                          padding-left: 30px;">
                 <Flex>
                   <div class="fngisnew">Titik Baru : {longlatKoor().latitude} ({longlat().latitude}) , {longlatKoor().longitude} ({longlat().longitude})</div>
                   </Flex>
@@ -639,9 +636,6 @@ const AssetPosPopUpEdit: Component<AssetPosPopUpEditProps> = (props) => {
             </div>
 
           </div>
-
-
-
         </div>
       </div>
 

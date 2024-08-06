@@ -291,7 +291,7 @@ const GisPopUpDataPolygon: Component<GisPopUpDataPolygonProps> = (props) => {
     const currentPolygon = polygonS();
     if (currentPolygon) {
         const paths = currentPolygon.getPaths();
-        const path = paths.getAt(0);  // Mengambil cincin pertama
+        const path = paths.getAt(0);  
 
         const coordinates: any = [];
         for (let i = 0; i < path.getLength(); i++) {
@@ -371,22 +371,15 @@ const GisPopUpDataPolygon: Component<GisPopUpDataPolygonProps> = (props) => {
 
   return (
     <>
-      <div style="border: 1px solid #c295d0c2;
-      background: #817f86;
-    border-radius: 20px;">
-        <div style="
-    padding: 2.4vh;">
+      <div class="polygon-container">
           <div style="width:100%" class="dvp">
             <Flex>
               <div style="width:80%">
                 <Flex>
                   <span>
-                    <img src='/polygon.png' style="width:30px;height:30px"></img>
+                    <img src='/polygon.png' class="poly-img"></img>
                   </span>
-                  <span style="font-family: 'jaldiBold';
-    color: white;
-    margin-left: 10px;
-    margin-top: 5px;">Tambah Data Polygon</span>
+                  <span class="poly-text">Tambah Data Polygon</span>
                 </Flex>
               </div>
               <div class="w20">
@@ -415,14 +408,11 @@ const GisPopUpDataPolygon: Component<GisPopUpDataPolygonProps> = (props) => {
   </Alert>
 </Show>
             <div id="popup-container-gis-add" style={{ display: 'none' }}>
-              <div style="      margin-top: 10px;
-    background: #85319C80;
-    padding: 20px;
-    padding-left: 30px;">
+              <div class="popup-style">
                 <Flex>
                   <div class="fngis">Area Terpilih : titik longlat 1 , titik longlat 2 , titik longlat 3</div>
                   <div>
-                    <Button id="myButton" class="btgis" leftIcon={<AiOutlinePlus boxSize={18} style="color:black;    font-size: 13px !important;" />}>
+                    <Button id="myButton" class="btgis" leftIcon={<AiOutlinePlus boxSize={18} class="tmbh-style" />}>
                       <span class="fntlsgis">Tambah</span>
                     </Button>
                   </div>
@@ -436,27 +426,15 @@ const GisPopUpDataPolygon: Component<GisPopUpDataPolygonProps> = (props) => {
             <ModalOverlay />
             <ModalContent>
               <ModalBody>
-                <div style="    text-align: end;
-    justify-content: end;
-    display: flex;
-    margin-top: 10px;cursor:pointer">
+                <div class="bttn-close">
                   <AiFillCloseSquare onClick={onClose} class="w20i" />
                 </div>
-                <div style="    text-align: center;
-    margin-top: 10px;">
+                <div class="container-text">
                   <span class="fngisadd">Apakah Anda ingin mengubah nama Area ini?</span>
-                  <div style="padding: 35px;
-    padding-top: 10px;
-    padding-bottom: 20px;">
-                    <Input onChange={handleChangeNama} style="text-align: center !important;
-    font-family: jaldiBold;
-    border: 1px solid #626262 !important;
-    color: #404040 !important;" placeholder="Ubah Nama" size="sm" />
+                  <div class="add-clmn">
+                    <Input onChange={handleChangeNama} class="text-clmn" placeholder="Ubah Nama" size="sm" />
                   </div>
-
-                  <div style="text-align: center;
-    margin-bottom: 10px;
-    margin-top: 10px;">
+                  <div class="text-container">
                     <Button class="btgisadd">
                       <span class="fntlsgisadd" onClick={addLocation}>Simpan</span>
                     </Button>
@@ -465,7 +443,6 @@ const GisPopUpDataPolygon: Component<GisPopUpDataPolygonProps> = (props) => {
               </ModalBody>
             </ModalContent>
           </Modal>
-        </div>
       </div>
     </>
   );

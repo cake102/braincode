@@ -32,7 +32,7 @@
     background-color: rgba(255, 0, 0, 0);
 }
 .inputfile + label {
-	cursor: pointer; /* "hand" cursor */
+	cursor: pointer; 
 }
 
 .dvp{
@@ -84,7 +84,6 @@
 .hope-c-mWwdD-dWksIc-scrollBehavior-inside {
     overflow: auto;
     background: #817f86 !important;
-    /* border-radius: 30px; */
 }
 
 .hope-c-mWwdD {
